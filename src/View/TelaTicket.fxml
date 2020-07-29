@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketController">
+   <children>
+      <Pane prefHeight="55.0" prefWidth="350.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="10.0" prefHeight="36.0" prefWidth="78.0" text="Ticket" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXTextField id="placaCliente" fx:id="placaCliente" accessibleHelp="placa" accessibleRoleDescription="placa" accessibleText="placa" layoutX="2.0" layoutY="74.0" prefHeight="36.0" prefWidth="341.0" promptText="Placa do Carro" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField id="contatoCliente" fx:id="contatoCliente" accessibleHelp="contato" accessibleRoleDescription="contato" accessibleText="contato" layoutX="2.0" layoutY="127.0" prefHeight="36.0" prefWidth="341.0" promptText="Contato" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextArea id="descCarroCliente" fx:id="descCarroCliente" accessibleHelp="descrição" accessibleRoleDescription="descrição" accessibleText="descrição" layoutX="5.0" layoutY="187.0" prefHeight="119.0" prefWidth="341.0" promptText="Descrição" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="4.0">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton id="gerarTicket" fx:id="gerarTicket" accessibleHelp="Gerar Ticket" accessibleRoleDescription="Gerar Ticket" accessibleText="Gerar Ticket" alignment="CENTER" layoutX="195.0" layoutY="332.0" onAction="#geraTicket" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Gerar Ticket" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="cancelaTicket" fx:id="cancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="24.0" layoutY="332.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
