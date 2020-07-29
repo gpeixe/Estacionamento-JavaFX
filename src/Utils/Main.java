@@ -10,9 +10,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../View/TelaPrincipal.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/TelaTicket.fxml"));
+        primaryStage.setTitle("Gerar Ticket");
+        primaryStage.setResizable(false); //Importante para que o usuário não consiga redimensionar a tela
+        primaryStage.setScene(new Scene(root, 350, 391));
         primaryStage.show();
     }
 
