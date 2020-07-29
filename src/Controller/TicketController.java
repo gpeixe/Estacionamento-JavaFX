@@ -2,7 +2,7 @@ package Controller;
 
 import javafx.event.ActionEvent;
 
-public class GeradorTicket {
+public class TicketController {
     public void geraTicket(ActionEvent actionEvent) {
     }
 
