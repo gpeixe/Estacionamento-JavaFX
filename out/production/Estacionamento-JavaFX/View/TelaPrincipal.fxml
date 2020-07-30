@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="496.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaPrincipalController">
    <children>
-      <Pane prefHeight="216.0" prefWidth="600.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <children>
-            <Label layoutX="173.0" layoutY="14.0" text="estacionamento." textFill="WHITE">
+            <Label layoutX="90.0" layoutY="4.0" prefHeight="38.0" prefWidth="446.0" text="Gerenciamento Estacionamento" textFill="WHITE">
                <font>
-                  <Font name="Arial Black" size="45.0" />
+                  <Font name="Arial Black" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="118.0" text="Seu Zé Enterprise," textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="134.0" text="Rua Gloomy Doom, Numero 666." textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="10.0" />
-               </font>
-            </Label>
-         </children></Pane>
-      <JFXButton layoutX="218.0" layoutY="337.0" prefHeight="35.0" prefWidth="164.0" ripplerFill="BLACK" style="-fx-background-color: #1D3557;" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="30.0">
+         </children>
+      </Pane>
+      <Label fx:id="nVagas" layoutX="14.0" layoutY="397.0" prefHeight="38.0" prefWidth="400.0" text="Número de vagas:" AnchorPane.leftAnchor="14.0">
          <font>
-            <Font name="Arial Black" size="14.0" />
-         </font></JFXButton>
+            <Font name="Arial Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="nVagasDisponiveis" layoutX="14.0" layoutY="440.0" prefHeight="38.0" prefWidth="400.0" text="Vagas disponíveis:" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="Arial Black" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="ticketBtn" layoutX="423.0" layoutY="80.0" onAction="#openTelaTicket" prefHeight="38.0" prefWidth="178.0" style="-fx-background-color: #1D3557;" text="Novo Ticket" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="loginVigBtn" layoutX="423.0" layoutY="396.0" onAction="#openTelaLogin" prefHeight="38.0" prefWidth="178.0" style="-fx-background-color: #457B9D;" text="Login Vigilante" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="loginAdmBtn" layoutX="423.0" layoutY="439.0" onAction="#openTelaLogin" prefHeight="38.0" prefWidth="178.0" style="-fx-background-color: #457B9D;" text="Login Admin" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+      <PieChart fx:id="graphVagas" layoutX="14.0" layoutY="80.0" prefHeight="323.0" prefWidth="358.0" title="Vagas/Vagas Disponíveis" AnchorPane.leftAnchor="14.0" />
    </children>
 </AnchorPane>
