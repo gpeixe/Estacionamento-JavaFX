@@ -17,7 +17,7 @@ public class FuncionarioController {
     public void telaNovoFuncionario(ActionEvent actionEvent) throws Exception{
         Stage loginStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../View/TelaCadUpdFuncionario.fxml"));
-        loginStage.setScene(new Scene(root, 350, 318));
+        loginStage.setScene(new Scene(root, 350, 435));
         loginStage.setResizable(false);
         loginStage.setTitle("Funcionários");
         loginStage.initModality(Modality.WINDOW_MODAL);
