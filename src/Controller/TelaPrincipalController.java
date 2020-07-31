@@ -27,4 +27,17 @@ public class TelaPrincipalController {
         loginStage.initModality(Modality.WINDOW_MODAL);
         loginStage.showAndWait();
     }
+
+    public void openTelaCRUDMensalista(ActionEvent actionEvent) throws Exception{
+        Stage mensalistaStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../View/TelaCRUDMensalistas.fxml"));
+        mensalistaStage.setScene(new Scene(root, 1010, 589));
+        mensalistaStage.setResizable(false);
+        mensalistaStage.setTitle("Mensalista");
+        mensalistaStage.initModality(Modality.WINDOW_MODAL);
+        mensalistaStage.showAndWait();
+    }
+
+    public void deslogarFunc(ActionEvent actionEvent) {
+    }
 }
