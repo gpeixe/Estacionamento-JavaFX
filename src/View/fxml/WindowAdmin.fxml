@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="496.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaAdminController">
+<AnchorPane prefHeight="496.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAdminController">
     <children>
         <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
             <children>
