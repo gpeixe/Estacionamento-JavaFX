@@ -2,12 +2,15 @@ package Controller;
 
 import View.loaders.WindowCrudFuncionario;
 import View.loaders.WindowCrudMensalista;
+import View.loaders.WindowTicket;
 import javafx.event.ActionEvent;
 
 
 public class WindowAdminController {
 
     public void openTelaTicket(ActionEvent actionEvent) {
+        WindowTicket w = new WindowTicket();
+        w.startModal();
     }
 
     public void deslogaAdmin(ActionEvent actionEvent) {

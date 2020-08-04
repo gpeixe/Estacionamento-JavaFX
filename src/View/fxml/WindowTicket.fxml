@@ -36,7 +36,7 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton id="cancelaTicket" fx:id="cancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="14.0" layoutY="332.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="128.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+      <JFXButton id="cancelaTicket" fx:id="cancelaTicket"   accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="14.0" layoutY="332.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="128.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>

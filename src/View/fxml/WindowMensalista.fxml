@@ -18,32 +18,32 @@
                 </Label>
             </children>
         </Pane>
-        <JFXTextField id="placaCliente" fx:id="cpfMensalista" accessibleHelp="CPF MENSALISTA" accessibleRoleDescription="CPF MENSALISTA" accessibleText="CPF MENSALISTA" layoutX="9.0" layoutY="70.0" prefHeight="36.0" prefWidth="333.0" promptText="CPF" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+        <JFXTextField id="cpfMensalista" fx:id="cpfMensalista" accessibleHelp="CPF MENSALISTA" accessibleRoleDescription="CPF MENSALISTA" accessibleText="CPF MENSALISTA" layoutX="9.0" layoutY="70.0" prefHeight="36.0" prefWidth="333.0" promptText="CPF" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
             <font>
                 <Font name="Arial Black" size="13.0" />
             </font>
         </JFXTextField>
-        <JFXButton id="gerarTicket" fx:id="btnSalvaMensalista" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="301.0" onAction="#salvarMensalista" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
+        <JFXButton id="btnSalvaMensalista" fx:id="btnSalvaMensalista" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="301.0" onAction="#salvarMensalista" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
         </JFXButton>
-      <JFXButton id="gerarTicket" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="301.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
+      <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="301.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>
       </JFXButton>
-      <JFXTextField id="placaCliente" fx:id="nomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="9.0" layoutY="122.0" prefHeight="36.0" prefWidth="333.0" promptText="Nome" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="nomeMensalista" fx:id="nomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="9.0" layoutY="122.0" prefHeight="36.0" prefWidth="333.0" promptText="Nome" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="placaCliente" fx:id="telefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="9.0" layoutY="174.0" prefHeight="36.0" prefWidth="333.0" promptText="Telefone" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="telefoneMensalista" fx:id="telefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="9.0" layoutY="174.0" prefHeight="36.0" prefWidth="333.0" promptText="Telefone" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="placaCliente" fx:id="empresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="229.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="empresaVincMensalista" fx:id="empresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="229.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
