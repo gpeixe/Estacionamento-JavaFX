@@ -19,7 +19,7 @@ public class WindowAtendente {
 
             stage.setTitle("Atendente");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 910, 496));
+            stage.setScene(new Scene(pane, 618, 549));
             stage.setResizable(false);
             stage.showAndWait();
 

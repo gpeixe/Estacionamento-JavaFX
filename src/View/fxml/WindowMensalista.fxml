@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MensalistaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MensalistaController">
     <children>
         <Pane prefHeight="55.0" prefWidth="350.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -18,7 +16,7 @@
                 </Label>
             </children>
         </Pane>
-        <JFXTextField id="cpfMensalista" fx:id="cpfMensalista" accessibleHelp="CPF MENSALISTA" accessibleRoleDescription="CPF MENSALISTA" accessibleText="CPF MENSALISTA" layoutX="9.0" layoutY="70.0" prefHeight="36.0" prefWidth="333.0" promptText="CPF" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+        <JFXTextField id="cpfMensalista" fx:id="tfCPFMensalista" accessibleHelp="CPF MENSALISTA" accessibleRoleDescription="CPF MENSALISTA" accessibleText="CPF MENSALISTA" layoutX="9.0" layoutY="70.0" prefHeight="36.0" prefWidth="333.0" promptText="CPF" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
             <font>
                 <Font name="Arial Black" size="13.0" />
             </font>
@@ -33,17 +31,17 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </JFXButton>
-      <JFXTextField id="nomeMensalista" fx:id="nomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="9.0" layoutY="122.0" prefHeight="36.0" prefWidth="333.0" promptText="Nome" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="nomeMensalista" fx:id="tfNomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="9.0" layoutY="122.0" prefHeight="36.0" prefWidth="333.0" promptText="Nome" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="telefoneMensalista" fx:id="telefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="9.0" layoutY="174.0" prefHeight="36.0" prefWidth="333.0" promptText="Telefone" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="telefoneMensalista" fx:id="tfTelefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="9.0" layoutY="174.0" prefHeight="36.0" prefWidth="333.0" promptText="Telefone" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="empresaVincMensalista" fx:id="empresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="229.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="empresaVincMensalista" fx:id="tfEmpresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="229.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>

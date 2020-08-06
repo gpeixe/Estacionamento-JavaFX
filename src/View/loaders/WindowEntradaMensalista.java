@@ -8,18 +8,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowTicket {
-
+public class WindowEntradaMensalista {
     public void startModal(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowTicket.fxml").openStream());
+            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowCrudMensalista.fxml").openStream());
 
             Stage stage = new Stage();
 
-            stage.setTitle("Gerar Ticket");
+            stage.setTitle("Entrada Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 350, 443));
+            stage.setScene(new Scene(pane, 431, 128));
             stage.setResizable(false);
             stage.showAndWait();
 

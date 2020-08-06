@@ -1,6 +1,7 @@
 package Controller;
 
 import View.loaders.WindowCrudMensalista;
+import View.loaders.WindowEntradaMensalista;
 import View.loaders.WindowLogin;
 import View.loaders.WindowTicket;
 import javafx.event.ActionEvent;
@@ -24,5 +25,10 @@ public class WindowAtendenteController {
     }
 
     public void deslogarFunc(ActionEvent actionEvent) {
+    }
+
+    public void openTelaEntradaMensalista(ActionEvent actionEvent) {
+        WindowEntradaMensalista w = new WindowEntradaMensalista();
+        w.startModal();
     }
 }
