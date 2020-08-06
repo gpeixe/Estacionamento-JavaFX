@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.WindowRelatorioController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="764.0" prefWidth="1091.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowRelatorioController">
+   <children>
+      <Pane layoutY="-1.0" prefHeight="62.0" prefWidth="1091.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+         <children>
+            <Label layoutX="445.0" layoutY="4.0" text="Relatórios" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="tableRelatorioTempo" layoutY="61.0" prefHeight="702.0" prefWidth="267.0" AnchorPane.leftAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="cPlaca_rtempo" prefWidth="140.0" text="Placa" />
+          <TableColumn fx:id="cTempo_rtempo" prefWidth="126.0" text="Tempo" />
+        </columns>
+      </TableView>
+      <Label fx:id="lblPermanVei" layoutX="283.0" layoutY="61.0" prefHeight="26.0" prefWidth="451.0" text="Média de permancência de veículos:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNumCarros" layoutX="283.0" layoutY="93.0" prefHeight="26.0" prefWidth="451.0" text="Número de carros que entraram:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablePlacaPago" layoutX="283.0" layoutY="160.0" prefHeight="367.0" prefWidth="267.0" AnchorPane.leftAnchor="283.0">
+         <columns>
+            <TableColumn fx:id="cPlaca_rpago" prefWidth="140.0" text="Placa" />
+            <TableColumn fx:id="cValor_rpago" prefWidth="126.0" text="Valor Pago" />
+         </columns>
+      </TableView>
+      <JFXTextField fx:id="tfPlacaCarro" layoutX="283.0" layoutY="130.0" prefHeight="25.0" prefWidth="267.0" promptText="Placa do carro">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </JFXTextField>
+      <Label fx:id="lblTotalRecebido" layoutX="283.0" layoutY="534.0" prefHeight="26.0" prefWidth="267.0" text="Total Recebido:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <LineChart fx:id="graphPermHr" layoutX="557.0" layoutY="160.0" prefHeight="285.0" prefWidth="534.0" title="Permanência/Hora" AnchorPane.rightAnchor="0.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <PieChart fx:id="graphVagas" layoutX="555.0" layoutY="442.0" prefHeight="323.0" prefWidth="534.0" title="Vagas/Vagas Disponíveis" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0" />
+      <JFXDatePicker fx:id="datePick" defaultColor="#1d3557" layoutX="906.0" layoutY="60.0" AnchorPane.rightAnchor="14.0" />
+      <Label fx:id="lblMensalistas" layoutX="277.0" layoutY="643.0" prefHeight="26.0" prefWidth="267.0" text="Mensalistas:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPernoite" layoutX="277.0" layoutY="669.0" prefHeight="26.0" prefWidth="267.0" text="Pernoite:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOutros" layoutX="277.0" layoutY="695.0" prefHeight="26.0" prefWidth="267.0" text="Outros:" AnchorPane.leftAnchor="283.0">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="364.0" layoutY="604.0" prefHeight="29.0" prefWidth="93.0" text="Clientes" AnchorPane.bottomAnchor="140.0">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
