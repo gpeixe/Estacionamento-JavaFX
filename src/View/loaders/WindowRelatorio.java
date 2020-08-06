@@ -8,17 +8,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowEntradaMensalista {
+public class WindowRelatorio {
+
     public void startModal(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowEntradaMensalista.fxml").openStream());
+            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowRelatorio.fxml").openStream());
 
             Stage stage = new Stage();
 
-            stage.setTitle("Entrada Mensalista");
+            stage.setTitle("Gerar Relatorio");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 431, 128));
+            stage.setScene(new Scene(pane, 750, 400));
             stage.setResizable(false);
             stage.showAndWait();
 

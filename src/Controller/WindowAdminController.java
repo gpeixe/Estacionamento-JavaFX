@@ -1,13 +1,15 @@
 package Controller;
 
-import View.loaders.WindowAlteraPrecos;
-import View.loaders.WindowCrudFuncionario;
-import View.loaders.WindowCrudMensalista;
-import View.loaders.WindowTicket;
+import View.loaders.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
 
 public class WindowAdminController {
+    @FXML
+    JFXButton btnDeslogar;
 
     public void openTelaTicket(ActionEvent actionEvent) {
         WindowTicket w = new WindowTicket();
@@ -15,9 +17,13 @@ public class WindowAdminController {
     }
 
     public void deslogaAdmin(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnDeslogar.getScene().getWindow();
+        stage.close();
     }
 
     public void openTelaRelatorios(ActionEvent actionEvent) {
+        WindowRelatorio w = new WindowRelatorio();
+        w.startModal();
     }
 
     public void openTelaPrecos(ActionEvent actionEvent) {
