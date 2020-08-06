@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 public class WindowStartController {
 
     @FXML
-    JFXButton loginButton;
+    JFXButton btnEntrar;
 
     public void login(javafx.event.ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
-        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Stage stage = (Stage) btnEntrar.getScene().getWindow();
         w.startModal();
     }
 

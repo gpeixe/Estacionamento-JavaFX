@@ -12,12 +12,12 @@ public class WindowLoginController {
     @FXML
     JFXButton btnLogar;
     @FXML
-    JFXPasswordField senhaUser;
+    JFXPasswordField tfSenhaUser;
     @FXML
-    JFXTextField cpfUser;
+    JFXTextField tfCPFUser;
 
     public void login(javafx.event.ActionEvent actionEvent) {
-        switch (cpfUser.getText()) {
+        switch (tfCPFUser.getText()) {
             case "admin": {
                 WindowAdmin w = new WindowAdmin();
                 w.startModal();

@@ -17,12 +17,12 @@
                 </Label>
             </children>
         </Pane>
-        <Label fx:id="nVagas" accessibleHelp="VAGAS" accessibleRoleDescription="VAGAS" accessibleText="VAGAS" layoutX="14.0" layoutY="325.0" prefHeight="38.0" prefWidth="400.0" text="Número de vagas:" AnchorPane.leftAnchor="14.0">
+        <Label fx:id="lblNumVagas" accessibleHelp="VAGAS" accessibleRoleDescription="VAGAS" accessibleText="VAGAS" layoutX="14.0" layoutY="325.0" prefHeight="38.0" prefWidth="400.0" text="Número de vagas:" AnchorPane.leftAnchor="14.0">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="nVagasDisponiveis" accessibleHelp="VAGAS DISPONIVEIS" accessibleRoleDescription="VAGAS DISPONIVEIS" accessibleText="VAGAS DISPONIVEIS" layoutX="14.0" layoutY="363.0" prefHeight="38.0" prefWidth="400.0" text="Vagas disponíveis:" AnchorPane.leftAnchor="14.0">
+        <Label fx:id="lblNumVagasDisponiveis" accessibleHelp="VAGAS DISPONIVEIS" accessibleRoleDescription="VAGAS DISPONIVEIS" accessibleText="VAGAS DISPONIVEIS" layoutX="14.0" layoutY="363.0" prefHeight="38.0" prefWidth="400.0" text="Vagas disponíveis:" AnchorPane.leftAnchor="14.0">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font>
@@ -59,12 +59,12 @@
                 <Font name="Arial Black" size="18.0" />
             </font>
         </JFXButton>
-        <Label fx:id="nMensalistas" accessibleHelp="NUMEROS MENSALISTAS" accessibleRoleDescription="NUMEROS MENSALISTAS" accessibleText="NUMEROS MENSALISTAS" layoutX="14.0" layoutY="401.0" prefHeight="38.0" prefWidth="400.0" text="Número de mensalistas:" AnchorPane.leftAnchor="14.0">
+        <Label fx:id="lblNumMensalistas" accessibleHelp="NUMEROS MENSALISTAS" accessibleRoleDescription="NUMEROS MENSALISTAS" accessibleText="NUMEROS MENSALISTAS" layoutX="14.0" layoutY="401.0" prefHeight="38.0" prefWidth="400.0" text="Número de mensalistas:" AnchorPane.leftAnchor="14.0">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="nFuncionarios" accessibleHelp="NUMEROS FUNCIONARIOS" accessibleRoleDescription="NUMEROS FUNCIONARIOS" accessibleText="NUMEROS FUNCIONARIOS" layoutX="14.0" layoutY="441.0" prefHeight="38.0" prefWidth="400.0" text="Número de funcionários:" AnchorPane.leftAnchor="14.0">
+        <Label fx:id="lblNumFuncionarios" accessibleHelp="NUMEROS FUNCIONARIOS" accessibleRoleDescription="NUMEROS FUNCIONARIOS" accessibleText="NUMEROS FUNCIONARIOS" layoutX="14.0" layoutY="441.0" prefHeight="38.0" prefWidth="400.0" text="Número de funcionários:" AnchorPane.leftAnchor="14.0">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font>

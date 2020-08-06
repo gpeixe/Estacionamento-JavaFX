@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 public class WindowTicketController {
 
    @FXML
-   JFXButton cancelaTicket;
+   JFXButton btnCancelaTicket;
 
    public void geraTicket(ActionEvent actionEvent) {
    }
 
    public void cancelaTicket(ActionEvent actionEvent) {
-       Stage stage = (Stage) cancelaTicket.getScene().getWindow();
+       Stage stage = (Stage) btnCancelaTicket.getScene().getWindow();
        stage.close();
    }
 
