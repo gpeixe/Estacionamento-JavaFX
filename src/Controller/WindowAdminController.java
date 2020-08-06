@@ -1,5 +1,6 @@
 package Controller;
 
+import View.loaders.WindowAlteraPrecos;
 import View.loaders.WindowCrudFuncionario;
 import View.loaders.WindowCrudMensalista;
 import View.loaders.WindowTicket;
@@ -20,6 +21,8 @@ public class WindowAdminController {
     }
 
     public void openTelaPrecos(ActionEvent actionEvent) {
+        WindowAlteraPrecos w = new WindowAlteraPrecos();
+        w.startModal();
     }
 
     public void openTelaCRUDMensalista(ActionEvent actionEvent) throws Exception{
