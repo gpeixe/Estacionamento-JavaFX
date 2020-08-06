@@ -31,4 +31,7 @@ public class WindowAdminController {
         WindowCrudFuncionario w = new WindowCrudFuncionario();
         w.startModal();
     }
+
+    public void salvaPrecosEstacionamento(ActionEvent actionEvent) {
+    }
 }
