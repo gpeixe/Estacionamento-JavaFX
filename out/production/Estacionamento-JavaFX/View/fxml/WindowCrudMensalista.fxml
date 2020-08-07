@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="589.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowCrudMensalistaController">
+    <children>
+        <Pane prefHeight="53.0" prefWidth="1013.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="197.0" layoutY="3.0" prefHeight="47.0" prefWidth="620.0" text="Gerenciamento de Estacionamento" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Black" size="32.0" />
+                    </font>
+                </Label>
+            </children></Pane>
+        <AnchorPane layoutX="836.0" layoutY="53.0" />
+        <JFXButton fx:id="btnNovoMensalista" accessibleHelp="NOVO Mensalista" accessibleRoleDescription="NOVO Mensalista" accessibleText="NOVO Mensalista" layoutX="1.0" layoutY="57.0" onAction="#telaNovoMensalista" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: #457B9D;" text="Novo Mensalista" textFill="WHITE" AnchorPane.leftAnchor="1.0">
+            <font>
+                <Font name="Arial Black" size="11.0" />
+            </font>
+        </JFXButton>
+        <TableView fx:id="tableMensalista" layoutY="88.0" prefHeight="502.0" prefWidth="1013.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="cpfTable" prefWidth="162.0" text="CPF" />
+                <TableColumn fx:id="nomeTable" prefWidth="170.0" text="NOME" />
+                <TableColumn fx:id="telefoneTable" prefWidth="195.0" text="TELEFONE" />
+                <TableColumn fx:id="enderecoTable" prefWidth="311.0" text="EMPRESA VINCULADA" />
+                <TableColumn fx:id="acoesTable" prefWidth="173.0" text="AÇÕES" />
+            </columns>
+        </TableView>
+      <JFXTextField fx:id="tfBuscaMensalista" accessibleHelp="Busca Mensalista" accessibleRoleDescription="Busca Mensalista" accessibleText="Busca Mensalista" layoutX="636.0" layoutY="54.0" prefHeight="32.0" prefWidth="369.0" promptText="Busca Mensalista" AnchorPane.rightAnchor="8.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </JFXTextField>
+    </children>
+</AnchorPane>

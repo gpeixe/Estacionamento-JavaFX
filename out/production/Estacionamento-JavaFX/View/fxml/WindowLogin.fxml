@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowLoginController">
+    <children>
+        <Pane prefHeight="55.0" prefWidth="350.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label accessibleHelp="LOGIN" accessibleRoleDescription="LOGIN" accessibleText="LOGIN" alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="6.0" prefHeight="36.0" prefWidth="117.0" text="Login" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Black" size="29.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <JFXTextField id="cpfUser" fx:id="tfCPFUser" accessibleHelp="CPF LOGIN" accessibleRoleDescription="CPF LOGIN" accessibleText="CPF LOGIN" layoutX="10.0" layoutY="75.0" prefHeight="36.0" prefWidth="333.0" promptText="CPF" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.0">
+            <font>
+                <Font name="Arial Black" size="13.0" />
+            </font>
+        </JFXTextField>
+        <JFXButton id="btnLogar" fx:id="btnLogar" accessibleHelp="LOGAR" accessibleRoleDescription="LOGAR" accessibleText="LOGAR" alignment="CENTER" layoutX="115.0" layoutY="248.0" onAction="#login" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Logar" textFill="WHITE" AnchorPane.bottomAnchor="34.0">
+            <font>
+                <Font name="Arial Black" size="17.0" />
+            </font>
+        </JFXButton>
+      <JFXPasswordField fx:id="tfSenhaUser" accessibleHelp="SENHA" accessibleRoleDescription="SENHA" accessibleText="SENHA" layoutX="10.0" layoutY="145.0" prefHeight="36.0" prefWidth="333.0" promptText="Senha" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.0">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </JFXPasswordField>
+    </children>
+</AnchorPane>
