@@ -19,7 +19,7 @@ public class WindowRelatorio {
 
             stage.setTitle("Gerar Relatorio");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 750, 400));
+            stage.setScene(new Scene(pane, 1091, 764));
             stage.setResizable(false);
             stage.showAndWait();
 
