@@ -31,5 +31,6 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXPasswordField>
+      <Label layoutX="10.0" layoutY="111.0" prefHeight="17.0" prefWidth="144.0" text="admin/vig/atendente" AnchorPane.leftAnchor="10.0" />
     </children>
 </AnchorPane>
