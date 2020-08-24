@@ -6,63 +6,85 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="549.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
+<AnchorPane prefHeight="618.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <children>
-            <Label accessibleHelp="GERENCIAMENTO" accessibleRoleDescription="GERENCIAMENTO" accessibleText="GERENCIAMENTO" layoutX="185.0" layoutY="4.0" prefHeight="38.0" prefWidth="249.0" text=" Estacionamento" textFill="WHITE">
+            <Label accessibleHelp="GERENCIAMENTO" accessibleRoleDescription="GERENCIAMENTO" accessibleText="GERENCIAMENTO" layoutX="411.0" layoutY="4.0" prefHeight="38.0" prefWidth="233.0" text=" Estacionamento" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="25.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label fx:id="lblNumVagas" accessibleHelp="VAGAS" accessibleRoleDescription="VAGAS" accessibleText="VAGAS" layoutX="14.0" layoutY="391.0" prefHeight="38.0" prefWidth="378.0" text="Número de vagas:" AnchorPane.leftAnchor="14.0">
+      <Label fx:id="lblNumVagas" accessibleHelp="VAGAS" accessibleRoleDescription="VAGAS" accessibleText="VAGAS" layoutX="14.0" layoutY="495.0" prefHeight="38.0" prefWidth="378.0" text="Total de Vagas:" AnchorPane.leftAnchor="14.0">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblNumVagasDisponives" accessibleHelp="VAGAS DISPONIVEIS" accessibleRoleDescription="VAGAS DISPONIVEIS" accessibleText="VAGAS DISPONIVEIS" layoutX="14.0" layoutY="437.0" prefHeight="38.0" prefWidth="378.0" text="Vagas disponíveis:" AnchorPane.leftAnchor="14.0">
+      <Label fx:id="lblNumVagasDisponives" accessibleHelp="VAGAS DISPONIVEIS" accessibleRoleDescription="VAGAS DISPONIVEIS" accessibleText="VAGAS DISPONIVEIS" layoutX="14.0" layoutY="533.0" prefHeight="38.0" prefWidth="378.0" text="Vagas Disponíveis:" AnchorPane.leftAnchor="14.0">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnTicket" accessibleHelp="NOVO TICKET" accessibleRoleDescription="NOVO TICKET" accessibleText="NOVO TICKET" layoutX="394.0" layoutY="60.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #1D3557;" text="Novo Ticket" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+      <JFXButton fx:id="btnTicket" accessibleHelp="NOVO TICKET" accessibleRoleDescription="NOVO TICKET" accessibleText="NOVO TICKET" layoutX="475.0" layoutY="89.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Novo Ticket" textFill="WHITE" AnchorPane.rightAnchor="303.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnLoginVig" accessibleHelp="LOGIN VIGILANTE" accessibleRoleDescription="LOGIN VIGILANTE" accessibleText="LOGIN VIGILANTE" layoutX="397.0" layoutY="390.0" onAction="#openTelaLogin" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #457B9D;" text="Login Vigilante" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+      <JFXButton fx:id="btnNovoLogin" accessibleHelp="LOGIN VIGILANTE" accessibleRoleDescription="LOGIN VIGILANTE" accessibleText="LOGIN VIGILANTE" layoutX="727.0" layoutY="525.0" onAction="#openTelaLogin" prefHeight="39.0" prefWidth="249.0" style="-fx-background-color: #457B9D;" text="Novo Login" textFill="WHITE" AnchorPane.rightAnchor="14.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnLoginADM" accessibleHelp="LOGIN ADMIN" accessibleRoleDescription="LOGIN ADMIN" accessibleText="LOGIN ADMIN" layoutX="397.0" layoutY="436.0" onAction="#openTelaLogin" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #457B9D;" text="Login Admin" textFill="WHITE" AnchorPane.rightAnchor="14.0">
-         <font>
-            <Font name="Arial Black" size="18.0" />
-         </font>
-      </JFXButton>
-      <PieChart fx:id="graphVagas" accessibleHelp="GRAFICO" accessibleRoleDescription="GRAFICO" accessibleText="GRAFICO" layoutX="14.0" layoutY="60.0" prefHeight="337.0" prefWidth="358.0" title="Vagas/Vagas Disponíveis" AnchorPane.leftAnchor="14.0" />
-      <JFXButton fx:id="btnEntradaMensalista" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="394.0" layoutY="106.0" onAction="#openTelaEntradaMensalista" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #1D3557;" text="Entrada Mensalista" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+      <PieChart fx:id="graphVagas" accessibleHelp="GRAFICO" accessibleRoleDescription="GRAFICO" accessibleText="GRAFICO" layoutX="14.0" layoutY="89.0" prefHeight="405.0" prefWidth="449.0" title="Vagas/Vagas Disponíveis" AnchorPane.leftAnchor="14.0" />
+      <JFXButton fx:id="btnEntradaMensalista" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="789.0" layoutY="89.0" onAction="#openTelaEntradaMensalista" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Entrada Mensalista" textFill="WHITE" AnchorPane.rightAnchor="17.0">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>
       </JFXButton>
-      <PieChart fx:id="graphMensalistas" layoutX="397.0" layoutY="194.0" prefHeight="189.0" prefWidth="207.0" title="Mensalistas/Temporários" AnchorPane.rightAnchor="14.0" />
-      <Label fx:id="lblNumMensalistas" accessibleHelp="Numero Mensalistas" accessibleRoleDescription="Numero MensalistasNumero Mensalistas" accessibleText="Numero Mensalistas" layoutX="14.0" layoutY="483.0" prefHeight="38.0" prefWidth="378.0" text="Número mensalistas:">
+      <PieChart fx:id="graphMensalistas" layoutX="727.0" layoutY="217.0" prefHeight="297.0" prefWidth="249.0" title="Mensalistas/Temporários" AnchorPane.rightAnchor="14.0" />
+      <Label fx:id="lblNumMensalistas" accessibleHelp="Numero Mensalistas" accessibleRoleDescription="Numero MensalistasNumero Mensalistas" accessibleText="Numero Mensalistas" layoutX="14.0" layoutY="572.0" prefHeight="38.0" prefWidth="378.0" text="Número Mensalistas:">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnDeslogar" accessibleHelp="DESLOGAR" accessibleRoleDescription="DESLOGAR" accessibleText="DESLOGAR" layoutX="397.0" layoutY="483.0" onAction="#deslogarFunc" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #E63946;" text="Deslogar" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+      <JFXButton fx:id="btnDeslogar" accessibleHelp="DESLOGAR" accessibleRoleDescription="DESLOGAR" accessibleText="DESLOGAR" layoutX="727.0" layoutY="571.0" onAction="#deslogarFunc" prefHeight="39.0" prefWidth="249.0" style="-fx-background-color: #E63946;" text="Deslogar" textFill="WHITE" AnchorPane.rightAnchor="14.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnMensalistas" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="394.0" layoutY="155.0" onAction="#openTelaCRUDMensalista" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #1D3557;" text="Mensalista" textFill="WHITE">
+      <JFXButton fx:id="btnMensalistas" accessibleHelp="GERENCIAMENTO MENSALISTA" accessibleRoleDescription="GERENCIAMENTO MENSALISTA" accessibleText="GERENCIAMENTO MENSALISTA" layoutX="789.0" layoutY="136.0" onAction="#openTelaCRUDMensalista" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #457B9D;" text="Gerenciamento Mensalista" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="14.0" layoutY="47.0" prefHeight="23.0" prefWidth="449.0" text="Vigilante:" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="475.0" layoutY="47.0" prefHeight="23.0" prefWidth="502.0" text="Atendente:" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSaida" accessibleHelp="Registrar Saida" accessibleRoleDescription="Registrar Saida" accessibleText="Registrar Saida" layoutX="475.0" layoutY="136.0" onAction="#registraSaida" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #E63946;" text="Registrar Saída" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
+      <JFXTreeTableView fx:id="carrosEstacionadosTable" layoutX="476.0" layoutY="217.0" prefHeight="393.0" prefWidth="314.0" AnchorPane.bottomAnchor="8.0">
+         <columns>
+            <TreeTableColumn fx:id="placaColum" prefWidth="128.0" text="Placa" />
+            <TreeTableColumn fx:id="vagaColum" prefWidth="92.0" text="Vaga Ocupada" />
+            <TreeTableColumn fx:id="tempoColum" prefWidth="93.0" text="Tempo" />
+         </columns>
+      </JFXTreeTableView>
+      <JFXTextField fx:id="placaTf" layoutX="475.0" layoutY="185.0" prefHeight="30.0" prefWidth="314.0" promptText="Pesquisar Placa" AnchorPane.bottomAnchor="403.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

@@ -8,18 +8,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowAtendente {
-
+public class WindowRegistraSaida {
     public void startModal(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowAtendente.fxml").openStream());
+            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowRegistraSaida.fxml").openStream());
 
             Stage stage = new Stage();
 
-            stage.setTitle("Atendente");
+            stage.setTitle("Pagamento");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 1055, 618));
+            stage.setScene(new Scene(pane, 451, 121));
             stage.setResizable(false);
             stage.showAndWait();
 

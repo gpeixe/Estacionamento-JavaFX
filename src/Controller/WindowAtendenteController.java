@@ -1,9 +1,6 @@
 package Controller;
 
-import View.loaders.WindowCrudMensalista;
-import View.loaders.WindowEntradaMensalista;
-import View.loaders.WindowLogin;
-import View.loaders.WindowTicket;
+import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,5 +34,13 @@ public class WindowAtendenteController {
     public void openTelaEntradaMensalista(ActionEvent actionEvent) {
         WindowEntradaMensalista w = new WindowEntradaMensalista();
         w.startModal();
+    }
+
+    public void registraSaida(ActionEvent actionEvent) {
+        WindowRegistraSaida w = new WindowRegistraSaida();
+        w.startModal();
+    }
+
+    public void gerarPagamento(ActionEvent actionEvent) {
     }
 }
