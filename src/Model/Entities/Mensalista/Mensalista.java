@@ -1,13 +1,18 @@
-package DTO.Mensalista;
+package Model.Entities.Mensalista;
 
-public class MensalistaDTO {
+public class Mensalista {
     private String cpf;
     private String nome;
     private String telefone;
     private String empresa;
     private int id;
 
-    public MensalistaDTO() {}
+    public Mensalista(String cpf, String nome, String telefone, String empresa) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.empresa = empresa;
+    }
 
     public String getCpf() {
         return cpf;

@@ -1,16 +1,22 @@
-package DTO.Ticket;
+package Model.Entities.Ticket;
 
 import java.util.Date;
 
-public abstract class TicketDTO {
+public abstract class Ticket {
     private int id;
     private String placa;
-    private String telefone;
     private Date horarioEntrada;
+    private Date horarioSaida;
     private String descricaoCarro;
     private int idVigilante;
 
-    public TicketDTO() {}
+    public Ticket(String placa, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante) {
+        this.placa = placa;
+        this.horarioEntrada = horarioEntrada;
+        this.horarioSaida = horarioSaida;
+        this.descricaoCarro = descricaoCarro;
+        this.idVigilante = idVigilante;
+    }
 
     public int getId() {
         return id;
@@ -26,14 +32,6 @@ public abstract class TicketDTO {
 
     public void setPlaca(String placa) {
         this.placa = placa;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public Date getHorarioEntrada() {
@@ -58,5 +56,13 @@ public abstract class TicketDTO {
 
     public void setIdVigilante(int idVigilante) {
         this.idVigilante = idVigilante;
+    }
+
+    public Date getHorarioSaida() {
+        return horarioSaida;
+    }
+
+    public void setHorarioSaida(Date horarioSaida) {
+        this.horarioSaida = horarioSaida;
     }
 }

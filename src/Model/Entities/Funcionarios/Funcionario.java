@@ -1,14 +1,22 @@
-package DTO.Funcionarios;
+package Model.Entities.Funcionarios;
 
-public abstract class FuncionarioDTO {
+public abstract class Funcionario {
     private String cpf;
     private String nome;
+    private String senha;
     private String telefone;
     private String endereco;
-    private String funcao;
+    private Enum<Efuncao> funcao;
     private int id;
 
-    public FuncionarioDTO() {}
+    public Funcionario(String cpf, String nome, String senha, String telefone, String endereco, Enum<Efuncao> funcao) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.funcao = funcao;
+    }
 
     public String getCpf() {
         return cpf;
@@ -42,14 +50,6 @@ public abstract class FuncionarioDTO {
         this.endereco = endereco;
     }
 
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -58,13 +58,11 @@ public abstract class FuncionarioDTO {
         this.id = id;
     }
 
-    //Implementação do login será feita aqui
-    public void userLogin(){
-
+    public String getSenha() {
+        return senha;
     }
 
-    //Implementação do logout será feita aqui
-    public void userLogout(){
-
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
