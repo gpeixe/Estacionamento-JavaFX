@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Entities.Funcionarios.Administrador;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -8,6 +9,10 @@ import javafx.stage.Stage;
 
 
 public class WindowAdminController {
+    public Administrador adm;
+
+
+
     @FXML
     JFXButton btnDeslogar;
 
@@ -42,5 +47,9 @@ public class WindowAdminController {
     }
 
     public void salvaPrecosEstacionamento(ActionEvent actionEvent) {
+    }
+
+    public void setAdm(Administrador adm) {
+        this.adm = adm;
     }
 }

@@ -18,6 +18,20 @@ public abstract class Funcionario {
         this.funcao = funcao;
     }
 
+    public  Funcionario(){}
+
+    public Enum<Efuncao> getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(Enum<Efuncao> funcao) {
+        this.funcao = funcao;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCpf() {
         return cpf;
     }

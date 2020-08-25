@@ -5,13 +5,13 @@ public enum Efuncao {
     VIGILANTE("Vigilante"),
     ATENDENTE("Atendente");
 
-    private String funcao;
+    public String function;
 
     Efuncao(String funcao){
-        this.funcao = funcao;
+        this.function = funcao;
     }
 
     public String getFuncao(){
-        return this.funcao;
+        return this.function;
     }
 }

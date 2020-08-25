@@ -1,5 +1,9 @@
 package Controller;
 
+import Model.Entities.Funcionarios.Administrador;
+import Model.Entities.Funcionarios.Atendente;
+import Model.Entities.Funcionarios.Efuncao;
+import Model.Entities.Funcionarios.Funcionario;
 import Model.UseCases.LoginUseCase;
 import View.loaders.WindowAdmin;
 import View.loaders.WindowAtendente;
@@ -23,45 +27,37 @@ public class WindowLoginController {
     JFXTextField tfCPFUser;
 
 
-
-
     public void login(javafx.event.ActionEvent actionEvent) {
 
         String cpf = tfCPFUser.getText();
         String password = tfSenhaUser.getText();
 
         try {
-            if(loginUseCase.isLogin(cpf, password))
-                tfCPFUser.setText("Logado");
-            else
-                tfCPFUser.setText("Nao Logado");
+            Funcionario funcionario  = loginUseCase.login(cpf, password);
+            Efuncao funcao = (Efuncao) funcionario.getFuncao();
+
+            if(funcao.getFuncao().equals("Administrador")){
+                WindowAdmin w = new WindowAdmin();
+                Administrador adm = (Administrador) funcionario;
+                w.startModal(adm);
+            }
+            else if (funcao.getFuncao().equals("Atendente")){
+                WindowAtendente w = new WindowAtendente();
+                w.startModal((Atendente) funcionario);
+            }
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
-
-       /* switch (tfCPFUser.getText()) {
-            case "admin": {
-                WindowAdmin w = new WindowAdmin();
-                w.startModal();
-                break;
-            }
-            case "vig":
-                Voltar pra onde estava, no caso fechar o modal
-                break;
-            case "atendente": {
-                WindowAtendente w = new WindowAtendente();
-                w.startModal();
-                break;
-
-            }
-        } */
 
 
     }
 
 
 
-
 }
+
+
+
+

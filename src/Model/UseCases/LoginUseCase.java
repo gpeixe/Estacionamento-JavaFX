@@ -1,6 +1,6 @@
 package Model.UseCases;
 
-import Model.Entities.Funcionarios.Funcionario;
+import Model.Entities.Funcionarios.*;
 import Utils.SqlConnection;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public class LoginUseCase {
         if(connection == null) System.exit(1);
     }
 
-    public boolean isLogin(String cpf, String password) throws SQLException {
+    public Funcionario login(String cpf, String password) throws SQLException {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -30,20 +30,61 @@ public class LoginUseCase {
 
             resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next())
-                return  true;
+            if(resultSet.next()){
 
-            return  false;
+                Funcionario funcionario = verificaLoginFuncionario(resultSet);
+                return funcionario;
+            }
+
+            return  null;
 
         }catch (Exception e){
 
-            return  false;
+            return  null;
 
         } finally {
             preparedStatement.close();
             resultSet.close();
         }
 
+    }
+
+    public Funcionario verificaLoginFuncionario(ResultSet rs) throws SQLException {
+
+        int id = rs.getInt(1);
+        String cpf = rs.getString(2);
+        String nome = rs.getString(3);
+        String funcao = rs.getString(4);
+        String telefone = rs.getString(5);
+        String endereco = rs.getString(6);
+        String password = rs.getString(7);
+
+        Funcionario funcionario;
+
+        switch (funcao){
+            case "Administrador":
+                funcionario = new Administrador();
+                funcionario.setFuncao(Efuncao.ADMIN);
+                break;
+            case "Atendente":
+                funcionario= new Atendente();
+                funcionario.setFuncao(Efuncao.ATENDENTE);
+                break;
+            default:
+                funcionario = new Vigilante();
+                funcionario.setFuncao(Efuncao.VIGILANTE);
+                break;
+        }
+
+        funcionario.setId(id);
+        funcionario.setCpf(cpf);
+        funcionario.setNome(nome);
+        funcionario.setFuncao(Efuncao.ADMIN);
+        funcionario.setTelefone(telefone);
+        funcionario.setEndereco(endereco);
+        funcionario.setSenha(password);
+
+        return  funcionario;
     }
 
     public boolean isDBbConnected(){

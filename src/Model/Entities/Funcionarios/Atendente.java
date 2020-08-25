@@ -9,6 +9,7 @@ public class Atendente extends Funcionario {
     public Atendente(String cpf, String nome, String senha, String telefone, String endereco, Enum<Efuncao> funcao) {
         super(cpf, nome, senha, telefone, endereco, funcao);
     }
+    public  Atendente(){}
 
    /* //Implementação da geração de ticket do cliente comum será feita aqui
     public TicketCliente generateClienteTicket(Ticket ticket, boolean isNight){

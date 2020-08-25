@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Entities.Funcionarios.Atendente;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -8,7 +9,7 @@ import javafx.stage.Stage;
 
 
 public class WindowAtendenteController {
-
+    public Atendente atd;
     @FXML
     JFXButton btnDeslogar;
     public void openTelaTicket(ActionEvent actionEvent) {
@@ -42,5 +43,9 @@ public class WindowAtendenteController {
     }
 
     public void gerarPagamento(ActionEvent actionEvent) {
+    }
+
+    public void setAtendente(Atendente atd) {
+        this.atd = atd;
     }
 }

@@ -1,5 +1,8 @@
 package View.loaders;
 
+import Controller.WindowAdminController;
+import Controller.WindowLoginController;
+import Model.Entities.Funcionarios.Administrador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -10,11 +13,12 @@ import java.io.IOException;
 
 public class WindowAdmin {
 
-    public void startModal(){
+    public void startModal(Administrador adm){
         try {
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowAdmin.fxml").openStream());
-
+            WindowAdminController controller = loader.getController();
+            controller.setAdm(adm);
             Stage stage = new Stage();
 
             stage.setTitle("Admin");
