@@ -79,7 +79,6 @@ public class LoginUseCase {
         funcionario.setId(id);
         funcionario.setCpf(cpf);
         funcionario.setNome(nome);
-        funcionario.setFuncao(Efuncao.ADMIN);
         funcionario.setTelefone(telefone);
         funcionario.setEndereco(endereco);
         funcionario.setSenha(password);

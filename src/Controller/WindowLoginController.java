@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -25,7 +26,8 @@ public class WindowLoginController {
     JFXPasswordField tfSenhaUser;
     @FXML
     JFXTextField tfCPFUser;
-
+    @FXML
+    Label errorLabel;
 
     public void login(javafx.event.ActionEvent actionEvent) {
 
@@ -34,17 +36,26 @@ public class WindowLoginController {
 
         try {
             Funcionario funcionario  = loginUseCase.login(cpf, password);
-            Efuncao funcao = (Efuncao) funcionario.getFuncao();
 
-            if(funcao.getFuncao().equals("Administrador")){
-                WindowAdmin w = new WindowAdmin();
-                Administrador adm = (Administrador) funcionario;
-                w.startModal(adm);
+            if(funcionario != null){
+                Efuncao funcao = (Efuncao) funcionario.getFuncao();
+                Stage stg = (Stage) tfCPFUser.getScene().getWindow();
+                if(funcao.getFuncao().equals("Administrador")){
+                    WindowAdmin w = new WindowAdmin();
+                    Administrador adm = (Administrador) funcionario;
+                    w.startModal(adm);
+                }
+                else if (funcao.getFuncao().equals("Atendente")){
+                    WindowAtendente w = new WindowAtendente();
+                    Atendente atd = (Atendente) funcionario;
+                    w.startModal(atd);
+                }
+
+            } else {
+                errorLabel.setText("CPF ou senha incorreto(s)!");
             }
-            else if (funcao.getFuncao().equals("Atendente")){
-                WindowAtendente w = new WindowAtendente();
-                w.startModal((Atendente) funcionario);
-            }
+
+
 
 
         } catch (SQLException throwables) {
