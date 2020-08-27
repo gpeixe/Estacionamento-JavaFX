@@ -19,7 +19,7 @@ public class WindowCrudMensalista {
 
             stage.setTitle("Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 1010, 589));
+            stage.setScene(new Scene(pane, 1068, 589));
             stage.setResizable(false);
             stage.showAndWait();
 

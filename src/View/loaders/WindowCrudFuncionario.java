@@ -19,7 +19,7 @@ public class WindowCrudFuncionario {
 
             stage.setTitle("Funcionario");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 1010, 589));
+            stage.setScene(new Scene(pane, 1267, 590));
             stage.setResizable(false);
             stage.showAndWait();
 

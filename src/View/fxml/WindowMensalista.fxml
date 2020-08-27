@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MensalistaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MensalistaController">
     <children>
         <Pane prefHeight="55.0" prefWidth="350.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -21,12 +21,12 @@
                 <Font name="Arial Black" size="13.0" />
             </font>
         </JFXTextField>
-        <JFXButton id="btnSalvaMensalista" fx:id="btnSalvaMensalista" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="301.0" onAction="#salvarMensalista" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
+        <JFXButton id="btnSalvaMensalista" fx:id="btnSalvaMensalista" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="328.0" onAction="#salvarMensalista" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="328.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
         </JFXButton>
-      <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="301.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="301.0">
+      <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="328.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="328.0">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>
@@ -41,7 +41,12 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="empresaVincMensalista" fx:id="tfEmpresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="229.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+      <JFXTextField id="empresaVincMensalista" fx:id="tfEmpresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="222.0" prefHeight="36.0" prefWidth="333.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField id="empresaVincMensalista" fx:id="tfVagaOcupada" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="9.0" layoutY="270.0" prefHeight="36.0" prefWidth="333.0" promptText="Vaga Ocupada" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>

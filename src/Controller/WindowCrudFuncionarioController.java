@@ -10,4 +10,10 @@ public class WindowCrudFuncionarioController {
         WindowFuncionario w = new WindowFuncionario();
         w.startModal();
     }
+
+    public void editaFuncionario(ActionEvent actionEvent) {
+    }
+
+    public void removeFuncionario(ActionEvent actionEvent) {
+    }
 }

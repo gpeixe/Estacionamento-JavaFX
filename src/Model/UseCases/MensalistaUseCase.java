@@ -21,13 +21,14 @@ public class MensalistaUseCase {
     public void save(Mensalista mensalista) throws SQLException{
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "INSERT INTO Mensalista(empresa, nome, cpf, telefone) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Mensalista(empresa, nome, cpf, telefone, vagaOcupada) VALUES(?,?,?,?,?)";
         try{
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, mensalista.getEmpresa());
             preparedStatement.setString(2, mensalista.getNome());
             preparedStatement.setString(3, mensalista.getCpf());
             preparedStatement.setString(4, mensalista.getTelefone());
+            preparedStatement.setInt(5, mensalista.getVagaOcupada());
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,14 +38,15 @@ public class MensalistaUseCase {
     public void update(Mensalista mensalista) throws SQLException{
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "UPDATE Mensalista SET empresa = ?, nome = ?, cpf = ?, telefone = ? WHERE id = ?";
+        String sql = "UPDATE Mensalista SET empresa = ?, nome = ?, cpf = ?, telefone = ?, vagaOcupada = ? WHERE id = ?";
         try{
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, mensalista.getEmpresa());
             preparedStatement.setString(2, mensalista.getNome());
-            preparedStatement.setString(2, mensalista.getCpf());
-            preparedStatement.setString(2, mensalista.getTelefone());
-            preparedStatement.setInt(4, mensalista.getId());
+            preparedStatement.setString(3, mensalista.getCpf());
+            preparedStatement.setString(4, mensalista.getTelefone());
+            preparedStatement.setInt(5, mensalista.getVagaOcupada());
+            preparedStatement.setInt(6, mensalista.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,8 +65,8 @@ public class MensalistaUseCase {
 
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-                mensalista = new Mensalista(rs.getString("empresa"), rs.getString("nome"), rs.getString("cpf"), rs.getString("telefone"));
-                mensalista.setId(rs.getInt("id"));
+                Mensalista m = new Mensalista(rs.getString("cpf"),rs.getString("nome"),rs.getString("telefone"),rs.getString("empresa"),rs.getInt("vagaOcupada"));
+                m.setId(rs.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,14 +76,13 @@ public class MensalistaUseCase {
 
     public List<Mensalista> readAll() throws SQLException{
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         String sql = "SELECT * FROM Mensalista";
         List<Mensalista> mensalistas = new ArrayList<>();
         try{
             preparedStatement = connection.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
-                Mensalista m = new Mensalista(rs.getString("empresa"), rs.getString("nome"), rs.getString("cpf"), rs.getString("telefone"));
+                Mensalista m = new Mensalista(rs.getString("cpf"),rs.getString("nome"),rs.getString("telefone"),rs.getString("empresa"),rs.getInt("vagaOcupada"));
                 m.setId(rs.getInt("id"));
                 mensalistas.add(m);
             }
@@ -91,4 +92,15 @@ public class MensalistaUseCase {
         return mensalistas;
     }
 
+    public void delete(Integer key) throws SQLException{
+        String sql = "DELETE FROM Mensalista WHERE id=?";
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,key);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

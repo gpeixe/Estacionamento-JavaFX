@@ -1,5 +1,7 @@
 package View.loaders;
 
+import Controller.MensalistaController;
+import Model.Entities.Mensalista.Mensalista;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -9,17 +11,23 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WindowMensalista {
-
-    public void startModal(){
+    MensalistaController mc = new MensalistaController();
+    public void startModal(Mensalista mensalista){
         try {
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowMensalista.fxml").openStream());
+            Scene scene = new Scene(pane, 350, 387);
+            mc = loader.getController();
 
-            Stage stage = new Stage();
+            if(mensalista != null){
+                mc.editaMensalista(mensalista);
+                mc.setMensalista(mensalista);
+            }
 
+            stage.setScene(scene);
             stage.setTitle("Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 350, 362));
             stage.setResizable(false);
             stage.showAndWait();
 

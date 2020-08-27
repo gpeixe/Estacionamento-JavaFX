@@ -55,9 +55,6 @@ public class WindowLoginController {
                 errorLabel.setText("CPF ou senha incorreto(s)!");
             }
 
-
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
