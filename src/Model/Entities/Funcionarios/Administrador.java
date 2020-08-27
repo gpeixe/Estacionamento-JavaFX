@@ -11,7 +11,12 @@ public class Administrador extends  Funcionario{
     public Administrador(String cpf, String nome, String senha, String telefone, String endereco, Enum<Efuncao> funcao) {
         super(cpf, nome, senha, telefone, endereco, funcao);
     }
-    public  Administrador(){}
+
+    public Administrador(String cpf, String nome, String senha, String telefone, String endereco, Enum<Efuncao> funcao, int id) {
+        super(cpf, nome, senha, telefone, endereco, funcao, id);
+    }
+
+    public Administrador(){}
    /* //Implementação da geração de ticket do cliente comum será feita aqui
     public TicketCliente generateClienteTicket(Ticket ticket, boolean isNight){
         return new TicketCliente();

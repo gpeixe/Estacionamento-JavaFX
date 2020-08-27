@@ -5,6 +5,7 @@ import Model.Entities.Funcionarios.Atendente;
 import Model.Entities.Funcionarios.Efuncao;
 import Model.Entities.Funcionarios.Funcionario;
 import Model.UseCases.LoginUseCase;
+import Utils.MaskFieldUtil;
 import View.loaders.WindowAdmin;
 import View.loaders.WindowAtendente;
 import com.jfoenix.controls.JFXButton;
@@ -12,6 +13,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -61,9 +63,9 @@ public class WindowLoginController {
 
 
     }
-
-
-
+    public void formataCPF(KeyEvent keyEvent) {
+        MaskFieldUtil.cpfField(tfCPFUser);
+    }
 }
 
 

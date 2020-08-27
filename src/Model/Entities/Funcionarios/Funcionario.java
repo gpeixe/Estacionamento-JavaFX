@@ -18,6 +18,16 @@ public abstract class Funcionario {
         this.funcao = funcao;
     }
 
+    public Funcionario(String cpf, String nome, String senha, String telefone, String endereco, Enum<Efuncao> funcao, int id) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.funcao = funcao;
+        this.id = id;
+    }
+
     public  Funcionario(){}
 
     public Enum<Efuncao> getFuncao() {
