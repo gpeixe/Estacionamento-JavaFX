@@ -3,10 +3,13 @@ package Controller;
 import Model.Entities.Mensalista.Mensalista;
 import Model.UseCases.LoginUseCase;
 import Model.UseCases.MensalistaUseCase;
+import Utils.MaskFieldUtil;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -53,5 +56,14 @@ public class MensalistaController {
 
     public void setMensalista(Mensalista mensalista) {
         this.mensalistaMensalista = mensalista;
+    }
+
+
+    public void formatarCPF(KeyEvent keyEvent) {
+        MaskFieldUtil.cpfField(tfCPFMensalista);
+    }
+
+    public void formataTelefone(KeyEvent keyEvent) {
+        MaskFieldUtil.foneField(tfTelefoneMensalista);
     }
 }
