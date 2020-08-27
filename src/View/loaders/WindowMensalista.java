@@ -17,7 +17,7 @@ public class WindowMensalista {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowMensalista.fxml").openStream());
-            Scene scene = new Scene(pane, 350, 387);
+            Scene scene = new Scene(pane, 431, 333);
             mc = loader.getController();
 
             if(mensalista != null){
