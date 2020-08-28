@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="estacionamentoDB" uuid="1eb6b566-475f-4821-aa59-58936173dc10">
+    <data-source source="LOCAL" name="estacionamentoDB" uuid="43f07028-f553-400a-8c9b-c4b8c493bb85">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\ydsex\Documents\GitHub\Estacionamento-JavaFX\DB\estacionamentoDB</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="estacionamento.sqlite" uuid="ea6b8f1a-2b38-4f89-8d11-b54b6950be59">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/DB/estacionamentoDB</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Gui\IdeaProjects\Estacionamento-JavaFX-DOO\DB\estacionamentoDB</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/license.txt</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

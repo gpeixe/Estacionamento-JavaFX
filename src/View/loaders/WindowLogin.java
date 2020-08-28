@@ -1,5 +1,6 @@
 package View.loaders;
 
+import Controller.WindowLoginController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -10,11 +11,12 @@ import java.io.IOException;
 
 public class WindowLogin {
 
-    public void startModal(){
+    public void startModal(boolean isVigilanteLogin){
         try {
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowLogin.fxml").openStream());
-
+            WindowLoginController controller = loader.getController();
+            controller.setIsVigilanteLogin(isVigilanteLogin);
             Stage stage = new Stage();
 
             stage.setTitle("Login");

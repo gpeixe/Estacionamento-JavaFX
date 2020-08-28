@@ -1,25 +1,33 @@
 package Controller;
 
 import Model.Entities.Funcionarios.Atendente;
+import Model.Entities.Funcionarios.Vigilante;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
 public class WindowAtendenteController {
-    public Atendente atd;
+    private Atendente atd;
+    private Vigilante currentVigilante;
+
     @FXML
     JFXButton btnDeslogar;
+    @FXML
+    Label labelAtendente;
+
+    @FXML Label labelVigilante;
     public void openTelaTicket(ActionEvent actionEvent) {
         WindowTicket w = new WindowTicket();
         w.startModal();
     }
 
-    public void openTelaLogin(ActionEvent actionEvent) {
+    public void openTelaEntradaVigilante(ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
-        w.startModal();
+        w.startModal(true);
     }
 
     public void openTelaCRUDMensalista(ActionEvent actionEvent) {
@@ -47,5 +55,11 @@ public class WindowAtendenteController {
 
     public void setAtendente(Atendente atd) {
         this.atd = atd;
+        labelAtendente.setText(labelAtendente.getText() + " " + atd.getNome());
+    }
+
+    public void setCurrentVigilante(Vigilante newVig) {
+        this.currentVigilante = newVig;
+        labelVigilante.setText(labelVigilante.getText() + " " + newVig.getNome());
     }
 }
