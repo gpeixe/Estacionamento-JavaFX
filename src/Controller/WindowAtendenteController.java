@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -58,6 +59,8 @@ public class WindowAtendenteController {
     TableColumn<Vagas, String> vagaColum;
     @FXML
     TableColumn<Vagas, String> cpfColum;
+    @FXML
+    PieChart graphVagas;
 
     AtualizaVigilanteUseCase atualizaVigilanteUseCase = new AtualizaVigilanteUseCase();
 
@@ -74,9 +77,10 @@ public class WindowAtendenteController {
         setCurrentVigilante(atualizaVigilanteUseCase.getCurrentVigilante());
     }
 
-    public void openTelaCRUDMensalista(ActionEvent actionEvent) {
+    public void openTelaCRUDMensalista(ActionEvent actionEvent) throws SQLException {
         WindowCrudMensalista w = new WindowCrudMensalista();
         w.startModal();
+        reloader();
     }
 
     public void deslogarFunc(ActionEvent actionEvent) {
@@ -88,12 +92,7 @@ public class WindowAtendenteController {
         WindowEntradaMensalista w = new WindowEntradaMensalista();
         w.startModal();
     }
-
-    public void registraSaida(ActionEvent actionEvent) {
-        WindowRegistraSaida w = new WindowRegistraSaida();
-        w.startModal();
-    }
-
+    
     public void gerarPagamento(ActionEvent actionEvent) {
     }
 
@@ -133,12 +132,18 @@ public class WindowAtendenteController {
 
     public void setVagasDisponiveis() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
-        lblNumVagasDisponives.setText(lblNumVagasDisponives.getText()+" "+vagasUseCase.numeroVagasDisponiveis());
+        lblNumVagasDisponives.setText("Vagas Disponíveis: "+vagasUseCase.numeroVagasDisponiveis());
     }
 
     public void setVagasTotais() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         lblNumVagas.setText(lblNumVagas.getText()+" "+vagasUseCase.numeroVagasTotais());
+    }
+
+    public void setGraphVagas() throws SQLException {
+        VagasUseCase vagasUseCase = new VagasUseCase();
+        graphVagas.getData().addAll(new PieChart.Data("Vagas Totais", vagasUseCase.numeroVagasTotais()),
+                new PieChart.Data("Vagas Disponiveis", vagasUseCase.numeroVagasDisponiveis()));
     }
 
     @FXML
@@ -156,5 +161,13 @@ public class WindowAtendenteController {
     }
 
     public void deslogarVigilante(ActionEvent actionEvent) {
+    }
+
+    public void reloader() throws SQLException {
+        loadTableView();
+        setVagasDisponiveis();
+    }
+
+    public void registraSaida(ActionEvent actionEvent) {
     }
 }
