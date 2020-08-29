@@ -5,51 +5,61 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowTicketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowTicketController">
    <children>
       <Pane layoutX="-2.0" prefHeight="55.0" prefWidth="352.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="43.0" prefWidth="341.0" text="Entrada Cliente" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="6.0" prefHeight="43.0" prefWidth="256.0" text="Entrada Cliente" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="29.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <JFXTextField id="placaCliente" fx:id="tfPlacaCliente" accessibleHelp="placa" accessibleRoleDescription="placa" accessibleText="placa" layoutX="2.0" layoutY="74.0" prefHeight="36.0" prefWidth="341.0" promptText="Placa do Carro" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+      <JFXTextField id="placaCliente" fx:id="tfPlacaCliente" accessibleHelp="placa" accessibleRoleDescription="placa" accessibleText="placa" layoutX="2.0" layoutY="74.0" prefHeight="36.0" prefWidth="246.0" promptText="Placa do Carro" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="212.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="contatoCliente" fx:id="tfContatoCliente" accessibleHelp="contato" accessibleRoleDescription="contato" accessibleText="contato" layoutX="2.0" layoutY="122.0" prefHeight="36.0" prefWidth="341.0" promptText="Contato" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+      <JFXTextField id="contatoCliente" fx:id="tfContatoCliente" accessibleHelp="contato" accessibleRoleDescription="contato" accessibleText="contato" layoutX="2.0" layoutY="122.0" onKeyTyped="#formatterTellClient" prefHeight="36.0" prefWidth="246.0" promptText="Contato" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="212.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField id="cpfCliente" fx:id="tfCpfCliente" accessibleHelp="contato" accessibleRoleDescription="contato" accessibleText="contato" layoutX="2.0" layoutY="171.0" onKeyTyped="#formatterCpfClient" prefHeight="36.0" prefWidth="341.0" promptText="CPF" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+      <JFXTextField id="cpfCliente" fx:id="tfCpfCliente" accessibleHelp="contato" accessibleRoleDescription="contato" accessibleText="contato" layoutX="2.0" layoutY="171.0" onKeyTyped="#formatterCpfClient" prefHeight="36.0" prefWidth="246.0" promptText="CPF" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="212.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextArea id="descCarroCliente" fx:id="taDescCarroCliente" accessibleHelp="descrição" accessibleRoleDescription="descrição" accessibleText="descrição" layoutX="2.0" layoutY="218.0" prefHeight="119.0" prefWidth="341.0" promptText="Descrição" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0">
+      <JFXTextArea id="descCarroCliente" fx:id="taDescCarroCliente" accessibleHelp="descrição" accessibleRoleDescription="descrição" accessibleText="descrição" layoutX="2.0" layoutY="218.0" prefHeight="119.0" prefWidth="246.0" promptText="Descrição" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="212.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextArea>
-      <JFXButton id="gerarTicket" fx:id="btnGerarTicket" accessibleHelp="Gerar Ticket" accessibleRoleDescription="Gerar Ticket" accessibleText="Gerar Ticket" alignment="CENTER" layoutX="202.0" layoutY="332.0" onAction="#geraTicket" prefHeight="36.0" prefWidth="134.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Gerar Ticket" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+      <JFXButton id="gerarTicket" fx:id="btnGerarTicket" accessibleHelp="Gerar Ticket" accessibleRoleDescription="Gerar Ticket" accessibleText="Gerar Ticket" alignment="CENTER" layoutX="239.0" layoutY="443.0" onAction="#geraTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Gerar Ticket" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton id="cancelaTicket" fx:id="btnCancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="14.0" layoutY="332.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="128.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+      <JFXButton id="cancelaTicket" fx:id="btnCancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="31.0" layoutY="443.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXButton>
-      <JFXCheckBox fx:id="cbTaxaPerNoite" layoutX="5.0" layoutY="349.0" mnemonicParsing="false" text="Incluir taixa pernoite">
+      <JFXCheckBox fx:id="cbTaxaPerNoite" layoutX="2.0" layoutY="403.0" mnemonicParsing="false" text="Incluir taixa pernoite">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXCheckBox>
+      <JFXTextField id="vagaOcupada" fx:id="tfVagaOcupada" accessibleHelp="VAGA" accessibleRoleDescription="VAGA" accessibleText="VAGA" editable="false" layoutX="2.0" layoutY="351.0" onKeyTyped="#formatterCpfClient" prefHeight="36.0" prefWidth="246.0" promptText="Vaga" AnchorPane.leftAnchor="2.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </JFXTextField>
+      <TableView fx:id="vagasDisponiveisTable" layoutX="256.0" layoutY="74.0" onMouseClicked="#selecionaVaga" prefHeight="319.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="vagasDisponiveisColum" prefWidth="199.0" text="Vagas Disponíveis" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

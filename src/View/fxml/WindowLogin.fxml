@@ -26,12 +26,12 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXPasswordField>
-        <JFXButton id="btnLogar" fx:id="btnLogar" accessibleHelp="LOGAR" accessibleRoleDescription="LOGAR" accessibleText="LOGAR" alignment="CENTER" layoutX="115.0" layoutY="245.0" onAction="#login" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Logar" textFill="WHITE" AnchorPane.bottomAnchor="35.0">
+        <JFXButton id="btnLogar" fx:id="btnLogar" accessibleHelp="LOGAR" accessibleRoleDescription="LOGAR" accessibleText="LOGAR" alignment="CENTER" layoutX="114.0" layoutY="245.0" onAction="#login" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Logar" textFill="WHITE" AnchorPane.bottomAnchor="35.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
         </JFXButton>
-      <Label fx:id="errorLabel" layoutX="75.0" layoutY="211.0" prefHeight="18.0" prefWidth="204.0" textFill="#e20c0c">
+      <Label fx:id="errorLabel" layoutX="73.0" layoutY="211.0" prefHeight="18.0" prefWidth="204.0" textFill="#e20c0c">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>

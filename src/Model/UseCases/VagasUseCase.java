@@ -79,14 +79,14 @@ public class VagasUseCase {
         return vagas;
     }
 
-    public void setVagaMensalista(Mensalista mensalista) throws SQLException{
+    public void setVaga(String cpf, int id_vaga) throws SQLException{
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String sql = "UPDATE vagas SET cpf_ocupante = ? WHERE id_vaga = ?";
         try{
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, mensalista.getCpf());
-            preparedStatement.setInt(2, mensalista.getVagaOcupada());
+            preparedStatement.setString(1, cpf);
+            preparedStatement.setInt(2, id_vaga);
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();

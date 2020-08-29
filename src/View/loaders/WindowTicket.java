@@ -21,7 +21,7 @@ public class WindowTicket {
             stage.getIcons().add(icon);
             stage.setTitle("Gerar Ticket");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 350, 443));
+            stage.setScene(new Scene(pane, 460, 502));
             stage.setResizable(false);
             stage.showAndWait();
 

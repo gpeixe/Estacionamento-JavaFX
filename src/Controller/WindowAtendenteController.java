@@ -66,8 +66,14 @@ public class WindowAtendenteController {
 
     private ObservableList<Vagas> values;
 
-    public void openTelaTicket(ActionEvent actionEvent) {
+    public void openTelaTicket(ActionEvent actionEvent) throws SQLException {
         WindowTicket w = new WindowTicket();
+        w.startModal();
+        reloader();
+    }
+
+    public void openTelaRegistraSaida(ActionEvent actionEvent) {
+        WindowRegistraSaida w = new WindowRegistraSaida();
         w.startModal();
     }
 
@@ -91,9 +97,6 @@ public class WindowAtendenteController {
     public void openTelaEntradaMensalista(ActionEvent actionEvent) {
         WindowEntradaMensalista w = new WindowEntradaMensalista();
         w.startModal();
-    }
-    
-    public void gerarPagamento(ActionEvent actionEvent) {
     }
 
     public void setAtendente(Atendente atd) {
@@ -168,6 +171,4 @@ public class WindowAtendenteController {
         setVagasDisponiveis();
     }
 
-    public void registraSaida(ActionEvent actionEvent) {
-    }
 }
