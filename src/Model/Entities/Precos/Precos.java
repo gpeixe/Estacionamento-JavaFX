@@ -1,6 +1,8 @@
 package Model.Entities.Precos;
 
-public class Precos {
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class Precos extends RecursiveTreeObject<Precos> {
     private Double preco30min;
     private Double preco1hr;
     private Double precoDemaisHoras;

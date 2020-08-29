@@ -20,10 +20,12 @@ public class WindowAtendente {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowAtendente.fxml").openStream());
-            Scene scene = new Scene(pane, 1056, 618);
+            Scene scene = new Scene(pane, 1056, 570);
             wa = loader.getController();
             wa.setCurrentVigilante(null);
             wa.setAtendente(atd);
+            wa.setVagasDisponiveis();
+            wa.setVagasTotais();
             wa.setLabelPrecos();
 
             stage.setScene(scene);
