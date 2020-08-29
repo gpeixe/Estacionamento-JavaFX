@@ -2,27 +2,21 @@ package Controller;
 
 import Model.Entities.Funcionarios.Atendente;
 import Model.Entities.Funcionarios.Vigilante;
-import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Precos.Precos;
 import Model.Entities.Vagas.Vagas;
 import Model.UseCases.AlteraPrecosUseCase;
-import Model.UseCases.AtualizaVigilanteUseCase;
-import Model.UseCases.FuncionarioUseCase;
+import Model.UseCases.RegistroAtendenteUseCase;
+import Model.UseCases.RegistroVigilanteUseCase;
 import Model.UseCases.VagasUseCase;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -59,38 +53,31 @@ public class WindowAtendenteController {
     TableColumn<Vagas, String> vagaColum;
     @FXML
     TableColumn<Vagas, String> cpfColum;
-    @FXML
-    PieChart graphVagas;
 
-    AtualizaVigilanteUseCase atualizaVigilanteUseCase = new AtualizaVigilanteUseCase();
+    RegistroVigilanteUseCase registroVigilanteUseCase;
+    RegistroAtendenteUseCase registroAtendenteUseCase;
 
     private ObservableList<Vagas> values;
 
-    public void openTelaTicket(ActionEvent actionEvent) throws SQLException {
+    public void openTelaTicket(ActionEvent actionEvent) {
         WindowTicket w = new WindowTicket();
-        w.startModal();
-        reloader();
-    }
-
-    public void openTelaRegistraSaida(ActionEvent actionEvent) {
-        WindowRegistraSaida w = new WindowRegistraSaida();
         w.startModal();
     }
 
     public void openTelaEntradaVigilante(ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
         w.startModal(true);
-        setCurrentVigilante(atualizaVigilanteUseCase.getCurrentVigilante());
+        setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
     }
 
-    public void openTelaCRUDMensalista(ActionEvent actionEvent) throws SQLException {
+    public void openTelaCRUDMensalista(ActionEvent actionEvent) {
         WindowCrudMensalista w = new WindowCrudMensalista();
         w.startModal();
-        reloader();
     }
 
     public void deslogarFunc(ActionEvent actionEvent) {
         Stage stage = (Stage) btnDeslogar.getScene().getWindow();
+        registroAtendenteUseCase.registrarSaida(this.atd);
         stage.close();
     }
 
@@ -99,9 +86,18 @@ public class WindowAtendenteController {
         w.startModal();
     }
 
+    public void registraSaida(ActionEvent actionEvent) {
+        WindowRegistraSaida w = new WindowRegistraSaida();
+        w.startModal();
+    }
+
+    public void gerarPagamento(ActionEvent actionEvent) {
+    }
+
     public void setAtendente(Atendente atd) {
         this.atd = atd;
         labelAtendente.setText(labelAtendente.getText() + " " + atd.getNome());
+        this.registroAtendenteUseCase.registrarEntrada(this.atd);
     }
 
     public void setCurrentVigilante(Vigilante newVig) {
@@ -109,8 +105,8 @@ public class WindowAtendenteController {
             this.currentVigilante = newVig;
             labelVigilante.setText("Vigilante:" + " " + newVig.getNome());
         }   else{
-            Vigilante vigilante = atualizaVigilanteUseCase.getCurrentVigilante();
-            labelVigilante.setText(labelVigilante.getText() + " " + vigilante.getNome());
+            this.currentVigilante = null;
+            labelVigilante.setText("Vigilante:");
         }
     }
 
@@ -135,18 +131,12 @@ public class WindowAtendenteController {
 
     public void setVagasDisponiveis() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
-        lblNumVagasDisponives.setText("Vagas Disponíveis: "+vagasUseCase.numeroVagasDisponiveis());
+        lblNumVagasDisponives.setText(lblNumVagasDisponives.getText()+" "+vagasUseCase.numeroVagasDisponiveis());
     }
 
     public void setVagasTotais() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         lblNumVagas.setText(lblNumVagas.getText()+" "+vagasUseCase.numeroVagasTotais());
-    }
-
-    public void setGraphVagas() throws SQLException {
-        VagasUseCase vagasUseCase = new VagasUseCase();
-        graphVagas.getData().addAll(new PieChart.Data("Vagas Totais", vagasUseCase.numeroVagasTotais()),
-                new PieChart.Data("Vagas Disponiveis", vagasUseCase.numeroVagasDisponiveis()));
     }
 
     @FXML
@@ -155,6 +145,9 @@ public class WindowAtendenteController {
         cpfColum.setCellValueFactory(new PropertyValueFactory<>("cpf_ocupante"));
         values = FXCollections.observableArrayList();
         carrosEstacionadosTable.setItems(values);
+        this.registroVigilanteUseCase = new RegistroVigilanteUseCase();
+        this.registroAtendenteUseCase = new RegistroAtendenteUseCase();
+        setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
         loadTableView();
     }
 
@@ -164,11 +157,10 @@ public class WindowAtendenteController {
     }
 
     public void deslogarVigilante(ActionEvent actionEvent) {
+        this.registroVigilanteUseCase.registrarSaida(this.currentVigilante);
+        setCurrentVigilante(null);
     }
 
-    public void reloader() throws SQLException {
-        loadTableView();
-        setVagasDisponiveis();
+    public void openTelaRegistraSaida(ActionEvent actionEvent) {
     }
-
 }
