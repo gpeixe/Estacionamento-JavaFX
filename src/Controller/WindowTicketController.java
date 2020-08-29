@@ -5,12 +5,11 @@ import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Ticket.TicketCliente;
 import Model.Entities.Ticket.TicketMensalista;
 import Model.Entities.Vagas.Vagas;
-import Model.UseCases.AtualizaVigilanteUseCase;
 import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.RegistroVigilanteUseCase;
 import Model.UseCases.TicketUseCase;
 import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
-import View.loaders.WindowEntradaMensalista;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -76,11 +75,11 @@ public class WindowTicketController {
 
     private ObservableList<Vagas> values;
     private TicketUseCase ticketUseCase = new TicketUseCase();
-    private AtualizaVigilanteUseCase atualizaVigilanteUseCase = new AtualizaVigilanteUseCase();
+    private RegistroVigilanteUseCase registroVigilanteUseCase = new RegistroVigilanteUseCase();
     private MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
 
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
-        Vigilante vigilante = atualizaVigilanteUseCase.getCurrentVigilante();
+        Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
         TicketCliente ticketCliente = new TicketCliente(
                 tfPlacaCliente.getText(),
                 new Date(),
@@ -111,14 +110,15 @@ public class WindowTicketController {
     }
 
     public void geraTicketMensalista(ActionEvent actionEvent) throws SQLException {
-        Vigilante vigilante = atualizaVigilanteUseCase.getCurrentVigilante();
+        Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
         Mensalista mensalista = mensalistaUseCase.getMensalistaByCpf(tftCPFEntradaMensalista.getText());
         TicketMensalista ticketMensalista = new TicketMensalista(
                 tftPlacaMensalista.getText(),
                 new Date(),
                 null,
                 taDescCarroMensalista.getText(),
-                vigilante.getId());
+                vigilante.getId(),
+                mensalista.getId());
         ticketMensalista.setIdMensalista(mensalista.getId());
         ticketUseCase.saveMensalistaTicket(ticketMensalista);
         ((Stage)btnGeraTicketMensalista.getScene().getWindow()).close();
