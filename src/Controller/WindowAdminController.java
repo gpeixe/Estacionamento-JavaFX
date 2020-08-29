@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 public class WindowAdminController {
     public Administrador adm;
 
-
-
     @FXML
     JFXButton btnDeslogar;
 
@@ -44,9 +42,6 @@ public class WindowAdminController {
     public void openTelaCRUDFuncionarios(ActionEvent actionEvent) throws Exception{
         WindowCrudFuncionario w = new WindowCrudFuncionario();
         w.startModal();
-    }
-
-    public void salvaPrecosEstacionamento(ActionEvent actionEvent) {
     }
 
     public void setAdm(Administrador adm) {
