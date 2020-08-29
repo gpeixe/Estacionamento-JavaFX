@@ -1,5 +1,8 @@
 package Model.UseCases;
 
+import Model.Entities.Funcionarios.Atendente;
+import Model.Entities.Funcionarios.Funcionario;
+import Model.Entities.Funcionarios.Vigilante;
 import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Precos.Precos;
 import Model.Entities.Vagas.Vagas;
@@ -74,5 +77,19 @@ public class VagasUseCase {
             e.printStackTrace();
         }
         return vagas;
+    }
+
+    public void setVagaMensalista(Mensalista mensalista) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "UPDATE vagas SET cpf_ocupante = ? WHERE id_vaga = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, mensalista.getCpf());
+            preparedStatement.setInt(2, mensalista.getVagaOcupada());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

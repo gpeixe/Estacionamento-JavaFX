@@ -25,6 +25,7 @@ public class WindowAtendente {
             wa.setCurrentVigilante(null);
             wa.setAtendente(atd);
             wa.setVagasDisponiveis();
+            wa.setGraphVagas();
             wa.setVagasTotais();
             wa.setLabelPrecos();
 

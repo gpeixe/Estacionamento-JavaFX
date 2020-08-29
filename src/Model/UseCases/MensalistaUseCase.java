@@ -30,6 +30,8 @@ public class MensalistaUseCase {
             preparedStatement.setString(4, mensalista.getTelefone());
             preparedStatement.setInt(5, mensalista.getVagaOcupada());
             preparedStatement.execute();
+            VagasUseCase vagasUseCase = new VagasUseCase();
+            vagasUseCase.setVagaMensalista(mensalista);
         } catch (SQLException e) {
             e.printStackTrace();
         }
