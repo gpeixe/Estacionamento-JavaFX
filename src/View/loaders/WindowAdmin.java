@@ -1,8 +1,10 @@
 package View.loaders;
 
 import Controller.WindowAdminController;
+import Controller.WindowAtendenteController;
 import Controller.WindowLoginController;
 import Model.Entities.Funcionarios.Administrador;
+import Model.Entities.Funcionarios.Atendente;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,26 +13,33 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class WindowAdmin {
-
+    WindowAdminController wa = new WindowAdminController();
     public void startModal(Administrador adm){
         try {
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowAdmin.fxml").openStream());
-            WindowAdminController controller = loader.getController();
-            controller.setAdm(adm);
-            Stage stage = new Stage();
+            Scene scene = new Scene(pane, 558, 496);
+            wa = loader.getController();
+            wa.setAdm(adm);
+            wa.setGraphVagas();
+            wa.setVagasDisponiveis();
+            wa.setVagasTotais();
+            wa.setLblNumFuncionarios();
+            wa.setLblNumMensalistas();
 
             Image icon = new Image("Images/icon.png");
             stage.getIcons().add(icon);
-            stage.setTitle("Admin");
+            stage.setScene(scene);
+            stage.setTitle("Funcionário");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 910, 496));
             stage.setResizable(false);
             stage.showAndWait();
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }

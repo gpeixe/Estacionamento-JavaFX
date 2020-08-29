@@ -126,4 +126,21 @@ public class MensalistaUseCase {
             e.printStackTrace();
         }
     }
+
+    public int numeroDeMensalistas() throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT count(*) AS Quantidade FROM mensalista";
+        int numMensalistas = 0;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                numMensalistas = rs.getInt("Quantidade");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return numMensalistas;
+    }
 }
