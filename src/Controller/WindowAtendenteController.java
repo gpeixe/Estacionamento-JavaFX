@@ -2,12 +2,17 @@ package Controller;
 
 import Model.Entities.Funcionarios.Atendente;
 import Model.Entities.Funcionarios.Vigilante;
+import Model.Entities.Precos.Precos;
+import Model.UseCases.AlteraPrecosUseCase;
+import Model.UseCases.AtualizaVigilanteUseCase;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 
 public class WindowAtendenteController {
@@ -18,8 +23,20 @@ public class WindowAtendenteController {
     JFXButton btnDeslogar;
     @FXML
     Label labelAtendente;
+    @FXML
+    Label labelVigilante;
+    @FXML
+    Label labelTrintaMinutos;
+    @FXML
+    Label labelUmaHora;
+    @FXML
+    Label labelDemaisHoras;
+    @FXML
+    Label labelTaxaPerNoite;
+    @FXML
+    Label labelTAxaMensalista;
+    AtualizaVigilanteUseCase atualizaVigilanteUseCase = new AtualizaVigilanteUseCase();
 
-    @FXML Label labelVigilante;
     public void openTelaTicket(ActionEvent actionEvent) {
         WindowTicket w = new WindowTicket();
         w.startModal();
@@ -28,6 +45,7 @@ public class WindowAtendenteController {
     public void openTelaEntradaVigilante(ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
         w.startModal(true);
+        setCurrentVigilante(atualizaVigilanteUseCase.getCurrentVigilante());
     }
 
     public void openTelaCRUDMensalista(ActionEvent actionEvent) {
@@ -59,7 +77,31 @@ public class WindowAtendenteController {
     }
 
     public void setCurrentVigilante(Vigilante newVig) {
-        this.currentVigilante = newVig;
-        labelVigilante.setText(labelVigilante.getText() + " " + newVig.getNome());
+        if(newVig != null){
+            this.currentVigilante = newVig;
+            labelVigilante.setText("Vigilante:" + " " + newVig.getNome());
+        }   else{
+            Vigilante vigilante = atualizaVigilanteUseCase.getCurrentVigilante();
+            labelVigilante.setText(labelVigilante.getText() + " " + vigilante.getNome());
+        }
+    }
+
+    public void setLabelPrecos() throws SQLException {
+        AlteraPrecosUseCase alteraPrecosUseCase = new AlteraPrecosUseCase();
+        Precos precos = alteraPrecosUseCase.read();
+        if(precos != null){
+            labelTrintaMinutos.setText(labelTrintaMinutos.getText()+" R$ "+precos.getPreco30min());
+            labelUmaHora.setText(labelUmaHora.getText()+" R$ "+precos.getPreco1hr());
+            labelDemaisHoras.setText(labelDemaisHoras.getText()+" R$ "+precos.getPrecoDemaisHoras());
+            labelTaxaPerNoite.setText(labelTaxaPerNoite.getText()+" R$ "+precos.getPrecoPerNoite());
+            labelTAxaMensalista.setText(labelTAxaMensalista.getText()+" R$ "+precos.getPrecoMensalista());
+        }   else{
+            labelTrintaMinutos.setText(labelTrintaMinutos.getText()+" Não definido");
+            labelUmaHora.setText(labelUmaHora.getText()+" Não definido");
+            labelDemaisHoras.setText(labelDemaisHoras.getText()+" Não definido");
+            labelTaxaPerNoite.setText(labelTaxaPerNoite.getText()+" Não definido");
+            labelTAxaMensalista.setText(labelTAxaMensalista.getText()+" Não definido");
+        }
+
     }
 }

@@ -67,8 +67,7 @@ public class WindowLoginController {
                         Vigilante newVig = (Vigilante) funcionario;
                         AtualizaVigilanteUseCase atualizaVigilante = new AtualizaVigilanteUseCase();
                         atualizaVigilante.atualizaVigilante(newVig);
-                        //((Stage) tfCPFUser.getScene().getWindow()).close();
-
+                        ((Stage) tfCPFUser.getScene().getWindow()).close();
                     }
                     else  {
                         errorLabel.setText("Apenas vigilantes.");
@@ -81,7 +80,7 @@ public class WindowLoginController {
             }
 
             else {
-               errorLabel.setText("Usuário não encontrado.");
+               errorLabel.setText("Usuário ou senha inválido.");
             }
 
 
