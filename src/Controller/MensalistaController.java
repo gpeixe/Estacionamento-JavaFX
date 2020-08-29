@@ -1,15 +1,24 @@
 package Controller;
 
+import Model.Entities.Funcionarios.Funcionario;
 import Model.Entities.Mensalista.Mensalista;
+import Model.Entities.Vagas.Vagas;
 import Model.UseCases.LoginUseCase;
 import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -27,6 +36,12 @@ public class MensalistaController {
     JFXTextField tfEmpresaVincMensalista;
     @FXML
     JFXTextField tfVagaOcupada;
+    @FXML
+    TableView<Vagas> vagasDisponiveisTable;
+    @FXML
+    TableColumn<Vagas, Integer> VagasDisponiveisColum;
+
+    private ObservableList<Vagas> values;
     private Mensalista mensalistaMensalista;
 
     public void salvarMensalista(ActionEvent actionEvent) throws SQLException {
@@ -54,10 +69,22 @@ public class MensalistaController {
         stage.close();
     }
 
+    @FXML
+    private void initialize() throws SQLException {
+        VagasDisponiveisColum.setCellValueFactory(new PropertyValueFactory<>("id_vaga"));
+        values = FXCollections.observableArrayList();
+        vagasDisponiveisTable.setItems(values);
+        loadTableView();
+    }
+
+    private void loadTableView() throws SQLException {
+        VagasUseCase vagasUseCase = new VagasUseCase();
+        values.setAll(vagasUseCase.readAll());
+    }
+
     public void setMensalista(Mensalista mensalista) {
         this.mensalistaMensalista = mensalista;
     }
-
 
     public void formatarCPF(KeyEvent keyEvent) {
         MaskFieldUtil.cpfField(tfCPFMensalista);
@@ -65,5 +92,9 @@ public class MensalistaController {
 
     public void formataTelefone(KeyEvent keyEvent) {
         MaskFieldUtil.foneField(tfTelefoneMensalista);
+    }
+
+    public void preencheVagaOcupada(MouseEvent mouseEvent) {
+        tfVagaOcupada.setText(String.valueOf(vagasDisponiveisTable.getSelectionModel().getSelectedItem().getId_vaga()));
     }
 }

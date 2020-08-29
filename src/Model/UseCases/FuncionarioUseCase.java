@@ -122,4 +122,21 @@ public class FuncionarioUseCase {
             e.printStackTrace();
         }
     }
+
+    public int numeroDeFuncionarios() throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT count(*) AS Quantidade FROM funcionario";
+        int numFunc = 0;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                numFunc = rs.getInt("Quantidade");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return numFunc;
+    }
 }
