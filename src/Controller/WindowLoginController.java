@@ -67,7 +67,7 @@ public class WindowLoginController {
                         Vigilante newVig = (Vigilante) funcionario;
                         AtualizaVigilanteUseCase atualizaVigilante = new AtualizaVigilanteUseCase();
                         atualizaVigilante.atualizaVigilante(newVig);
-                        //((Stage) tfCPFUser.getScene().getWindow()).close();
+                        ((Stage) tfCPFUser.getScene().getWindow()).close();
 
                     }
                     else  {
