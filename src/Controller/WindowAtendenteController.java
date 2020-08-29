@@ -160,4 +160,7 @@ public class WindowAtendenteController {
         this.registroVigilanteUseCase.registrarSaida(this.currentVigilante);
         setCurrentVigilante(null);
     }
+
+    public void openTelaRegistraSaida(ActionEvent actionEvent) {
+    }
 }

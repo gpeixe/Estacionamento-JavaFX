@@ -1,5 +1,4 @@
 package Controller;
-
 import Model.Entities.Funcionarios.Vigilante;
 import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Ticket.TicketCliente;
@@ -24,10 +23,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.Date;
+
 
 public class WindowTicketController {
 
