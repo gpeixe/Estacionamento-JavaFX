@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="618.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
+<AnchorPane prefHeight="618.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -43,7 +43,6 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </JFXButton>
-      <PieChart fx:id="graphMensalistas" layoutX="727.0" layoutY="217.0" prefHeight="297.0" prefWidth="249.0" title="Mensalistas/Temporários" AnchorPane.rightAnchor="14.0" />
       <Label fx:id="lblNumMensalistas" accessibleHelp="Numero Mensalistas" accessibleRoleDescription="Numero MensalistasNumero Mensalistas" accessibleText="Numero Mensalistas" layoutX="14.0" layoutY="572.0" prefHeight="38.0" prefWidth="378.0" text="Número Mensalistas:">
          <font>
             <Font name="Arial Black" size="24.0" />
@@ -86,5 +85,36 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXTextField>
+      <Label fx:id="labelPreco" layoutX="882.0" layoutY="187.0" text="Preços">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTrintaMinutos" layoutX="801.0" layoutY="217.0" prefHeight="22.0" prefWidth="233.0" text="30 minutos:" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelUmaHora" layoutX="801.0" layoutY="239.0" prefHeight="22.0" prefWidth="233.0" text="1 hora:" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelDemaisHoras" layoutX="801.0" layoutY="261.0" prefHeight="22.0" prefWidth="233.0" text="Demais horas:" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTaxaPerNoite" layoutX="800.0" layoutY="281.0" prefHeight="22.0" prefWidth="233.0" text="Taxa Pernoite:" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTAxaMensalista" layoutX="801.0" layoutY="303.0" prefHeight="22.0" prefWidth="233.0" text="Taxa Mensalista:" AnchorPane.rightAnchor="21.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="graphMensalistasClientes" layoutX="800.0" layoutY="333.0" prefHeight="181.0" prefWidth="233.0" title="Mensalistas/Clientes" AnchorPane.rightAnchor="22.0" />
    </children>
 </AnchorPane>

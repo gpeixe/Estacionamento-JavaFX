@@ -87,7 +87,7 @@ public class AtualizaVigilanteUseCase {
         }
     }
 
-    private Vigilante getCurrentVigilante(){
+    public Vigilante getCurrentVigilante(){
         try {
             Vigilante currentVigilante = null;
 
