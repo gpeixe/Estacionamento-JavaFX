@@ -30,6 +30,8 @@ public class MensalistaUseCase {
             preparedStatement.setString(4, mensalista.getTelefone());
             preparedStatement.setInt(5, mensalista.getVagaOcupada());
             preparedStatement.execute();
+            VagasUseCase vagasUseCase = new VagasUseCase();
+            vagasUseCase.setVaga(mensalista.getCpf(), mensalista.getVagaOcupada());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,6 +92,27 @@ public class MensalistaUseCase {
             e.printStackTrace();
         }
         return mensalistas;
+    }
+
+    public Mensalista getMensalistaByCpf(String cpf){
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM Mensalista WHERE cpf = ?";
+        Mensalista mensalista = null;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                Mensalista m = new Mensalista(rs.getString("cpf"),rs.getString("nome"),rs.getString("telefone"),rs.getString("empresa"),rs.getInt("vagaOcupada"));
+                m.setId(rs.getInt("id"));
+                mensalista = m;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mensalista;
     }
 
     public void delete(Integer key) throws SQLException{
