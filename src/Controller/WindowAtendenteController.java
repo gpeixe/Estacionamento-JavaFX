@@ -62,12 +62,7 @@ public class WindowAtendenteController {
         WindowEntradaMensalista w = new WindowEntradaMensalista();
         w.startModal();
     }
-
-    public void registraSaida(ActionEvent actionEvent) {
-        WindowRegistraSaida w = new WindowRegistraSaida();
-        w.startModal();
-    }
-
+    
     public void gerarPagamento(ActionEvent actionEvent) {
     }
 

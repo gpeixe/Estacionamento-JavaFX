@@ -18,7 +18,7 @@ public class WindowEntradaMensalista {
 
             stage.setTitle("Entrada Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 431, 128));
+            stage.setScene(new Scene(pane, 411, 308));
             stage.setResizable(false);
             stage.showAndWait();
 

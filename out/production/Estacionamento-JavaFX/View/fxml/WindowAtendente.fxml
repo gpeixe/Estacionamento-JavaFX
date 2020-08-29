@@ -27,7 +27,7 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnTicket" accessibleHelp="NOVO TICKET" accessibleRoleDescription="NOVO TICKET" accessibleText="NOVO TICKET" layoutX="475.0" layoutY="89.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Novo Ticket" textFill="WHITE" AnchorPane.rightAnchor="303.0">
+      <JFXButton fx:id="btnTicket" accessibleHelp="ENTRADA CLIENTE" accessibleRoleDescription="ENTRADA CLIENTE" accessibleText="ENTRADA CLIENTE" layoutX="475.0" layoutY="89.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Entrada Cliente" textFill="WHITE" AnchorPane.rightAnchor="303.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
@@ -38,7 +38,7 @@
          </font>
       </JFXButton>
       <PieChart fx:id="graphVagas" accessibleHelp="GRAFICO" accessibleRoleDescription="GRAFICO" accessibleText="GRAFICO" layoutX="14.0" layoutY="89.0" prefHeight="405.0" prefWidth="449.0" title="Vagas/Vagas Disponíveis" AnchorPane.leftAnchor="14.0" />
-      <JFXButton fx:id="btnEntradaMensalista" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="789.0" layoutY="89.0" onAction="#openTelaEntradaMensalista" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Entrada Mensalista" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+      <JFXButton fx:id="btnEntradaMensalista" accessibleHelp="ENTRDA MENSALISTA" accessibleRoleDescription="ENTRADA MENSALISTA" accessibleText="ENTRADA MENSALISTA" layoutX="789.0" layoutY="89.0" onAction="#openTelaEntradaMensalista" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #1D3557;" text="Entrada Mensalista" textFill="WHITE" AnchorPane.rightAnchor="17.0">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>

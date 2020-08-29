@@ -92,6 +92,27 @@ public class MensalistaUseCase {
         return mensalistas;
     }
 
+    public Mensalista getMensalistaByCpf(String cpf){
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM Mensalista WHERE cpf = ?";
+        Mensalista mensalista = null;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                Mensalista m = new Mensalista(rs.getString("cpf"),rs.getString("nome"),rs.getString("telefone"),rs.getString("empresa"),rs.getInt("vagaOcupada"));
+                m.setId(rs.getInt("id"));
+                mensalista = m;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mensalista;
+    }
+
     public void delete(Integer key) throws SQLException{
         String sql = "DELETE FROM Mensalista WHERE id=?";
         PreparedStatement preparedStatement = null;
