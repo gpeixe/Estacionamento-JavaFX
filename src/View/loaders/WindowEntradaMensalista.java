@@ -2,7 +2,6 @@ package View.loaders;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -16,11 +15,10 @@ public class WindowEntradaMensalista {
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowEntradaMensalista.fxml").openStream());
 
             Stage stage = new Stage();
-            Image icon = new Image("Images/icon.png");
-            stage.getIcons().add(icon);
+
             stage.setTitle("Entrada Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 411, 308));
+            stage.setScene(new Scene(pane, 431, 128));
             stage.setResizable(false);
             stage.showAndWait();
 

@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Entities.Funcionarios.*;
-import Model.UseCases.AtualizaVigilanteUseCase;
+import Model.UseCases.RegistroVigilanteUseCase;
 import Model.UseCases.LoginUseCase;
 import Utils.MaskFieldUtil;
 import View.loaders.WindowAdmin;
@@ -14,9 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class WindowLoginController {
     public LoginUseCase loginUseCase = new LoginUseCase();
@@ -65,7 +63,7 @@ public class WindowLoginController {
                 else {
                     if(funcao.getFuncao().equals("Vigilante")){
                         Vigilante newVig = (Vigilante) funcionario;
-                        AtualizaVigilanteUseCase atualizaVigilante = new AtualizaVigilanteUseCase();
+                        RegistroVigilanteUseCase atualizaVigilante = new RegistroVigilanteUseCase();
                         atualizaVigilante.atualizaVigilante(newVig);
                         ((Stage) tfCPFUser.getScene().getWindow()).close();
                     }
