@@ -20,7 +20,7 @@ public class WindowEntradaMensalista {
             stage.getIcons().add(icon);
             stage.setTitle("Entrada Mensalista");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 432, 352));
+            stage.setScene(new Scene(pane, 432, 390));
             stage.setResizable(false);
             stage.showAndWait();
 
