@@ -3,16 +3,16 @@ package Model.Entities.Ticket;
 import java.util.Date;
 
 public class TicketCliente extends Ticket {
-    private double valorHora;
+    private double valorTotal;
     private double valorNoite;
     private boolean isPernoite;
     private String telefone;
     private String cpf;
 
-    public TicketCliente(String placa, String telefone, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante, double valorHora, double valorNoite, boolean isPernoite) {
+    public TicketCliente(String placa, String telefone, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante, double valorTotal, double valorNoite, boolean isPernoite) {
         super(placa, horarioEntrada, horarioSaida, descricaoCarro, idVigilante);
         this.isPernoite = isPernoite;
-        this.valorHora = valorHora;
+        this.valorTotal = valorTotal;
         this.valorNoite = valorNoite;
         this.isPernoite = isPernoite;
         this.telefone = telefone;
@@ -23,12 +23,12 @@ public class TicketCliente extends Ticket {
         super(placa, horarioEntrada, horarioSaida, descricaoCarro, idVigilante);
     }
 
-    public double getValorHora() {
-        return valorHora;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setValorHora(double valorHora) {
-        this.valorHora = valorHora;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public double getValorNoite() {

@@ -34,8 +34,6 @@ public class WindowTicketController {
     @FXML
     JFXButton btnCancelaTicket;
     @FXML
-    JFXButton btnGeraTicketMensalista;
-    @FXML
     JFXButton btnGerarTicket;
     @FXML
     JFXTextArea taDescCarroCliente;
@@ -46,12 +44,6 @@ public class WindowTicketController {
     @FXML
     JFXCheckBox cbTaxaPerNoite;
     @FXML
-    JFXTextField tftCPFEntradaMensalista;
-    @FXML
-    JFXTextField tftPlacaMensalista;
-    @FXML
-    JFXTextArea taDescCarroMensalista;
-    @FXML
     JFXTextField tfCpfCliente;
     @FXML
     JFXTextField tfVagaOcupada;
@@ -59,10 +51,12 @@ public class WindowTicketController {
     TableView<Vagas> vagasDisponiveisTable;
     @FXML
     TableColumn<Vagas, Integer> vagasDisponiveisColum;
+
     private ObservableList<Vagas> values;
     private TicketUseCase ticketUseCase = new TicketUseCase();
     private RegistroVigilanteUseCase registroVigilanteUseCase = new RegistroVigilanteUseCase();
     private MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
         Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
         if(vigilante!=null) {
@@ -93,20 +87,6 @@ public class WindowTicketController {
         Stage stage = (Stage) btnCancelaTicket.getScene().getWindow();
         stage.close();
     }
-    public void geraTicketMensalista(ActionEvent actionEvent) throws SQLException {
-        Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
-        Mensalista mensalista = mensalistaUseCase.getMensalistaByCpf(tftCPFEntradaMensalista.getText());
-        TicketMensalista ticketMensalista = new TicketMensalista(
-                tftPlacaMensalista.getText(),
-                new Date(),
-                null,
-                taDescCarroMensalista.getText(),
-                vigilante.getId(),
-                mensalista.getId());
-        ticketMensalista.setIdMensalista(mensalista.getId());
-        ticketUseCase.saveMensalistaTicket(ticketMensalista);
-        ((Stage)btnGeraTicketMensalista.getScene().getWindow()).close();
-    }
 
     public void formatterCpfClient(KeyEvent keyEvent) {
         MaskFieldUtil.cpfField(tfCpfCliente);
@@ -114,6 +94,7 @@ public class WindowTicketController {
     public void formatterTellClient(KeyEvent keyEvent) {
         MaskFieldUtil.foneField(tfContatoCliente);
     }
+
     @FXML
     private void initialize() throws SQLException {
         vagasDisponiveisColum.setCellValueFactory(new PropertyValueFactory<>("id_vaga"));

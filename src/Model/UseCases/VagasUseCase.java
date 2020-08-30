@@ -109,4 +109,17 @@ public class VagasUseCase {
             e.printStackTrace();
         }
     }
+
+    public void setVagaFree(String cpf) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "UPDATE vagas SET cpf_ocupante = null WHERE cpf_ocupante = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

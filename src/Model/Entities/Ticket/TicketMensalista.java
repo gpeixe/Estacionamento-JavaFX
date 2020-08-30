@@ -10,6 +10,10 @@ public class TicketMensalista extends Ticket {
         this.idMensalista = idMensalista;
     }
 
+    public TicketMensalista(String placa, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante) {
+        super(placa, horarioEntrada, horarioSaida, descricaoCarro, idVigilante);
+    }
+
     public int getIdMensalista() {
         return idMensalista;
     }
