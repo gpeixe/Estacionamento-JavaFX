@@ -32,7 +32,7 @@ public class TicketUseCase {
         PreparedStatement preparedStatement = null;
         String sqlTicket = "INSERT INTO Ticket_Cliente(horarioEntrada, placa, descricaoCarro, idVigilante, telefone, pernoite, cpf) VALUES(?,?,?,?,?,?,?)";
         try{
-            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(ticket.getHorarioEntrada());
+            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticket.getHorarioEntrada());
             preparedStatement = connection.prepareStatement(sqlTicket);
             preparedStatement.setString(1, currentTimeStamp);
             preparedStatement.setString(2, ticket.getPlaca());
@@ -51,7 +51,7 @@ public class TicketUseCase {
         PreparedStatement preparedStatement = null;
         String sqlTicket = "INSERT INTO Ticket_Mensalista(horarioEntrada, idVigilante, id_mensalista, placa, descricaoCarro) VALUES(?,?,?,?,?)";
         try{
-            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(ticket.getHorarioEntrada());
+            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticket.getHorarioEntrada());
             preparedStatement = connection.prepareStatement(sqlTicket);
             preparedStatement.setString(1, currentTimeStamp);
             preparedStatement.setInt(2, ticket.getIdVigilante());
@@ -130,7 +130,7 @@ public class TicketUseCase {
         ResultSet resultSet = null;
         String sql = "UPDATE ticket_cliente SET horarioSaida = ?, valorTotal = ? WHERE cpf = ? and horarioSaida is null";
         try{
-            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(ticketCliente.getHorarioSaida());
+            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticketCliente.getHorarioSaida());
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, currentTimeStamp);
             preparedStatement.setDouble(2, ticketCliente.getValorTotal());
@@ -150,7 +150,7 @@ public class TicketUseCase {
         ResultSet resultSet = null;
         String sql = "UPDATE ticket_mensalista SET horarioSaida = ? WHERE id_mensalista = ? and horarioSaida is null";
         try{
-            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(ticketMensalista.getHorarioSaida());
+            String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticketMensalista.getHorarioSaida());
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, currentTimeStamp);
             preparedStatement.setInt(2, ticketMensalista.getIdMensalista());
@@ -178,7 +178,7 @@ public class TicketUseCase {
                 ticketMensalista.setIdMensalista(rs.getInt("id_mensalista"));
                 ticketMensalista.setPlaca(rs.getString("placa"));
                 ticketMensalista.setDescricaoCarro(rs.getString("descricaoCarro"));
-                ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
+                ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -201,8 +201,8 @@ public class TicketUseCase {
                 ticketMensalista.setIdMensalista(rs.getInt("id_mensalista"));
                 ticketMensalista.setPlaca(rs.getString("placa"));
                 ticketMensalista.setDescricaoCarro(rs.getString("descricaoCarro"));
-                ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
-                ticketMensalista.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioSaida")));
+                ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
+                ticketMensalista.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioSaida")));
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -228,7 +228,7 @@ public class TicketUseCase {
                 ticketCliente.setPlaca(rs.getString("placa"));
                 ticketCliente.setTelefone(rs.getString("telefone"));
                 ticketCliente.setDescricaoCarro(rs.getString("descricaoCarro"));
-                ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
+                ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -255,8 +255,8 @@ public class TicketUseCase {
                 ticketCliente.setTelefone(rs.getString("telefone"));
                 ticketCliente.setValorTotal(rs.getDouble("valorTotal"));
                 ticketCliente.setDescricaoCarro(rs.getString("descricaoCarro"));
-                ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
-                ticketCliente.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioSaida")));
+                ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
+                ticketCliente.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioSaida")));
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
