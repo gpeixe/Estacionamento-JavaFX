@@ -27,28 +27,41 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class WindowTicketController {
     @FXML
     Label lblErro;
+
     @FXML
     JFXButton btnCancelaTicket;
+
     @FXML
     JFXButton btnGerarTicket;
+
     @FXML
     JFXTextArea taDescCarroCliente;
+
     @FXML
     JFXTextField tfContatoCliente;
+
     @FXML
     JFXTextField tfPlacaCliente;
+
     @FXML
     JFXCheckBox cbTaxaPerNoite;
+
     @FXML
     JFXTextField tfCpfCliente;
+
     @FXML
     JFXTextField tfVagaOcupada;
+
     @FXML
     TableView<Vagas> vagasDisponiveisTable;
+
     @FXML
     TableColumn<Vagas, Integer> vagasDisponiveisColum;
 
@@ -83,6 +96,7 @@ public class WindowTicketController {
             lblErro.setText("Nenhum vigilante em trabalho");
         }
     }
+
     public void cancelaTicket(ActionEvent actionEvent) {
         Stage stage = (Stage) btnCancelaTicket.getScene().getWindow();
         stage.close();
@@ -97,15 +111,23 @@ public class WindowTicketController {
 
     @FXML
     private void initialize() throws SQLException {
+        Date date = new Date();   // given date
+        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+        calendar.setTime(date);
+        if(calendar.get(Calendar.HOUR_OF_DAY) <= 20 && calendar.get(Calendar.HOUR_OF_DAY) >= 8){
+            cbTaxaPerNoite.setDisable(true);
+        }
         vagasDisponiveisColum.setCellValueFactory(new PropertyValueFactory<>("id_vaga"));
         values = FXCollections.observableArrayList();
         vagasDisponiveisTable.setItems(values);
         loadTableView();
     }
+
     private void loadTableView() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         values.setAll(vagasUseCase.readAllLivres());
     }
+
     public void selecionaVaga(MouseEvent mouseEvent) {
         tfVagaOcupada.setText(String.valueOf(vagasDisponiveisTable.getSelectionModel().getSelectedItem().getId_vaga()));
     }

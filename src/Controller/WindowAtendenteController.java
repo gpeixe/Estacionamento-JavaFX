@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -90,7 +91,7 @@ public class WindowAtendenteController {
 
     public void openTelaPagamento(ActionEvent actionEvent) throws SQLException {
         WindowGeraPagamento windowGeraPagamento = new WindowGeraPagamento();
-        windowGeraPagamento.startModal();
+        windowGeraPagamento.startModal(null);
         reloader();
     }
 
@@ -211,5 +212,14 @@ public class WindowAtendenteController {
 
     public void searchCpfFormatter(KeyEvent keyEvent) {
         MaskFieldUtil.cpfField(filterCpf);
+    }
+
+    public void abrirPagamento(MouseEvent mouseEvent) throws SQLException {
+        String cpf = carrosEstacionadosTable.getSelectionModel().getSelectedItem().getCpf_ocupante();
+        if(cpf.equals("Disponível"))
+            return;
+        WindowGeraPagamento windowGeraPagamento = new WindowGeraPagamento();
+        windowGeraPagamento.startModal(cpf);
+        reloader();
     }
 }

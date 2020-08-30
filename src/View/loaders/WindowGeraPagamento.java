@@ -26,7 +26,7 @@ public class WindowGeraPagamento {
             stage.getIcons().add(icon);
             stage.setTitle("Pagamento");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane, 560, 141));
+            stage.setScene(new Scene(pane, 538, 338));
             stage.setResizable(false);
             stage.showAndWait();
 

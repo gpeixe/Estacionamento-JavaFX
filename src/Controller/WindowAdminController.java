@@ -67,7 +67,7 @@ public class WindowAdminController {
 
     public void openTelaPagamento(ActionEvent actionEvent) throws SQLException {
         WindowGeraPagamento windowGeraPagamento = new WindowGeraPagamento();
-        windowGeraPagamento.startModal();
+        windowGeraPagamento.startModal(null);
         reloader();
     }
 

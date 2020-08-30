@@ -26,17 +26,17 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="tfPlaca" layoutX="39.0" layoutY="214.0" prefHeight="39.0" prefWidth="467.0" promptText="Placa">
+      <JFXTextField fx:id="tfPlaca" editable="false" layoutX="39.0" layoutY="214.0" prefHeight="39.0" prefWidth="467.0" promptText="Placa">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="tfHorarioEntrada" layoutX="38.0" layoutY="148.0" prefHeight="39.0" prefWidth="230.0" promptText="Horário Entrada">
+      <JFXTextField fx:id="tfHorarioEntrada" editable="false" layoutX="38.0" layoutY="148.0" prefHeight="39.0" prefWidth="230.0" promptText="Horário Entrada">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="tfHorarioSaida" layoutX="300.0" layoutY="148.0" prefHeight="39.0" prefWidth="223.0" promptText="Horário Saída">
+      <JFXTextField fx:id="tfHorarioSaida" editable="false" layoutX="300.0" layoutY="148.0" prefHeight="39.0" prefWidth="223.0" promptText="Horário Saída">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>

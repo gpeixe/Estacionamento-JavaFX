@@ -14,8 +14,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Formatter;
 
 public class WindowGeraPagamentoController {
@@ -37,7 +40,10 @@ public class WindowGeraPagamentoController {
 
     private TicketUseCase ticketUseCase = new TicketUseCase();
     private VagasUseCase vagasUseCase = new VagasUseCase();
-
+    @FXML
+    private void initialize() {
+        btnGeraPagamento.setDisable(true);
+    }
     public void gerarPagamento(ActionEvent actionEvent) throws SQLException {
         if(ticketUseCase.isMensalistaTicket(tfCpfPagamento.getText())){
             ticketUseCase.saidaMensalista(tfCpfPagamento.getText());
@@ -59,30 +65,32 @@ public class WindowGeraPagamentoController {
 
         TicketUseCase ticketUseCase = new TicketUseCase();
         String cpf = tfCpfPagamento.getText();
-        Ticket ticket;
+        Ticket ticket = null;
 
         try {
 
             if (ticketUseCase.isClienteTicket(cpf)) {
-                //ticket = ticketUseCase.getOpenClienteTicketByCpf(cpf);
+                ticket = ticketUseCase.getOpenClienteTicketByCpf(cpf);
 
             }
             else if(ticketUseCase.isMensalistaTicket(tfCpfPagamento.getText())){
-                //ticket = ticketUseCase.getOpenMensalistaTicketByCpf(cpf);
+                ticket = ticketUseCase.getOpenMensalistaTicketByCpf(cpf);
 
             }
             else {
                 errorLabel.setText("Ticket não encontrado para o cpf informado.");
             }
 
-            /*if(ticket != null){
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                String horarioSaida = now.format(formatter);
-                tfHorarioEntrada.setText(ticket.getHorarioEntrada());
+            if(ticket != null){
+                Date now = new Date();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+                String horarioSaida = dateFormat.format(now);
+                String horarioEntrada = dateFormat.format(ticket.getHorarioEntrada());
+                tfHorarioEntrada.setText(horarioEntrada);
                 tfHorarioSaida.setText(horarioSaida);
                 tfPlaca.setText(ticket.getPlaca());
-            }*/
+                btnGeraPagamento.setDisable(false);
+            }
 
         }
         catch (Exception e){
