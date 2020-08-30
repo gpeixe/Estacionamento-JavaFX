@@ -20,7 +20,7 @@ public class WindowFuncionario {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowFuncionario.fxml").openStream());
-            Scene scene = new Scene(pane, 350, 456);
+            Scene scene = new Scene(pane, 350, 469);
             fc = loader.getController();
 
             if(funcionario != null){

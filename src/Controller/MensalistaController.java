@@ -7,12 +7,14 @@ import Model.UseCases.LoginUseCase;
 import Model.UseCases.MensalistaUseCase;
 import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
+import Utils.ValidaCPF;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,20 +42,37 @@ public class MensalistaController {
     TableView<Vagas> vagasDisponiveisTable;
     @FXML
     TableColumn<Vagas, Integer> VagasDisponiveisColum;
+    @FXML
+    Label lblAviso;
 
     private ObservableList<Vagas> values;
     private Mensalista mensalistaMensalista;
 
     public void salvarMensalista(ActionEvent actionEvent) throws SQLException {
-        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
-        if(mensalistaMensalista != null){
-            Mensalista mensalista = new Mensalista(tfCPFMensalista.getText(),tfNomeMensalista.getText(),tfTelefoneMensalista.getText(),tfEmpresaVincMensalista.getText(),Integer.parseInt(tfVagaOcupada.getText()), mensalistaMensalista.getId());
-            mensalistaUseCase.update(mensalista);
-        }   else {
-            Mensalista mensalista = new Mensalista(tfCPFMensalista.getText(),tfNomeMensalista.getText(),tfTelefoneMensalista.getText(),tfEmpresaVincMensalista.getText(),Integer.parseInt(tfVagaOcupada.getText()));
-            mensalistaUseCase.save(mensalista);
+        String cpf = tfCPFMensalista.getText();
+        String nome = tfNomeMensalista.getText();
+        String vaga = tfVagaOcupada.getText();
+        String empresa = tfEmpresaVincMensalista.getText();
+        String telefone = tfTelefoneMensalista.getText();
+
+        if(ValidaCPF.isCPF(cpf)){
+            if(!nome.equals("") && !vaga.equals("") && !telefone.equals("")){
+                MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+                if(mensalistaMensalista != null){
+                    Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga), mensalistaMensalista.getId());
+                    mensalistaUseCase.update(mensalista);
+                }   else {
+                    Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga));
+                    mensalistaUseCase.save(mensalista);
+                }
+                ((Stage)tfCPFMensalista.getScene().getWindow()).close();
+            }   else{
+                lblAviso.setText("Por favor, preencha todos os campos!");
+            }
+        }   else{
+            lblAviso.setText("Por favor, digite um CPF válido!");
         }
-        ((Stage)tfCPFMensalista.getScene().getWindow()).close();
+
     }
 
     public void editaMensalista(Mensalista mensalista){

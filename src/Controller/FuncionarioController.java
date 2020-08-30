@@ -4,6 +4,7 @@ import Model.Entities.Funcionarios.*;
 import Model.Entities.Mensalista.Mensalista;
 import Model.UseCases.FuncionarioUseCase;
 import Utils.MaskFieldUtil;
+import Utils.ValidaCPF;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -11,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -31,37 +33,53 @@ public class FuncionarioController {
     JFXComboBox<String> cbFuncFuncionario;
     @FXML
     JFXTextField tfSenhaFuncionario;
+    @FXML
+    Label lblAviso;
 
     private Funcionario funcionarioFuncionario;
 
     public void salvarFuncionario(ActionEvent actionEvent) throws SQLException {
-        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-        if(funcionarioFuncionario!=null){
-            switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
-                case "Atendente":
-                    funcionarioUseCase.update(new Atendente(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.ATENDENTE, funcionarioFuncionario.getId()));
-                    break;
-                case "Vigilante":
-                    funcionarioUseCase.update(new Vigilante(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.VIGILANTE, funcionarioFuncionario.getId()));
-                    break;
-                case "Administrador":
-                    funcionarioUseCase.update(new Administrador(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.ADMIN, funcionarioFuncionario.getId()));
-                    break;
+        String cpf = tfCPFFuncionario.getText();
+        String nome = tfNomeFuncionario.getText();
+        String senha = tfSenhaFuncionario.getText();
+        String endereco = tfEnderecoFuncionario.getText();
+        String telefone = tfTelefoneFuncionario.getText();
+
+        if(ValidaCPF.isCPF(cpf)){ //Valida se o CPF é válido
+            if(!nome.equals("") && !senha.equals("") && !endereco.equals("") && !telefone.equals("")){ //Valida se todos os campos foram preenchidos
+                FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
+                if(funcionarioFuncionario!=null){
+                    switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
+                        case "Atendente":
+                            funcionarioUseCase.update(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE, funcionarioFuncionario.getId()));
+                            break;
+                        case "Vigilante":
+                            funcionarioUseCase.update(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE, funcionarioFuncionario.getId()));
+                            break;
+                        case "Administrador":
+                            funcionarioUseCase.update(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN, funcionarioFuncionario.getId()));
+                            break;
+                    }
+                }   else{
+                    switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
+                        case "Atendente":
+                            funcionarioUseCase.save(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE));
+                            break;
+                        case "Vigilante":
+                            funcionarioUseCase.save(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE));
+                            break;
+                        case "Administrador":
+                            funcionarioUseCase.save(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN));
+                            break;
+                    }
+                }
+                ((Stage)tfEnderecoFuncionario.getScene().getWindow()).close();
+            }   else{
+                lblAviso.setText("Por favor, preencha todos os campos!");
             }
         }   else{
-            switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
-                case "Atendente":
-                    funcionarioUseCase.save(new Atendente(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.ATENDENTE));
-                    break;
-                case "Vigilante":
-                    funcionarioUseCase.save(new Vigilante(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.VIGILANTE));
-                    break;
-                case "Administrador":
-                    funcionarioUseCase.save(new Administrador(tfCPFFuncionario.getText(), tfNomeFuncionario.getText(), tfSenhaFuncionario.getText(), tfTelefoneFuncionario.getText(), tfEnderecoFuncionario.getText(), Efuncao.ADMIN));
-                    break;
-            }
+            lblAviso.setText("Por favor, digite um CPF válido!");
         }
-        ((Stage)tfEnderecoFuncionario.getScene().getWindow()).close();
     }
 
     public void cancelaOp(ActionEvent actionEvent) {
@@ -92,6 +110,7 @@ public class FuncionarioController {
         ObservableList<String> tipos = FXCollections.observableArrayList();
         tipos.addAll("Atendente","Vigilante","Administrador");
         cbFuncFuncionario.setItems(tipos);
+        cbFuncFuncionario.setValue("Atendente");
     }
 
     public void formataCpf(KeyEvent keyEvent) {

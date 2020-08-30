@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FuncionarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FuncionarioController">
     <children>
         <Pane prefHeight="55.0" prefWidth="350.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -21,12 +21,12 @@
                 <Font name="Arial Black" size="13.0" />
             </font>
         </JFXTextField>
-        <JFXButton id="btnSalvaFuncionario" fx:id="btnSalvaFuncionario" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="404.0" onAction="#salvarFuncionario" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.topAnchor="404.0">
+        <JFXButton id="btnSalvaFuncionario" fx:id="btnSalvaFuncionario" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="213.0" layoutY="417.0" onAction="#salvarFuncionario" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.topAnchor="417.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
         </JFXButton>
-        <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="404.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.topAnchor="404.0">
+        <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="14.0" layoutY="417.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.topAnchor="417.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
@@ -52,5 +52,10 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </JFXTextField>
+      <Label fx:id="lblAviso" alignment="CENTER" layoutX="13.0" layoutY="385.0" prefHeight="22.0" prefWidth="322.0" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

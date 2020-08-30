@@ -61,7 +61,7 @@
           <TableColumn fx:id="vagasDisponiveisColum" prefWidth="199.0" text="Vagas Disponíveis" />
         </columns>
       </TableView>
-      <Label fx:id="lblErro" layoutX="107.0" layoutY="434.0" prefHeight="17.0" prefWidth="246.0" textFill="RED" AnchorPane.rightAnchor="107.0">
+      <Label fx:id="lblErro" alignment="CENTER" layoutX="107.0" layoutY="434.0" prefHeight="17.0" prefWidth="246.0" textFill="RED" AnchorPane.rightAnchor="107.0">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
