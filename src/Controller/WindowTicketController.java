@@ -9,6 +9,7 @@ import Model.UseCases.RegistroVigilanteUseCase;
 import Model.UseCases.TicketUseCase;
 import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
+import Utils.ValidaCPF;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -71,29 +72,35 @@ public class WindowTicketController {
     private MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
 
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
-        Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
-        if(vigilante!=null) {
-            TicketCliente ticketCliente = new TicketCliente(
-                    tfPlacaCliente.getText(),
-                    new Date(),
-                    null,
-                    taDescCarroCliente.getText(),
-                    vigilante.getId());
-            ticketCliente.setTelefone(tfContatoCliente.getText());
-            if (cbTaxaPerNoite.isSelected()) {
-                ticketCliente.setPernoite(true);
-            } else {
-                ticketCliente.setPernoite(false);
+        if(ValidaCPF.isCPF(tfCpfCliente.getText())){
+            if(!tfVagaOcupada.getText().equals("")){
+                Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
+                if(vigilante!=null) {
+                    TicketCliente ticketCliente = new TicketCliente(
+                            tfPlacaCliente.getText(),
+                            new Date(),
+                            null,
+                            taDescCarroCliente.getText(),
+                            vigilante.getId());
+                    ticketCliente.setTelefone(tfContatoCliente.getText());
+                    if (cbTaxaPerNoite.isSelected()) {
+                        ticketCliente.setPernoite(true);
+                    } else {
+                        ticketCliente.setPernoite(false);
+                    }
+                    ticketCliente.setCpf(tfCpfCliente.getText());
+                    ticketUseCase.saveClientTicket(ticketCliente);
+                    /*Salvando a vaga*/
+                    VagasUseCase vagasUseCase = new VagasUseCase();
+                    vagasUseCase.setVaga(tfCpfCliente.getText(), Integer.parseInt(tfVagaOcupada.getText()));
+                    /*Fecha a aba*/
+                    ((Stage) btnGerarTicket.getScene().getWindow()).close();
+                }   else{
+                    lblErro.setText("Nenhum vigilante em trabalho");
+                }
             }
-            ticketCliente.setCpf(tfCpfCliente.getText());
-            ticketUseCase.saveClientTicket(ticketCliente);
-            /*Salvando a vaga*/
-            VagasUseCase vagasUseCase = new VagasUseCase();
-            vagasUseCase.setVaga(tfCpfCliente.getText(), Integer.parseInt(tfVagaOcupada.getText()));
-            /*Fecha a aba*/
-            ((Stage) btnGerarTicket.getScene().getWindow()).close();
         }   else{
-            lblErro.setText("Nenhum vigilante em trabalho");
+            lblErro.setText("CPF Inválido");
         }
     }
 
