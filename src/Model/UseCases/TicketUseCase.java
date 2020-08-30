@@ -283,8 +283,11 @@ public class TicketUseCase {
 
     public void generateTicketPdf(TicketMensalista ticket){
         Document doc = new Document();
+        FileChooser f = new FileChooser();
+        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
+        File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Public/p.pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
             doc.open();
             doc.add(new Paragraph(ticket.toString()));
             doc.close();
