@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.Entities.Ticket.TicketCliente;
+import Model.Entities.Ticket.TicketMensalista;
 import Model.Entities.Ticket.Ticket;
 import Model.UseCases.TicketUseCase;
 import Model.UseCases.VagasUseCase;
@@ -46,11 +48,15 @@ public class WindowGeraPagamentoController {
     }
     public void gerarPagamento(ActionEvent actionEvent) throws SQLException {
         if(ticketUseCase.isMensalistaTicket(tfCpfPagamento.getText())){
+            TicketMensalista ticket = ticketUseCase.getOpenMensalistaTicketByCpf(tfCpfPagamento.getText());
             ticketUseCase.saidaMensalista(tfCpfPagamento.getText());
+            ticketUseCase.generateTicketPdf(ticketUseCase.getMensalistaTicketById(ticket.getId()));
             ((Stage)btnGeraPagamento.getScene().getWindow()).close();
         } else if (ticketUseCase.isClienteTicket(tfCpfPagamento.getText())){
+            TicketCliente ticket = ticketUseCase.getOpenClienteTicketByCpf(tfCpfPagamento.getText());
             ticketUseCase.pagamentoCliente(tfCpfPagamento.getText());
             vagasUseCase.setVagaFree(tfCpfPagamento.getText());
+            ticketUseCase.generateTicketPdf(ticketUseCase.getClienteTicketById(ticket.getId()));
             ((Stage)btnGeraPagamento.getScene().getWindow()).close();
         } else {
             errorLabel.setText("Nenhuma vaga encontrada para esse CPF.");

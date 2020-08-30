@@ -4,7 +4,16 @@ import Model.Entities.Precos.Precos;
 import Model.Entities.Ticket.TicketCliente;
 import Model.Entities.Ticket.TicketMensalista;
 import Utils.SqlConnection;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -165,10 +174,35 @@ public class TicketUseCase {
 
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
+                ticketMensalista.setId(rs.getInt("id"));
                 ticketMensalista.setIdMensalista(rs.getInt("id_mensalista"));
                 ticketMensalista.setPlaca(rs.getString("placa"));
                 ticketMensalista.setDescricaoCarro(rs.getString("descricaoCarro"));
                 ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
+            }
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return ticketMensalista;
+    }
+
+    public TicketMensalista getMensalistaTicketById(int id){
+        PreparedStatement preparedStatement = null;
+        TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM ticket_mensalista WHERE id = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                ticketMensalista.setId(rs.getInt("id"));
+                ticketMensalista.setIdMensalista(rs.getInt("id_mensalista"));
+                ticketMensalista.setPlaca(rs.getString("placa"));
+                ticketMensalista.setDescricaoCarro(rs.getString("descricaoCarro"));
+                ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
+                ticketMensalista.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioSaida")));
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -188,6 +222,7 @@ public class TicketUseCase {
 
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
+                ticketCliente.setId(rs.getInt("id"));
                 ticketCliente.setCpf(rs.getString("cpf"));
                 ticketCliente.setPernoite(rs.getBoolean("pernoite"));
                 ticketCliente.setPlaca(rs.getString("placa"));
@@ -199,5 +234,64 @@ public class TicketUseCase {
             e.printStackTrace();
         }
         return ticketCliente;
+    }
+
+    public TicketCliente getClienteTicketById(int id){
+        PreparedStatement preparedStatement = null;
+        TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM ticket_cliente " +
+                "WHERE id = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                ticketCliente.setId(rs.getInt("id"));
+                ticketCliente.setCpf(rs.getString("cpf"));
+                ticketCliente.setPernoite(rs.getBoolean("pernoite"));
+                ticketCliente.setPlaca(rs.getString("placa"));
+                ticketCliente.setTelefone(rs.getString("telefone"));
+                ticketCliente.setValorTotal(rs.getDouble("valorTotal"));
+                ticketCliente.setDescricaoCarro(rs.getString("descricaoCarro"));
+                ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioEntrada")));
+                ticketCliente.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy hh:MM:SS").parse(rs.getString("horarioSaida")));
+            }
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return ticketCliente;
+    }
+
+    public void generateTicketPdf(TicketCliente ticket){
+        Document doc = new Document();
+        FileChooser f = new FileChooser();
+        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
+        File file = f.showSaveDialog(new Stage());
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            doc.open();
+            doc.add(new Paragraph(ticket.toString()));
+            doc.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void generateTicketPdf(TicketMensalista ticket){
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Public/p.pdf"));
+            doc.open();
+            doc.add(new Paragraph(ticket.toString()));
+            doc.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

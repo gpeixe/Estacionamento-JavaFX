@@ -1,5 +1,6 @@
 package Model.Entities.Ticket;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TicketCliente extends Ticket {
@@ -21,6 +22,20 @@ public class TicketCliente extends Ticket {
 
     public TicketCliente(String placa, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante) {
         super(placa, horarioEntrada, horarioSaida, descricaoCarro, idVigilante);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket Cliente #" + super.getId() + '\n' +
+                "   Placa: '" + super.getPlaca() + '\n' +
+                "   Horario de Entrada: " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format( super.getHorarioEntrada()) + '\n' +
+                "   Horario de Saida: " + new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(super.getHorarioSaida()) + '\n' +
+                "   Descrição do Carro: '" + super.getDescricaoCarro() + '\'' + '\n' +
+                "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
+                "   Valor Total: R$" + valorTotal + '\n' +
+                "   É pernoite: " + (isPernoite == true? "Sim" : "Não") + '\n' +
+                "   Telefone: '" + telefone + '\n' +
+                "   CPF: '" + cpf + '\n' ;
     }
 
     public double getValorTotal() {
