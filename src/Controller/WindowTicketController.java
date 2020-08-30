@@ -114,7 +114,7 @@ public class WindowTicketController {
         Date date = new Date();   // given date
         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
         calendar.setTime(date);
-        if(calendar.get(Calendar.HOUR_OF_DAY) <= 20 && calendar.get(Calendar.HOUR_OF_DAY) >= 8){
+        if(calendar.get(Calendar.HOUR_OF_DAY) < 20 && calendar.get(Calendar.HOUR_OF_DAY) > 8){
             cbTaxaPerNoite.setDisable(true);
         }
         vagasDisponiveisColum.setCellValueFactory(new PropertyValueFactory<>("id_vaga"));
