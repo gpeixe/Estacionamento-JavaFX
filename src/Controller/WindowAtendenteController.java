@@ -202,8 +202,10 @@ public class WindowAtendenteController {
     }
 
     public void deslogarVigilante(ActionEvent actionEvent) {
-        this.registroVigilanteUseCase.registrarSaida(this.currentVigilante);
-        setCurrentVigilante(null);
+        if(this.currentVigilante != null){
+            this.registroVigilanteUseCase.registrarSaida(this.currentVigilante);
+            setCurrentVigilante(null);
+        }
     }
 
     public void reloader() throws SQLException {
