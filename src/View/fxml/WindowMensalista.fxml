@@ -21,40 +21,40 @@
                 <Font name="Arial Black" size="13.0" />
             </font>
         </JFXTextField>
+        <JFXTextField id="nomeMensalista" fx:id="tfNomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="10.0" layoutY="94.0" prefHeight="36.0" prefWidth="255.0" promptText="Nome" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
+            <font>
+                <Font name="Arial Black" size="13.0" />
+            </font>
+        </JFXTextField>
+        <JFXTextField id="telefoneMensalista" fx:id="tfTelefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="10.0" layoutY="138.0" onKeyTyped="#formataTelefone" prefHeight="36.0" prefWidth="255.0" promptText="Telefone" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
+            <font>
+                <Font name="Arial Black" size="13.0" />
+            </font>
+        </JFXTextField>
+        <JFXTextField id="empresaVincMensalista" fx:id="tfEmpresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="10.0" layoutY="183.0" prefHeight="36.0" prefWidth="255.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
+            <font>
+                <Font name="Arial Black" size="13.0" />
+            </font>
+        </JFXTextField>
+        <JFXTextField id="empresaVincMensalista" fx:id="tfVagaOcupada" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" editable="false" layoutX="10.0" layoutY="230.0" prefHeight="36.0" prefWidth="255.0" promptText="Vaga Ocupada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
+            <font>
+                <Font name="Arial Black" size="13.0" />
+            </font>
+        </JFXTextField>
         <JFXButton id="btnSalvaMensalista" fx:id="btnSalvaMensalista" accessibleHelp="SALVAR" accessibleRoleDescription="SALVAR" accessibleText="SALVAR" alignment="CENTER" layoutX="142.0" layoutY="288.0" onAction="#salvarMensalista" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Salvar" textFill="WHITE" AnchorPane.topAnchor="288.0">
             <font>
                 <Font name="Arial Black" size="17.0" />
             </font>
         </JFXButton>
-      <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="10.0" layoutY="288.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.topAnchor="288.0">
-         <font>
-            <Font name="Arial Black" size="17.0" />
-         </font>
-      </JFXButton>
-      <JFXTextField id="nomeMensalista" fx:id="tfNomeMensalista" accessibleHelp="NOME MENSALISTA" accessibleRoleDescription="NOME MENSALISTA" accessibleText="NOME MENSALISTA" layoutX="10.0" layoutY="94.0" prefHeight="36.0" prefWidth="255.0" promptText="Nome" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
-         <font>
-            <Font name="Arial Black" size="13.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField id="telefoneMensalista" fx:id="tfTelefoneMensalista" accessibleHelp="TELEFONE MENSALISTA" accessibleRoleDescription="TELEFONE MENSALISTA" accessibleText="TELEFONE MENSALISTA" layoutX="10.0" layoutY="138.0" onKeyTyped="#formataTelefone" prefHeight="36.0" prefWidth="255.0" promptText="Telefone" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
-         <font>
-            <Font name="Arial Black" size="13.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField id="empresaVincMensalista" fx:id="tfEmpresaVincMensalista" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="10.0" layoutY="183.0" prefHeight="36.0" prefWidth="255.0" promptText="Empresa Vinculada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
-         <font>
-            <Font name="Arial Black" size="13.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField id="empresaVincMensalista" fx:id="tfVagaOcupada" accessibleHelp="EMPRESA MENSALISTA" accessibleRoleDescription="EMPRESA MENSALISTA" accessibleText="EMPRESA MENSALISTA" layoutX="10.0" layoutY="230.0" prefHeight="36.0" prefWidth="255.0" promptText="Vaga Ocupada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="166.0">
-         <font>
-            <Font name="Arial Black" size="13.0" />
-         </font>
-      </JFXTextField>
-      <JFXTreeTableView fx:id="vagasTable" layoutX="275.0" layoutY="48.0" prefHeight="277.0" prefWidth="151.0" AnchorPane.rightAnchor="5.0">
-         <columns>
-            <TreeTableColumn fx:id="vagasColum" prefWidth="161.0" text="Vagas Disponíveis" />
-         </columns>
-      </JFXTreeTableView>
+        <JFXButton id="btnCancelar" fx:id="btnCancelar" accessibleHelp="CANCELAR" accessibleRoleDescription="CANCELAR" accessibleText="CANCELAR" alignment="CENTER" layoutX="10.0" layoutY="288.0" onAction="#cancelaOp" prefHeight="36.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.topAnchor="288.0">
+            <font>
+                <Font name="Arial Black" size="17.0" />
+            </font>
+        </JFXButton>
+        <TableView fx:id="vagasDisponiveisTable" layoutX="275.0" layoutY="52.0" onMouseClicked="#preencheVagaOcupada" prefHeight="277.0" prefWidth="151.0" AnchorPane.rightAnchor="5.0">
+            <columns>
+                <TableColumn fx:id="VagasDisponiveisColum" prefWidth="150.0" text="Vagas Disponíveis" />
+            </columns>
+        </TableView>
     </children>
 </AnchorPane>

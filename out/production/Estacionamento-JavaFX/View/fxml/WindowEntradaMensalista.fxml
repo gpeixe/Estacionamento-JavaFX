@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="128.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowTicketController">
+<AnchorPane prefHeight="128.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowEntradaMensalistaController">
     <Pane prefHeight="53.0" prefWidth="1013.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Label layoutX="75.0" layoutY="3.0" prefHeight="47.0" prefWidth="281.0" text="Entrada Mensalista" textFill="WHITE">

@@ -9,20 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WindowRegistraSaida {
+public class WindowGeraPagamento {
     public void startModal(){
         try {
-            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            Pane pane = loader.load(getClass().getResource("View/fxml/WindowRegistraSaida.fxml").openStream());
-            Scene scene = new Scene(pane, 451, 121);
+            Pane pane = loader.load(getClass().getResource("/View/fxml/WindowGeraPagamento.fxml").openStream());
 
+            Stage stage = new Stage();
             Image icon = new Image("Images/icon.png");
             stage.getIcons().add(icon);
-
-            stage.setScene(scene);
             stage.setTitle("Pagamento");
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(pane, 560, 141));
             stage.setResizable(false);
             stage.showAndWait();
 

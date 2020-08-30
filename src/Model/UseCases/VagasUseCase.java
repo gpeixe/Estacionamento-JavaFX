@@ -1,10 +1,5 @@
 package Model.UseCases;
 
-import Model.Entities.Funcionarios.Atendente;
-import Model.Entities.Funcionarios.Funcionario;
-import Model.Entities.Funcionarios.Vigilante;
-import Model.Entities.Mensalista.Mensalista;
-import Model.Entities.Precos.Precos;
 import Model.Entities.Vagas.Vagas;
 import Utils.SqlConnection;
 
@@ -60,6 +55,28 @@ public class VagasUseCase {
     public List<Vagas> readAll() throws SQLException{
         PreparedStatement preparedStatement = null;
         String sql = "SELECT * FROM vagas";
+        List<Vagas> vagas = new ArrayList<>();
+        String ocupante = "";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                if(rs.getString("cpf_ocupante") == null){
+                    ocupante = "Disponível";
+                }   else{
+                    ocupante = rs.getString("cpf_ocupante");
+                }
+                vagas.add(new Vagas(rs.getInt("id_vaga"), ocupante));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return vagas;
+    }
+
+    public List<Vagas> readAllLivres() throws SQLException{
+        PreparedStatement preparedStatement = null;
+        String sql = "SELECT * FROM vagas WHERE cpf_ocupante IS NULL";
         List<Vagas> vagas = new ArrayList<>();
         String ocupante = "";
         try{

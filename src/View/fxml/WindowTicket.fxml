@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowTicketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowTicketController">
    <children>
       <Pane layoutX="-2.0" prefHeight="55.0" prefWidth="352.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -36,12 +36,12 @@
             <Font name="Arial Black" size="14.0" />
          </font>
       </JFXTextArea>
-      <JFXButton id="gerarTicket" fx:id="btnGerarTicket" accessibleHelp="Gerar Ticket" accessibleRoleDescription="Gerar Ticket" accessibleText="Gerar Ticket" alignment="CENTER" layoutX="239.0" layoutY="443.0" onAction="#geraTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Gerar Ticket" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+      <JFXButton id="gerarTicket" fx:id="btnGerarTicket" accessibleHelp="Gerar Ticket" accessibleRoleDescription="Gerar Ticket" accessibleText="Gerar Ticket" alignment="CENTER" layoutX="239.0" layoutY="461.0" onAction="#geraTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #1D3557;" text="Gerar Ticket" textFill="WHITE" AnchorPane.bottomAnchor="14.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton id="cancelaTicket" fx:id="btnCancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="31.0" layoutY="443.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="23.0">
+      <JFXButton id="cancelaTicket" fx:id="btnCancelaTicket" accessibleHelp="Cancelar" accessibleRoleDescription="Cancelar" accessibleText="Cancelar" alignment="CENTER" layoutX="31.0" layoutY="461.0" onAction="#cancelaTicket" prefHeight="36.0" prefWidth="188.0" ripplerFill="WHITE" style="-fx-background-color: #E63946;" text="Cancelar" textFill="WHITE" AnchorPane.bottomAnchor="14.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
@@ -61,5 +61,10 @@
           <TableColumn fx:id="vagasDisponiveisColum" prefWidth="199.0" text="Vagas Disponíveis" />
         </columns>
       </TableView>
+      <Label fx:id="lblErro" layoutX="107.0" layoutY="434.0" prefHeight="17.0" prefWidth="246.0" textFill="RED" AnchorPane.rightAnchor="107.0">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

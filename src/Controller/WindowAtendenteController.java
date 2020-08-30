@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -53,15 +54,18 @@ public class WindowAtendenteController {
     TableColumn<Vagas, String> vagaColum;
     @FXML
     TableColumn<Vagas, String> cpfColum;
+    @FXML
+    PieChart graphVagas;
 
     RegistroVigilanteUseCase registroVigilanteUseCase;
     RegistroAtendenteUseCase registroAtendenteUseCase;
 
     private ObservableList<Vagas> values;
 
-    public void openTelaTicket(ActionEvent actionEvent) {
+    public void openTelaTicket(ActionEvent actionEvent) throws SQLException {
         WindowTicket w = new WindowTicket();
         w.startModal();
+        reloader();
     }
 
     public void openTelaEntradaVigilante(ActionEvent actionEvent) {
@@ -70,15 +74,16 @@ public class WindowAtendenteController {
         setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
     }
 
-    public void openTelaCRUDMensalista(ActionEvent actionEvent) {
+    public void openTelaCRUDMensalista(ActionEvent actionEvent) throws SQLException {
         WindowCrudMensalista w = new WindowCrudMensalista();
         w.startModal();
+        reloader();
     }
 
-    public void deslogarFunc(ActionEvent actionEvent) {
-        Stage stage = (Stage) btnDeslogar.getScene().getWindow();
-        registroAtendenteUseCase.registrarSaida(this.atd);
-        stage.close();
+    public void openTelaPagamento(ActionEvent actionEvent) throws SQLException {
+        WindowGeraPagamento windowGeraPagamento = new WindowGeraPagamento();
+        windowGeraPagamento.startModal();
+        reloader();
     }
 
     public void openTelaEntradaMensalista(ActionEvent actionEvent) {
@@ -86,12 +91,10 @@ public class WindowAtendenteController {
         w.startModal();
     }
 
-    public void registraSaida(ActionEvent actionEvent) {
-        WindowRegistraSaida w = new WindowRegistraSaida();
-        w.startModal();
-    }
-
-    public void gerarPagamento(ActionEvent actionEvent) {
+    public void deslogarFunc(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnDeslogar.getScene().getWindow();
+        registroAtendenteUseCase.registrarSaida(this.atd);
+        stage.close();
     }
 
     public void setAtendente(Atendente atd) {
@@ -131,12 +134,18 @@ public class WindowAtendenteController {
 
     public void setVagasDisponiveis() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
-        lblNumVagasDisponives.setText(lblNumVagasDisponives.getText()+" "+vagasUseCase.numeroVagasDisponiveis());
+        lblNumVagasDisponives.setText("Vagas Disponíveis: "+vagasUseCase.numeroVagasDisponiveis());
     }
 
     public void setVagasTotais() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         lblNumVagas.setText(lblNumVagas.getText()+" "+vagasUseCase.numeroVagasTotais());
+    }
+
+    public void setGraphVagas() throws SQLException {
+        VagasUseCase vagasUseCase = new VagasUseCase();
+        graphVagas.getData().addAll(new PieChart.Data("Vagas Totais", vagasUseCase.numeroVagasTotais()),
+                new PieChart.Data("Vagas Disponiveis", vagasUseCase.numeroVagasDisponiveis()));
     }
 
     @FXML
@@ -161,6 +170,9 @@ public class WindowAtendenteController {
         setCurrentVigilante(null);
     }
 
-    public void openTelaRegistraSaida(ActionEvent actionEvent) {
+    public void reloader() throws SQLException {
+        loadTableView();
+        setVagasDisponiveis();
     }
+
 }

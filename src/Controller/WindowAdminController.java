@@ -65,6 +65,12 @@ public class WindowAdminController {
         reloader();
     }
 
+    public void openTelaPagamento(ActionEvent actionEvent) throws SQLException {
+        WindowGeraPagamento windowGeraPagamento = new WindowGeraPagamento();
+        windowGeraPagamento.startModal();
+        reloader();
+    }
+
     public void setVagasDisponiveis() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         lblNumVagasDisponiveis.setText("Vagas Disponíveis: "+vagasUseCase.numeroVagasDisponiveis());
@@ -77,7 +83,7 @@ public class WindowAdminController {
 
     public void setLblNumFuncionarios() throws SQLException {
         FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-        lblNumFuncionarios.setText("Número de funcionários: "+funcionarioUseCase.numeroDeFuncionarios());
+        lblNumFuncionarios.setText("Número de funcionários: "+ (funcionarioUseCase.numeroDeFuncionarios() - 1));
     }
 
     public void setLblNumMensalistas() throws SQLException {
@@ -101,4 +107,5 @@ public class WindowAdminController {
     public void setAdm(Administrador adm) {
         this.adm = adm;
     }
+
 }
