@@ -14,6 +14,8 @@ public class WindowStartController {
     public void login(javafx.event.ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
         w.startModal(false);
+        Stage stage = (Stage) btnEntrar.getScene().getWindow();
+        stage.close();
     }
 
 

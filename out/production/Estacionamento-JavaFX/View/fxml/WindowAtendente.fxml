@@ -103,7 +103,7 @@
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="carrosEstacionadosTable" layoutX="475.0" layoutY="214.0" prefHeight="348.0" prefWidth="314.0">
+      <TableView fx:id="carrosEstacionadosTable" onMouseClicked="#abrirPagamento" layoutX="475.0" layoutY="214.0" prefHeight="348.0" prefWidth="314.0">
         <columns>
           <TableColumn fx:id="vagaColum" prefWidth="166.0" text="Vaga" />
           <TableColumn fx:id="cpfColum" prefWidth="147.0" text="CPF do Ocupante" />

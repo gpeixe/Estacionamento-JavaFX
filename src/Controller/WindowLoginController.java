@@ -43,14 +43,17 @@ public class WindowLoginController {
 
                 Efuncao funcao = (Efuncao) funcionario.getFuncao();
                 if(!isVigilanteLogin){
-
                     if(funcao.getFuncao().equals("Administrador")){
                         WindowAdmin w = new WindowAdmin();
                         Administrador adm = (Administrador) funcionario;
                         w.startModal(adm);
+                        Stage stage = (Stage) tfSenhaUser.getScene().getWindow();
+                        stage.close();
                     }
 
                     else if (funcao.getFuncao().equals("Atendente")){
+                        Stage stage = (Stage) tfSenhaUser.getScene().getWindow();
+                        stage.close();
                         WindowAtendente w = new WindowAtendente();
                         Atendente atd = (Atendente) funcionario;
                         w.startModal(atd);

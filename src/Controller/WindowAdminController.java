@@ -38,9 +38,11 @@ public class WindowAdminController {
         reloader();
     }
 
-    public void deslogaAdmin(ActionEvent actionEvent) {
+    public void deslogaAdmin(ActionEvent actionEvent) throws Exception {
         Stage stage = (Stage) btnDeslogar.getScene().getWindow();
         stage.close();
+        WindowStart windowStart = new WindowStart();
+        windowStart.start(new Stage());
     }
 
     public void openTelaRelatorios(ActionEvent actionEvent) {

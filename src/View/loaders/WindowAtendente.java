@@ -32,9 +32,8 @@ public class WindowAtendente {
             stage.getIcons().add(icon);
             stage.setScene(scene);
             stage.setTitle("Funcionário");
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException | SQLException e) {
             e.printStackTrace();

@@ -100,10 +100,12 @@ public class WindowAtendenteController {
         w.startModal();
     }
 
-    public void deslogarFunc(ActionEvent actionEvent) {
+    public void deslogarFunc(ActionEvent actionEvent) throws Exception {
         Stage stage = (Stage) btnDeslogar.getScene().getWindow();
         registroAtendenteUseCase.registrarSaida(this.atd);
         stage.close();
+        WindowStart windowStart = new WindowStart();
+        windowStart.start(new Stage());
     }
 
     public void setAtendente(Atendente atd) {
