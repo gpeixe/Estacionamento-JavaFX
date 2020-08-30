@@ -99,7 +99,7 @@ public class TicketUseCase {
         Precos precos = alteraPrecosUseCase.read();
         TicketCliente ticketCliente = getOpenClienteTicketByCpf(cpf);
         ticketCliente.setHorarioSaida(new Date());
-        Long different = ticketCliente.getHorarioEntrada().getTime() - ticketCliente.getHorarioSaida().getTime();
+        Long different = Math.abs(ticketCliente.getHorarioEntrada().getTime() - ticketCliente.getHorarioSaida().getTime());
         Long secondsInMilli = (long)1000;
         Long minutesInMilli = secondsInMilli * 60;
         Long hoursInMilli = minutesInMilli * 60;
@@ -152,7 +152,7 @@ public class TicketUseCase {
         }
     }
 
-    private TicketMensalista getOpenMensalistaTicketByCpf(String cpf){
+    public TicketMensalista getOpenMensalistaTicketByCpf(String cpf){
         PreparedStatement preparedStatement = null;
         TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
@@ -176,7 +176,7 @@ public class TicketUseCase {
         return ticketMensalista;
     }
 
-    private TicketCliente getOpenClienteTicketByCpf(String cpf){
+    public TicketCliente getOpenClienteTicketByCpf(String cpf){
         PreparedStatement preparedStatement = null;
         TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
