@@ -73,7 +73,7 @@ public class WindowTicketController {
 
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
         if(ValidaCPF.isCPF(tfCpfCliente.getText())){
-            if(!tfVagaOcupada.getText().equals("")){
+            if(!tfVagaOcupada.getText().equals("") && !tfPlacaCliente.getText().equals("") && !tfContatoCliente.getText().equals("") && !taDescCarroCliente.getText().equals("")){
                 Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
                 if(vigilante!=null) {
                     TicketCliente ticketCliente = new TicketCliente(
@@ -98,6 +98,8 @@ public class WindowTicketController {
                 }   else{
                     lblErro.setText("Nenhum vigilante em trabalho");
                 }
+            }   else{
+                lblErro.setText("Por favor, preencha todos os campos!");
             }
         }   else{
             lblErro.setText("CPF Inválido");
