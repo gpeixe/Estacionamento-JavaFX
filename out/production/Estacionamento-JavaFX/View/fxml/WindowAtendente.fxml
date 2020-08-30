@@ -68,7 +68,7 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="placaTf" layoutX="476.0" layoutY="182.0" prefHeight="30.0" prefWidth="314.0" promptText="Pesquisar Placa" AnchorPane.bottomAnchor="361.0">
+      <JFXTextField fx:id="placaTf" layoutX="476.0" layoutY="182.0" prefHeight="30.0" prefWidth="314.0" promptText="Pesquisar CPF" AnchorPane.bottomAnchor="361.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
