@@ -8,10 +8,14 @@ import Model.UseCases.AlteraPrecosUseCase;
 import Model.UseCases.RegistroAtendenteUseCase;
 import Model.UseCases.RegistroVigilanteUseCase;
 import Model.UseCases.VagasUseCase;
+import Utils.MaskFieldUtil;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
@@ -19,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -56,6 +61,9 @@ public class WindowAtendenteController {
     TableColumn<Vagas, String> cpfColum;
     @FXML
     PieChart graphVagas;
+
+    @FXML
+    JFXTextField filterCpf;
 
     RegistroVigilanteUseCase registroVigilanteUseCase;
     RegistroAtendenteUseCase registroAtendenteUseCase;
@@ -162,7 +170,32 @@ public class WindowAtendenteController {
 
     private void loadTableView() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
+
         values.setAll(vagasUseCase.readAll());
+
+        FilteredList<Vagas> filteredData = new FilteredList<>(values, b ->  true);
+
+        filterCpf.textProperty().addListener(((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(vaga -> {
+
+                if(newValue == null || newValue.isEmpty())
+                    return  true;
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(vaga.getCpf_ocupante().indexOf(lowerCaseFilter) != -1){
+                    return  true;
+                }
+                else
+                    return false;
+            });
+
+            SortedList<Vagas> sortedData = new SortedList<>(filteredData);
+
+            carrosEstacionadosTable.setItems(sortedData);
+
+        }));
+
     }
 
     public void deslogarVigilante(ActionEvent actionEvent) {
@@ -175,4 +208,8 @@ public class WindowAtendenteController {
         setVagasDisponiveis();
     }
 
+
+    public void searchCpfFormatter(KeyEvent keyEvent) {
+        MaskFieldUtil.cpfField(filterCpf);
+    }
 }

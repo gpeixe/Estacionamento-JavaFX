@@ -1,13 +1,16 @@
 package Controller;
 
+import Model.Entities.Funcionarios.Efuncao;
 import Model.Entities.Funcionarios.Funcionario;
 import Model.Entities.Mensalista.Mensalista;
 import Model.UseCases.FuncionarioUseCase;
 import Model.UseCases.MensalistaUseCase;
 import View.loaders.WindowFuncionario;
 import View.loaders.WindowMensalista;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -30,6 +33,9 @@ public class WindowCrudFuncionarioController {
     TableColumn<Funcionario, String> nomeColum;
     @FXML
     TableColumn<Funcionario, String> cpfColum;
+
+    @FXML
+    JFXTextField tfBuscaFuncionario;
 
     private ObservableList<Funcionario> values;
     private Funcionario funcionario;
@@ -67,5 +73,27 @@ public class WindowCrudFuncionarioController {
     private void loadTableView() throws SQLException {
         FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
         values.setAll(funcionarioUseCase.readAll());
+
+        FilteredList<Funcionario> filteredData = new FilteredList<>(values, b ->  true);
+
+        tfBuscaFuncionario.textProperty().addListener(((observable, oldValue, newValue) -> {
+                    filteredData.setPredicate(funcionario -> {
+
+                        if (newValue == null || newValue.isEmpty())
+                            return true;
+
+                        String lowerCaseFilter = newValue.toLowerCase();
+
+                        if (funcionario.getCpf().indexOf(lowerCaseFilter) != -1
+                                || funcionario.getNome().toLowerCase().indexOf(lowerCaseFilter) != -1
+                                || funcionario.getTelefone().indexOf(lowerCaseFilter) != -1
+                                || funcionario.getFuncao().toString().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                            return true;
+                        } else
+                            return false;
+                    });
+                }));
+
+            tableFuncionario.setItems(filteredData);
     }
 }
