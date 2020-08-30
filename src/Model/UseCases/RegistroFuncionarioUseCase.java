@@ -106,7 +106,6 @@ public abstract  class RegistroFuncionarioUseCase {
     protected String getCurrentTimeStampFormatted(){
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        System.out.println(now.format(formatter));
         return now.format(formatter);
 
     }
