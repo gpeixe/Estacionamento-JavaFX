@@ -85,7 +85,7 @@ public class WindowAdminController {
 
     public void setLblNumFuncionarios() throws SQLException {
         FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
-        lblNumFuncionarios.setText("Número de funcionários: "+ (funcionarioCRUDUseCase.numeroDeFuncionarios() - 1));
+        lblNumFuncionarios.setText("Número de funcionários: "+ funcionarioCRUDUseCase.numeroDeFuncionarios());
     }
 
     public void setLblNumMensalistas() throws SQLException {
