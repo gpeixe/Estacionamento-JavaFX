@@ -2,26 +2,19 @@ package Model.UseCases;
 
 import Model.Entities.Funcionarios.Funcionario;
 import Model.Entities.Funcionarios.Vigilante;
-import Utils.SqlConnection;
-import javafx.css.converter.DurationConverter;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.TimeZone;
 
 
-public class RegistroVigilanteUseCase extends RegistroFuncionarioUseCase{
+public class RegistroHoraVigilanteUseCase extends RegistroHoraFuncionarioUseCase {
 
 
     public void atualizaVigilante(Vigilante newVig){
 
         Vigilante currentVigilante = getCurrentVigilante();
 
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         String sql;
         try{
 
@@ -36,7 +29,7 @@ public class RegistroVigilanteUseCase extends RegistroFuncionarioUseCase{
 
             }
 
-            if(currentVigilante != null  && currentVigilante.getId() != newVig.getId()){
+            if(currentVigilante != null  && !currentVigilante.getId().equals(newVig.getId())){
 
                 super.registrarEntrada(newVig);
 
@@ -78,8 +71,8 @@ public class RegistroVigilanteUseCase extends RegistroFuncionarioUseCase{
 
             if(resultSet.next()){
                int idVigilante = resultSet.getInt(1);
-               FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-               return (Vigilante) funcionarioUseCase.read(idVigilante);
+               FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
+               return (Vigilante) funcionarioCRUDUseCase.read(idVigilante);
             }
 
         }

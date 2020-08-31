@@ -1,15 +1,13 @@
 package Controller;
 
-import Model.Entities.Funcionarios.Funcionario;
 import Model.Entities.Precos.Precos;
-import Model.UseCases.AlteraPrecosUseCase;
+import Model.UseCases.PrecosUseCase;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class PrecoController {
@@ -27,7 +25,7 @@ public class PrecoController {
     Label lblAviso;
 
     private Precos preco;
-    AlteraPrecosUseCase alteraPrecosUseCase = new AlteraPrecosUseCase();
+    PrecosUseCase precosUseCase = new PrecosUseCase();
 
     public void salvaPrecosEstacionamento() throws SQLException{
         String taxa30min = tfTaxa30min.getText();
@@ -39,9 +37,9 @@ public class PrecoController {
         if (!taxa30min.equals("") && !taxa1hr.equals("") && !taxaDemais.equals("") && !taxaPerNoite.equals("") && !taxaMensalista.equals("")){
             try {
                 if(preco!=null){
-                    alteraPrecosUseCase.update(new Precos(Double.parseDouble(taxa30min) , Double.parseDouble(taxa1hr), Double.parseDouble(taxaDemais), Double.parseDouble(taxaPerNoite), Double.parseDouble(taxaMensalista)));
+                    precosUseCase.update(new Precos(Double.parseDouble(taxa30min) , Double.parseDouble(taxa1hr), Double.parseDouble(taxaDemais), Double.parseDouble(taxaPerNoite), Double.parseDouble(taxaMensalista)));
                 }   else{
-                    alteraPrecosUseCase.save(new Precos(Double.parseDouble(taxa30min) , Double.parseDouble(taxa1hr), Double.parseDouble(taxaDemais), Double.parseDouble(taxaPerNoite), Double.parseDouble(taxaMensalista)));
+                    precosUseCase.save(new Precos(Double.parseDouble(taxa30min) , Double.parseDouble(taxa1hr), Double.parseDouble(taxaDemais), Double.parseDouble(taxaPerNoite), Double.parseDouble(taxaMensalista)));
                 }
                 ((Stage)tfTaxaDemaisHrs.getScene().getWindow()).close();
             }   catch (Exception e){
@@ -53,7 +51,7 @@ public class PrecoController {
     }
 
     public Precos readPrecos() throws SQLException {
-        return alteraPrecosUseCase.read();
+        return precosUseCase.read();
     }
 
     public void editaPrecos(Precos precos) throws SQLException {

@@ -1,8 +1,8 @@
 package Controller;
 
 import Model.Entities.Funcionarios.Administrador;
-import Model.UseCases.FuncionarioUseCase;
-import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.FuncionarioCRUDUseCase;
+import Model.UseCases.MensalistaCRUDUseCase;
 import Model.UseCases.VagasUseCase;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
@@ -84,13 +84,13 @@ public class WindowAdminController {
     }
 
     public void setLblNumFuncionarios() throws SQLException {
-        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-        lblNumFuncionarios.setText("Número de funcionários: "+ (funcionarioUseCase.numeroDeFuncionarios() - 1));
+        FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
+        lblNumFuncionarios.setText("Número de funcionários: "+ (funcionarioCRUDUseCase.numeroDeFuncionarios() - 1));
     }
 
     public void setLblNumMensalistas() throws SQLException {
-        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
-        lblNumMensalistas.setText("Número de mensalistas: "+mensalistaUseCase.numeroDeMensalistas());
+        MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
+        lblNumMensalistas.setText("Número de mensalistas: "+ mensalistaCRUDUseCase.numeroDeMensalistas());
     }
 
     public void setGraphVagas() throws SQLException {

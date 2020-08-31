@@ -13,10 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AlteraPrecosUseCase {
+public class PrecosUseCase {
     Connection connection;
 
-    public AlteraPrecosUseCase(){
+    public PrecosUseCase(){
         connection = SqlConnection.getConnection();
         if(connection == null) System.exit(1);
     }

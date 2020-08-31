@@ -1,11 +1,9 @@
 package Controller;
 import Model.Entities.Funcionarios.Vigilante;
-import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Ticket.TicketCliente;
-import Model.Entities.Ticket.TicketMensalista;
 import Model.Entities.Vagas.Vagas;
-import Model.UseCases.MensalistaUseCase;
-import Model.UseCases.RegistroVigilanteUseCase;
+import Model.UseCases.MensalistaCRUDUseCase;
+import Model.UseCases.RegistroHoraVigilanteUseCase;
 import Model.UseCases.TicketUseCase;
 import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
@@ -26,7 +24,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -68,13 +65,13 @@ public class WindowTicketController {
 
     private ObservableList<Vagas> values;
     private TicketUseCase ticketUseCase = new TicketUseCase();
-    private RegistroVigilanteUseCase registroVigilanteUseCase = new RegistroVigilanteUseCase();
-    private MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+    private RegistroHoraVigilanteUseCase registroHoraVigilanteUseCase = new RegistroHoraVigilanteUseCase();
+    private MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
 
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
         if(ValidaCPF.isCPF(tfCpfCliente.getText())){
             if(!tfVagaOcupada.getText().equals("") && !tfPlacaCliente.getText().equals("") && !tfContatoCliente.getText().equals("") && tfContatoCliente.getText().length() >= 13 && !taDescCarroCliente.getText().equals("")){
-                Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
+                Vigilante vigilante = registroHoraVigilanteUseCase.getCurrentVigilante();
                 if(vigilante!=null) {
                     TicketCliente ticketCliente = new TicketCliente(
                             tfPlacaCliente.getText(),

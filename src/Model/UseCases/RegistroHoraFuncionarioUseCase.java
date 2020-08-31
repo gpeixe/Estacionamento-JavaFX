@@ -14,10 +14,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 
-public class RegistroFuncionarioUseCase {
+public class RegistroHoraFuncionarioUseCase {
     Connection connection;
 
-    public RegistroFuncionarioUseCase(){
+    public RegistroHoraFuncionarioUseCase(){
         Calendar calendar = Calendar.getInstance();
         connection = SqlConnection.getConnection();
         if(connection == null) System.exit(1);

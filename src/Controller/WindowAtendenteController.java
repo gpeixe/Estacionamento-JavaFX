@@ -63,8 +63,8 @@ public class WindowAtendenteController {
     @FXML
     JFXTextField filterCpf;
 
-    RegistroVigilanteUseCase registroVigilanteUseCase;
-    RegistroFuncionarioUseCase registroAtendenteUseCase;
+    RegistroHoraVigilanteUseCase registroHoraVigilanteUseCase;
+    RegistroHoraFuncionarioUseCase registroAtendenteUseCase;
 
     private ObservableList<Vagas> values;
 
@@ -77,7 +77,7 @@ public class WindowAtendenteController {
     public void openTelaEntradaVigilante(ActionEvent actionEvent) {
         WindowLogin w = new WindowLogin();
         w.startModal(true);
-        setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
+        setCurrentVigilante(registroHoraVigilanteUseCase.getCurrentVigilante());
     }
 
     public void openTelaCRUDMensalista(ActionEvent actionEvent) throws SQLException {
@@ -122,8 +122,8 @@ public class WindowAtendenteController {
     }
 
     public void setLabelPrecos() throws SQLException {
-        AlteraPrecosUseCase alteraPrecosUseCase = new AlteraPrecosUseCase();
-        Precos precos = alteraPrecosUseCase.read();
+        PrecosUseCase precosUseCase = new PrecosUseCase();
+        Precos precos = precosUseCase.read();
         if(precos != null){
             labelTrintaMinutos.setText(labelTrintaMinutos.getText()+" R$ "+precos.getPreco30min());
             labelUmaHora.setText(labelUmaHora.getText()+" R$ "+precos.getPreco1hr());
@@ -163,9 +163,9 @@ public class WindowAtendenteController {
         cpfColum.setCellValueFactory(new PropertyValueFactory<>("cpf_ocupante"));
         values = FXCollections.observableArrayList();
         carrosEstacionadosTable.setItems(values);
-        this.registroVigilanteUseCase = new RegistroVigilanteUseCase();
-        this.registroAtendenteUseCase = new RegistroFuncionarioUseCase();
-        setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
+        this.registroHoraVigilanteUseCase = new RegistroHoraVigilanteUseCase();
+        this.registroAtendenteUseCase = new RegistroHoraFuncionarioUseCase();
+        setCurrentVigilante(registroHoraVigilanteUseCase.getCurrentVigilante());
         loadTableView();
     }
 
@@ -201,7 +201,7 @@ public class WindowAtendenteController {
 
     public void deslogarVigilante(ActionEvent actionEvent) {
         if(this.currentVigilante != null){
-            this.registroVigilanteUseCase.registrarSaida(this.currentVigilante);
+            this.registroHoraVigilanteUseCase.registrarSaida(this.currentVigilante);
             setCurrentVigilante(null);
         }
     }

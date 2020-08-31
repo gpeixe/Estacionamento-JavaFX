@@ -3,8 +3,8 @@ package Controller;
 import Model.Entities.Funcionarios.Vigilante;
 import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Ticket.TicketMensalista;
-import Model.UseCases.MensalistaUseCase;
-import Model.UseCases.RegistroVigilanteUseCase;
+import Model.UseCases.MensalistaCRUDUseCase;
+import Model.UseCases.RegistroHoraVigilanteUseCase;
 import Model.UseCases.TicketUseCase;
 import Utils.MaskFieldUtil;
 import Utils.ValidaCPF;
@@ -36,23 +36,23 @@ public class WindowEntradaMensalistaController {
     @FXML
     Label lblAviso;
 
-    private RegistroVigilanteUseCase registroVigilanteUseCase = new RegistroVigilanteUseCase();
-    private MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+    private RegistroHoraVigilanteUseCase registroHoraVigilanteUseCase = new RegistroHoraVigilanteUseCase();
+    private MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
     private TicketUseCase ticketUseCase = new TicketUseCase();
 
     public void geraTicketMensalista(ActionEvent actionEvent) throws SQLException {
         String cpf = tftCPFEntradaMensalista.getText();
         if(ValidaCPF.isCPF(cpf)){
-            Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
+            Vigilante vigilante = registroHoraVigilanteUseCase.getCurrentVigilante();
             if(vigilante!=null){
                 if (!tftPlacaMensalista.getText().equals("") && !taDescCarroMensalista.getText().equals("")) {
-                    Mensalista mensalista = mensalistaUseCase.getMensalistaByCpf(cpf);
+                    Mensalista mensalista = mensalistaCRUDUseCase.getMensalistaByCpf(cpf);
                     TicketMensalista ticketMensalista = new TicketMensalista(
                             tftPlacaMensalista.getText(),
                             new Date(),
                             null,
                             taDescCarroMensalista.getText(),
-                            registroVigilanteUseCase.getCurrentVigilante().getId(),
+                            registroHoraVigilanteUseCase.getCurrentVigilante().getId(),
                             mensalista.getId());
                     ticketMensalista.setId(ticketUseCase.idProximoTicketMensalista());
                     ticketUseCase.saveMensalistaTicket(ticketMensalista);

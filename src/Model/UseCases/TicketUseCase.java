@@ -12,9 +12,6 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.time.Duration;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileNotFoundException;
@@ -23,12 +20,11 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class TicketUseCase {
     Connection connection;
-    private RegistroVigilanteUseCase registroVigilanteUseCase = new RegistroVigilanteUseCase();
-    private AlteraPrecosUseCase alteraPrecosUseCase = new AlteraPrecosUseCase();
+    private RegistroHoraVigilanteUseCase registroHoraVigilanteUseCase = new RegistroHoraVigilanteUseCase();
+    private PrecosUseCase precosUseCase = new PrecosUseCase();
     public TicketUseCase(){
         connection = SqlConnection.getConnection();
         if(connection == null) System.exit(1);
@@ -111,7 +107,7 @@ public class TicketUseCase {
     }
 
     public void pagamentoCliente(String cpf) throws SQLException {
-        Precos precos = alteraPrecosUseCase.read();
+        Precos precos = precosUseCase.read();
         TicketCliente ticketCliente = getOpenClienteTicketByCpf(cpf);
         ticketCliente.setHorarioSaida(new Date());
         Long different = Math.abs(ticketCliente.getHorarioSaida().getTime() - ticketCliente.getHorarioEntrada().getTime() );
@@ -175,7 +171,7 @@ public class TicketUseCase {
 
     public TicketMensalista getOpenMensalistaTicketByCpf(String cpf){
         PreparedStatement preparedStatement;
-        TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroHoraVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_mensalista t " +
                 "join mensalista m on t.id_mensalista = m.id  " +
@@ -200,7 +196,7 @@ public class TicketUseCase {
 
     public TicketMensalista getMensalistaTicketById(int id){
         PreparedStatement preparedStatement;
-        TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroHoraVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_mensalista WHERE id = ?";
         try{
@@ -224,7 +220,7 @@ public class TicketUseCase {
 
     public TicketCliente getOpenClienteTicketByCpf(String cpf){
         PreparedStatement preparedStatement;
-        TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroHoraVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_cliente " +
                 "WHERE cpf = ? and horarioSaida is null";
@@ -250,7 +246,7 @@ public class TicketUseCase {
 
     public TicketCliente getClienteTicketById(int id){
         PreparedStatement preparedStatement;
-        TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
+        TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroHoraVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_cliente " +
                 "WHERE id = ?";

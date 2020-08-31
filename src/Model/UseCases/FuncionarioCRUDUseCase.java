@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuncionarioUseCase {
+public class FuncionarioCRUDUseCase {
     Connection connection;
 
-    public FuncionarioUseCase(){
+    public FuncionarioCRUDUseCase(){
         connection = SqlConnection.getConnection();
         if(connection == null) System.exit(1);
     }

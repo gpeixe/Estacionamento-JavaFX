@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,7 +34,9 @@ public class WindowAtendente {
             stage.setScene(scene);
             stage.setTitle("Funcionário");
             stage.setResizable(false);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
+
 
         } catch (IOException | SQLException e) {
             e.printStackTrace();

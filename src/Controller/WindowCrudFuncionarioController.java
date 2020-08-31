@@ -1,12 +1,8 @@
 package Controller;
 
-import Model.Entities.Funcionarios.Efuncao;
 import Model.Entities.Funcionarios.Funcionario;
-import Model.Entities.Mensalista.Mensalista;
-import Model.UseCases.FuncionarioUseCase;
-import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.FuncionarioCRUDUseCase;
 import View.loaders.WindowFuncionario;
-import View.loaders.WindowMensalista;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,8 +49,8 @@ public class WindowCrudFuncionarioController {
     }
 
     public void removeFuncionario(ActionEvent actionEvent) throws SQLException {
-        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-        funcionarioUseCase.delete(tableFuncionario.getSelectionModel().getSelectedItem().getId());
+        FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
+        funcionarioCRUDUseCase.delete(tableFuncionario.getSelectionModel().getSelectedItem().getId());
         loadTableView();
     }
 
@@ -71,8 +67,8 @@ public class WindowCrudFuncionarioController {
     }
 
     private void loadTableView() throws SQLException {
-        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
-        values.setAll(funcionarioUseCase.readAll());
+        FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
+        values.setAll(funcionarioCRUDUseCase.readAll());
 
         FilteredList<Funcionario> filteredData = new FilteredList<>(values, b ->  true);
 

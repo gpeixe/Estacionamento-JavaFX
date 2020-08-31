@@ -1,8 +1,7 @@
 package Controller;
 
 import Model.Entities.Funcionarios.*;
-import Model.Entities.Mensalista.Mensalista;
-import Model.UseCases.FuncionarioUseCase;
+import Model.UseCases.FuncionarioCRUDUseCase;
 import Utils.MaskFieldUtil;
 import Utils.ValidaCPF;
 import com.jfoenix.controls.JFXButton;
@@ -44,32 +43,32 @@ public class FuncionarioController {
         String senha = tfSenhaFuncionario.getText();
         String endereco = tfEnderecoFuncionario.getText();
         String telefone = tfTelefoneFuncionario.getText();
-        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
+        FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
 
-        if(ValidaCPF.isCPF(cpf) && funcionarioUseCase.verificaCadastrado(cpf)){ //Valida se o CPF é válido
+        if(ValidaCPF.isCPF(cpf) && funcionarioCRUDUseCase.verificaCadastrado(cpf)){ //Valida se o CPF é válido
             if(!nome.equals("") && !senha.equals("") && !endereco.equals("") && !telefone.equals("") && telefone.length()>=13){ //Valida se todos os campos foram preenchidos
                 if(funcionarioFuncionario!=null){
                     switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
                         case "Atendente":
-                            funcionarioUseCase.update(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE, funcionarioFuncionario.getId()));
+                            funcionarioCRUDUseCase.update(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE, funcionarioFuncionario.getId()));
                             break;
                         case "Vigilante":
-                            funcionarioUseCase.update(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE, funcionarioFuncionario.getId()));
+                            funcionarioCRUDUseCase.update(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE, funcionarioFuncionario.getId()));
                             break;
                         case "Administrador":
-                            funcionarioUseCase.update(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN, funcionarioFuncionario.getId()));
+                            funcionarioCRUDUseCase.update(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN, funcionarioFuncionario.getId()));
                             break;
                     }
                 }   else{
                     switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
                         case "Atendente":
-                            funcionarioUseCase.save(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE));
+                            funcionarioCRUDUseCase.save(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE));
                             break;
                         case "Vigilante":
-                            funcionarioUseCase.save(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE));
+                            funcionarioCRUDUseCase.save(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE));
                             break;
                         case "Administrador":
-                            funcionarioUseCase.save(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN));
+                            funcionarioCRUDUseCase.save(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN));
                             break;
                     }
                 }

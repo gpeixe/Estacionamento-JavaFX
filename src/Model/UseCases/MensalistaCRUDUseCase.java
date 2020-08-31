@@ -10,16 +10,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MensalistaUseCase {
+public class MensalistaCRUDUseCase {
     Connection connection;
 
-    public MensalistaUseCase(){
+    public MensalistaCRUDUseCase(){
         connection = SqlConnection.getConnection();
         if(connection == null) System.exit(1);
     }
 
-    public void save(Mensalista mensalista) throws SQLException{
-        PreparedStatement preparedStatement = null;
+    public void save(Mensalista mensalista){
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
         String sql = "INSERT INTO Mensalista(empresa, nome, cpf, telefone, vagaOcupada) VALUES(?,?,?,?,?)";
         try{
@@ -37,8 +37,8 @@ public class MensalistaUseCase {
         }
     }
 
-    public void update(Mensalista mensalista) throws SQLException{
-        PreparedStatement preparedStatement = null;
+    public void update(Mensalista mensalista){
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
         String sql = "UPDATE Mensalista SET empresa = ?, nome = ?, cpf = ?, telefone = ?, vagaOcupada = ? WHERE id = ?";
         try{
@@ -56,8 +56,8 @@ public class MensalistaUseCase {
     }
 
 
-    public Mensalista read(Integer key) throws SQLException{
-        PreparedStatement preparedStatement = null;
+    public Mensalista read(Integer key){
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
         String sql = "SELECT * FROM Mensalista WHERE id = ?";
         Mensalista mensalista = null;

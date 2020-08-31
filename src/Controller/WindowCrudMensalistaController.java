@@ -1,15 +1,13 @@
 package Controller;
 
 import Model.Entities.Mensalista.Mensalista;
-import Model.Entities.Vagas.Vagas;
-import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.MensalistaCRUDUseCase;
 import Model.UseCases.VagasUseCase;
 import View.loaders.WindowMensalista;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -52,8 +50,8 @@ public class WindowCrudMensalistaController {
     }
 
     public void removeMensalista(ActionEvent actionEvent) throws SQLException {
-        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
-        mensalistaUseCase.delete(tableMensalista.getSelectionModel().getSelectedItem().getId());
+        MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
+        mensalistaCRUDUseCase.delete(tableMensalista.getSelectionModel().getSelectedItem().getId());
         VagasUseCase vagasUseCase = new VagasUseCase();
         vagasUseCase.setVagaFree(tableMensalista.getSelectionModel().getSelectedItem().getCpf());
         loadTableView();
@@ -71,9 +69,9 @@ public class WindowCrudMensalistaController {
     }
 
     private void loadTableView() throws SQLException {
-        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+        MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
 
-        values.setAll(mensalistaUseCase.readAll());
+        values.setAll(mensalistaCRUDUseCase.readAll());
 
         FilteredList<Mensalista> filteredData = new FilteredList<>(values, b ->  true);
 

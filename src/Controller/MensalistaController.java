@@ -1,10 +1,8 @@
 package Controller;
 
-import Model.Entities.Funcionarios.Funcionario;
 import Model.Entities.Mensalista.Mensalista;
 import Model.Entities.Vagas.Vagas;
-import Model.UseCases.LoginUseCase;
-import Model.UseCases.MensalistaUseCase;
+import Model.UseCases.MensalistaCRUDUseCase;
 import Model.UseCases.VagasUseCase;
 import Utils.MaskFieldUtil;
 import Utils.ValidaCPF;
@@ -17,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -54,16 +51,16 @@ public class MensalistaController {
         String vaga = tfVagaOcupada.getText();
         String empresa = tfEmpresaVincMensalista.getText();
         String telefone = tfTelefoneMensalista.getText();
-        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+        MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
 
-        if(ValidaCPF.isCPF(cpf) && mensalistaUseCase.verificaCadastrado(cpf)){ //Valida CPF
+        if(ValidaCPF.isCPF(cpf) && mensalistaCRUDUseCase.verificaCadastrado(cpf)){ //Valida CPF
             if(!nome.equals("") && !vaga.equals("") && !telefone.equals("") && telefone.length()>=13){
                 if(mensalistaMensalista != null){
                     Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga), mensalistaMensalista.getId());
-                    mensalistaUseCase.update(mensalista);
+                    mensalistaCRUDUseCase.update(mensalista);
                 }   else {
                     Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga));
-                    mensalistaUseCase.save(mensalista);
+                    mensalistaCRUDUseCase.save(mensalista);
                 }
                 ((Stage)tfCPFMensalista.getScene().getWindow()).close();
             }   else{
