@@ -9,9 +9,12 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.io.File;
+import java.text.DateFormat;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.*;
@@ -28,8 +31,8 @@ public class TicketUseCase {
         if(connection == null) System.exit(1);
     }
 
-    public void saveClientTicket(TicketCliente ticket) throws SQLException {
-        PreparedStatement preparedStatement = null;
+    public void saveClientTicket(TicketCliente ticket)  {
+        PreparedStatement preparedStatement;
         String sqlTicket = "INSERT INTO Ticket_Cliente(horarioEntrada, placa, descricaoCarro, idVigilante, telefone, pernoite, cpf) VALUES(?,?,?,?,?,?,?)";
         try{
             String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticket.getHorarioEntrada());
@@ -47,8 +50,8 @@ public class TicketUseCase {
         }
     }
 
-    public void saveMensalistaTicket(TicketMensalista ticket) throws SQLException {
-        PreparedStatement preparedStatement = null;
+    public void saveMensalistaTicket(TicketMensalista ticket)  {
+        PreparedStatement preparedStatement;
         String sqlTicket = "INSERT INTO Ticket_Mensalista(horarioEntrada, idVigilante, id_mensalista, placa, descricaoCarro) VALUES(?,?,?,?,?)";
         try{
             String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticket.getHorarioEntrada());
@@ -64,8 +67,8 @@ public class TicketUseCase {
         }
     }
 
-    public boolean isMensalistaTicket(String cpf) throws SQLException{
-        PreparedStatement preparedStatement = null;
+    public boolean isMensalistaTicket(String cpf){
+        PreparedStatement preparedStatement;
         int id = 0;
         ResultSet resultSet = null;
         String sql = "SELECT t.id FROM ticket_mensalista t " +
@@ -82,11 +85,11 @@ public class TicketUseCase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return (id ==0 ? false : true);
+        return (id != 0 );
     }
 
-    public boolean isClienteTicket(String cpf) throws SQLException{
-        PreparedStatement preparedStatement = null;
+    public boolean isClienteTicket(String cpf) {
+        PreparedStatement preparedStatement;
         int id = 0;
         ResultSet resultSet = null;
         String sql = "SELECT id FROM ticket_cliente WHERE cpf = ? and horarioSaida is null";
@@ -101,7 +104,7 @@ public class TicketUseCase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return (id ==0 ? false : true);
+        return (id != 0 );
     }
 
     public void pagamentoCliente(String cpf) throws SQLException {
@@ -109,12 +112,16 @@ public class TicketUseCase {
         TicketCliente ticketCliente = getOpenClienteTicketByCpf(cpf);
         ticketCliente.setHorarioSaida(new Date());
         Long different = Math.abs(ticketCliente.getHorarioEntrada().getTime() - ticketCliente.getHorarioSaida().getTime());
+        ticketCliente.setTempo(different);
         Long secondsInMilli = (long)1000;
         Long minutesInMilli = secondsInMilli * 60;
         Long hoursInMilli = minutesInMilli * 60;
         Long elapsedHours = (different / hoursInMilli)/360000;
 
-        if(elapsedHours <= 0.5){
+        if(ticketCliente.isPernoite()){
+            ticketCliente.setValorTotal(precos.getPrecoPerNoite());
+        }
+        else if(elapsedHours <= 0.5){
             ticketCliente.setValorTotal(precos.getPreco30min());
         } else if (elapsedHours <= 1.083){
             ticketCliente.setValorTotal(precos.getPreco1hr());
@@ -126,15 +133,16 @@ public class TicketUseCase {
         }
 
 
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
-        String sql = "UPDATE ticket_cliente SET horarioSaida = ?, valorTotal = ? WHERE cpf = ? and horarioSaida is null";
+        String sql = "UPDATE ticket_cliente SET horarioSaida = ?, tempo = ?, valorTotal = ? WHERE cpf = ? and horarioSaida is null";
         try{
             String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticketCliente.getHorarioSaida());
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, currentTimeStamp);
-            preparedStatement.setDouble(2, ticketCliente.getValorTotal());
-            preparedStatement.setString(3, cpf);
+            preparedStatement.setLong(2, ticketCliente.getTempo());
+            preparedStatement.setDouble(3, ticketCliente.getValorTotal());
+            preparedStatement.setString(4, cpf);
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -142,18 +150,20 @@ public class TicketUseCase {
         }
     }
 
-    public void saidaMensalista(String cpf) throws SQLException {
+    public void saidaMensalista(String cpf)  {
         TicketMensalista ticketMensalista = getOpenMensalistaTicketByCpf(cpf);
         ticketMensalista.setHorarioSaida(new Date());
-
-        PreparedStatement preparedStatement = null;
+        Long different = Math.abs(ticketMensalista.getHorarioEntrada().getTime() - ticketMensalista.getHorarioSaida().getTime());
+        ticketMensalista.setTempo(different);
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
-        String sql = "UPDATE ticket_mensalista SET horarioSaida = ? WHERE id_mensalista = ? and horarioSaida is null";
+        String sql = "UPDATE ticket_mensalista SET horarioSaida = ?, tempo = ? WHERE id_mensalista = ? and horarioSaida is null";
         try{
             String currentTimeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(ticketMensalista.getHorarioSaida());
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, currentTimeStamp);
-            preparedStatement.setInt(2, ticketMensalista.getIdMensalista());
+            preparedStatement.setLong(2, ticketMensalista.getTempo());
+            preparedStatement.setInt(3, ticketMensalista.getIdMensalista());
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -162,12 +172,12 @@ public class TicketUseCase {
     }
 
     public TicketMensalista getOpenMensalistaTicketByCpf(String cpf){
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_mensalista t " +
                 "join mensalista m on t.id_mensalista = m.id  " +
-                "WHERE m.cpf = ? and horarioSaida is null";;
+                "WHERE m.cpf = ? and horarioSaida is null";
         try{
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, cpf);
@@ -187,7 +197,7 @@ public class TicketUseCase {
     }
 
     public TicketMensalista getMensalistaTicketById(int id){
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         TicketMensalista ticketMensalista = new TicketMensalista(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_mensalista WHERE id = ?";
@@ -211,7 +221,7 @@ public class TicketUseCase {
     }
 
     public TicketCliente getOpenClienteTicketByCpf(String cpf){
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_cliente " +
@@ -237,7 +247,7 @@ public class TicketUseCase {
     }
 
     public TicketCliente getClienteTicketById(int id){
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         TicketCliente ticketCliente = new TicketCliente(null, null, null, null, registroVigilanteUseCase.getCurrentVigilante().getId());
         ResultSet resultSet = null;
         String sql = "SELECT * FROM ticket_cliente " +
@@ -331,4 +341,76 @@ public class TicketUseCase {
             e.printStackTrace();
         }
     }
+
+    public List<TicketMensalista> getAllMensalistaTicketsOnDate(String date) {
+        List<TicketMensalista> tickets = new ArrayList<>();
+        try {
+            TicketMensalista ticketMensalista = new TicketMensalista();
+            String sql = "SELECT * FROM ticket_mensalista WHERE horarioSaida IS NOT NULL and horarioEntrada LIKE ?";
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, date + "%");
+                ResultSet rs = preparedStatement.executeQuery();
+
+                while (rs.next()) {
+                    ticketMensalista.setId(rs.getInt("id"));
+                    ticketMensalista.setIdMensalista(rs.getInt("id_mensalista"));
+                    ticketMensalista.setPlaca(rs.getString("placa"));
+                    ticketMensalista.setDescricaoCarro(rs.getString("descricaoCarro"));
+                    ticketMensalista.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
+                    ticketMensalista.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioSaida")));
+                    ticketMensalista.setIdVigilante(rs.getInt("idVigilante"));
+                    ticketMensalista.setTempo(rs.getLong("tempo"));
+                    tickets.add(ticketMensalista);
+                }
+
+                return tickets;
+            } catch (SQLException | ParseException e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tickets;
+    }
+
+    public List<TicketCliente> getAllClienteTicketsOnDate(String date) {
+        List<TicketCliente> tickets = new ArrayList<>();
+        try {
+
+            String sql = "SELECT * FROM ticket_cliente WHERE horarioSaida IS NOT NULL and horarioEntrada LIKE ?";
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, date + "%");
+                ResultSet rs = preparedStatement.executeQuery();
+
+                while (rs.next()) {
+                    TicketCliente ticketCliente = new TicketCliente();
+                    ticketCliente.setId(rs.getInt("id"));
+                    ticketCliente.setCpf(rs.getString("cpf"));
+                    ticketCliente.setPernoite(rs.getBoolean("pernoite"));
+                    ticketCliente.setPlaca(rs.getString("placa"));
+                    ticketCliente.setTelefone(rs.getString("telefone"));
+                    ticketCliente.setValorTotal(rs.getDouble("valorTotal"));
+                    ticketCliente.setDescricaoCarro(rs.getString("descricaoCarro"));
+                    ticketCliente.setHorarioEntrada(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioEntrada")));
+                    ticketCliente.setHorarioSaida(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(rs.getString("horarioSaida")));
+                    ticketCliente.setTempo(rs.getLong("tempo"));
+                    tickets.add(ticketCliente);
+                }
+
+                return tickets;
+            } catch (SQLException | ParseException e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tickets;
+    }
+
 }

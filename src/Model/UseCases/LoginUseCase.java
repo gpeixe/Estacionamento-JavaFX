@@ -42,9 +42,6 @@ public class LoginUseCase {
 
             return  null;
 
-        } finally {
-            preparedStatement.close();
-            resultSet.close();
         }
 
     }

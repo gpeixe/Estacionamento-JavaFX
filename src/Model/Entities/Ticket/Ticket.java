@@ -9,6 +9,18 @@ public abstract class Ticket {
     private Date horarioSaida;
     private String descricaoCarro;
     private int idVigilante;
+    private long tempo;
+    private String tempoFormatted = this.getTempoFormatted();
+
+    public long getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(long tempo) {
+        this.tempo = tempo;
+    }
+
+    public Ticket(){}
 
     public Ticket(String placa, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante) {
         this.placa = placa;
@@ -63,6 +75,26 @@ public abstract class Ticket {
     }
 
     public void setHorarioSaida(Date horarioSaida) {
+
         this.horarioSaida = horarioSaida;
+    }
+
+    public String getTempoFormatted() {
+
+        long difference_In_Seconds
+                = (this.getTempo()
+                / 1000)
+                % 60;
+
+        long difference_In_Minutes
+                = (this.getTempo()
+                / (1000 * 60))
+                % 60;
+
+        long difference_In_Hours
+                = (this.getTempo()
+                / (1000 * 60 * 60))
+                % 24;
+        return difference_In_Hours + ":" + difference_In_Minutes + ":" + difference_In_Seconds;
     }
 }

@@ -9,7 +9,7 @@
    <children>
       <Pane prefHeight="64.0" prefWidth="560.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="170.0" layoutY="9.0" text="Pagamento" textFill="WHITE">
+            <Label layoutX="170.0" layoutY="9.0" text="Ticket Saída" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="32.0" />
                </font>

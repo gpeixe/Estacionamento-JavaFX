@@ -9,15 +9,13 @@ public class TicketCliente extends Ticket {
     private boolean isPernoite;
     private String telefone;
     private String cpf;
-
+    public TicketCliente(){}
     public TicketCliente(String placa, String telefone, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante, double valorTotal, double valorNoite, boolean isPernoite) {
         super(placa, horarioEntrada, horarioSaida, descricaoCarro, idVigilante);
         this.isPernoite = isPernoite;
         this.valorTotal = valorTotal;
         this.valorNoite = valorNoite;
-        this.isPernoite = isPernoite;
         this.telefone = telefone;
-        this.cpf = cpf;
     }
 
     public TicketCliente(String placa, Date horarioEntrada, Date horarioSaida, String descricaoCarro, int idVigilante) {
@@ -33,7 +31,7 @@ public class TicketCliente extends Ticket {
                 "   Descrição do Carro: '" + super.getDescricaoCarro() + '\'' + '\n' +
                 "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
                 "   Valor Total: R$" + valorTotal + '\n' +
-                "   É pernoite: " + (isPernoite == true? "Sim" : "Não") + '\n' +
+                "   É pernoite: " + (isPernoite ? "Sim" : "Não") + '\n' +
                 "   Telefone: '" + telefone + '\n' +
                 "   CPF: '" + cpf + '\n' ;
     }
@@ -44,7 +42,7 @@ public class TicketCliente extends Ticket {
                 "   Horario de Entrada: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format( super.getHorarioEntrada()) + '\n' +
                 "   Descrição do Carro: '" + super.getDescricaoCarro() + '\'' + '\n' +
                 "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
-                "   É pernoite: " + (isPernoite == true? "Sim" : "Não") + '\n' +
+                "   É pernoite: " + (isPernoite ? "Sim" : "Não") + '\n' +
                 "   CPF: '" + cpf + '\n' ;
     }
 
