@@ -297,4 +297,38 @@ public class TicketUseCase {
             e.printStackTrace();
         }
     }
+
+    public void generateEnterTicketPdf(TicketCliente ticket){
+        Document doc = new Document();
+        FileChooser f = new FileChooser();
+        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
+        File file = f.showSaveDialog(new Stage());
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            doc.open();
+            doc.add(new Paragraph(ticket.toStringEnter()));
+            doc.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void generateEnterTicketPdf(TicketMensalista ticket){
+        Document doc = new Document();
+        FileChooser f = new FileChooser();
+        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
+        File file = f.showSaveDialog(new Stage());
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            doc.open();
+            doc.add(new Paragraph(ticket.toStringEnter()));
+            doc.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -93,15 +93,16 @@ public class WindowTicketController {
                     /*Salvando a vaga*/
                     VagasUseCase vagasUseCase = new VagasUseCase();
                     vagasUseCase.setVaga(tfCpfCliente.getText(), Integer.parseInt(tfVagaOcupada.getText()));
+                    ticketUseCase.generateEnterTicketPdf(ticketCliente);
                     /*Fecha a aba*/
                     ((Stage) btnGerarTicket.getScene().getWindow()).close();
-                }   else{
+                } else{
                     lblErro.setText("Nenhum vigilante em trabalho");
                 }
-            }   else{
+            } else{
                 lblErro.setText("Por favor, preencha todos os campos!");
             }
-        }   else{
+        } else{
             lblErro.setText("CPF Inválido");
         }
     }

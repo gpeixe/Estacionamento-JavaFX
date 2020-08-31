@@ -26,6 +26,15 @@ public class TicketMensalista extends Ticket {
                 "   Id do Mensalista: " + idMensalista ;
     }
 
+    public String toStringEnter() {
+        return "Ticket Mensalista #" + super.getId() + '\n' +
+                "   Placa: " + super.getPlaca() + '\n' +
+                "   Horario de Entrada: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format( super.getHorarioEntrada()) + '\n' +
+                "   Descrição do Carro: " + super.getDescricaoCarro() + '\'' + '\n' +
+                "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
+                "   Id do Mensalista: " + idMensalista ;
+    }
+
     public int getIdMensalista() {
         return idMensalista;
     }

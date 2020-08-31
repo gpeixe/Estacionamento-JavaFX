@@ -38,6 +38,16 @@ public class TicketCliente extends Ticket {
                 "   CPF: '" + cpf + '\n' ;
     }
 
+    public String toStringEnter() {
+        return "Ticket Cliente #" + super.getId() + '\n' +
+                "   Placa: '" + super.getPlaca() + '\n' +
+                "   Horario de Entrada: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format( super.getHorarioEntrada()) + '\n' +
+                "   Descrição do Carro: '" + super.getDescricaoCarro() + '\'' + '\n' +
+                "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
+                "   É pernoite: " + (isPernoite == true? "Sim" : "Não") + '\n' +
+                "   CPF: '" + cpf + '\n' ;
+    }
+
     public double getValorTotal() {
         return valorTotal;
     }

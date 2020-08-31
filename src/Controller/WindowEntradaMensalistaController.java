@@ -43,21 +43,27 @@ public class WindowEntradaMensalistaController {
     public void geraTicketMensalista(ActionEvent actionEvent) throws SQLException {
         String cpf = tftCPFEntradaMensalista.getText();
         if(ValidaCPF.isCPF(cpf)){
-            if(!tftPlacaMensalista.getText().equals("") && !taDescCarroMensalista.getText().equals("")){
-                Mensalista mensalista = mensalistaUseCase.getMensalistaByCpf(cpf);
-                TicketMensalista ticketMensalista = new TicketMensalista(
-                        tftPlacaMensalista.getText(),
-                        new Date(),
-                        null,
-                        taDescCarroMensalista.getText(),
-                        registroVigilanteUseCase.getCurrentVigilante().getId(),
-                        mensalista.getId());
-                ticketUseCase.saveMensalistaTicket(ticketMensalista);
-                ((Stage)btnGeraTicketMensalista.getScene().getWindow()).close();
-            }   else{
-                lblAviso.setText("Por favor, preencha todos os campos!");
+            Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
+            if(vigilante!=null){
+                if (!tftPlacaMensalista.getText().equals("") && !taDescCarroMensalista.getText().equals("")) {
+                    Mensalista mensalista = mensalistaUseCase.getMensalistaByCpf(cpf);
+                    TicketMensalista ticketMensalista = new TicketMensalista(
+                            tftPlacaMensalista.getText(),
+                            new Date(),
+                            null,
+                            taDescCarroMensalista.getText(),
+                            registroVigilanteUseCase.getCurrentVigilante().getId(),
+                            mensalista.getId());
+                    ticketUseCase.saveMensalistaTicket(ticketMensalista);
+                    ticketUseCase.generateEnterTicketPdf(ticketMensalista);
+                    ((Stage) btnGeraTicketMensalista.getScene().getWindow()).close();
+                } else {
+                    lblAviso.setText("Por favor, preencha todos os campos!");
+                }
+            } else{
+                lblAviso.setText("Nenhum vigilante em trabalho");
             }
-        }   else{
+        } else{
             lblAviso.setText("Por favor, digite um CPF válido!");
         }
     }
