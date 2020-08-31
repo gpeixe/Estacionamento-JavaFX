@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="565.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
+<AnchorPane prefHeight="565.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAtendenteController">
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -68,42 +72,42 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="filterCpf" onKeyTyped="#searchCpfFormatter" layoutX="476.0" layoutY="182.0" prefHeight="30.0" prefWidth="314.0" promptText="Pesquisar CPF" AnchorPane.bottomAnchor="361.0">
+      <JFXTextField fx:id="filterCpf" layoutX="476.0" layoutY="182.0" onKeyTyped="#searchCpfFormatter" prefHeight="30.0" prefWidth="314.0" promptText="Pesquisar CPF" AnchorPane.bottomAnchor="361.0">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </JFXTextField>
-      <Label fx:id="labelPreco" layoutX="882.0" layoutY="187.0" text="Preços">
+      <Label fx:id="labelPreco" layoutX="889.0" layoutY="182.0" text="Preços">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="labelTrintaMinutos" layoutX="801.0" layoutY="217.0" prefHeight="22.0" prefWidth="233.0" text="30 minutos:" AnchorPane.rightAnchor="21.0">
+      <Label fx:id="labelTrintaMinutosText" layoutX="801.0" layoutY="217.0" prefHeight="22.0" prefWidth="94.0" text="30 minutos:" AnchorPane.rightAnchor="160.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelUmaHora" layoutX="801.0" layoutY="239.0" prefHeight="22.0" prefWidth="233.0" text="1 hora:" AnchorPane.rightAnchor="21.0">
+      <Label fx:id="labelUmaHoraTexto" layoutX="801.0" layoutY="239.0" prefHeight="22.0" prefWidth="94.0" text="Uma hora:" AnchorPane.rightAnchor="160.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelDemaisHoras" layoutX="801.0" layoutY="261.0" prefHeight="22.0" prefWidth="233.0" text="Demais horas:" AnchorPane.rightAnchor="21.0">
+      <Label fx:id="labelDemaisHorasTexto" layoutX="802.0" layoutY="261.0" prefHeight="22.0" prefWidth="115.0" text="Demais horas:" AnchorPane.rightAnchor="139.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelTaxaPerNoite" layoutX="800.0" layoutY="281.0" prefHeight="22.0" prefWidth="233.0" text="Taxa Pernoite:" AnchorPane.rightAnchor="21.0">
+      <Label fx:id="labelTaxaPerNoiteTexto" layoutX="802.0" layoutY="303.0" prefHeight="22.0" prefWidth="115.0" text="Taxa Pernoite:" AnchorPane.rightAnchor="139.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelTAxaMensalista" layoutX="801.0" layoutY="303.0" prefHeight="22.0" prefWidth="233.0" text="Taxa Mensalista:" AnchorPane.rightAnchor="21.0">
+      <Label fx:id="labelTAxaMensalistaTexto" layoutX="802.0" layoutY="325.0" prefHeight="22.0" prefWidth="133.0" text="Taxa Mensalista:" AnchorPane.rightAnchor="121.0">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="carrosEstacionadosTable" onMouseClicked="#abrirPagamento" layoutX="475.0" layoutY="214.0" prefHeight="348.0" prefWidth="314.0">
+      <TableView fx:id="carrosEstacionadosTable" layoutX="475.0" layoutY="214.0" onMouseClicked="#abrirPagamento" prefHeight="348.0" prefWidth="314.0">
         <columns>
           <TableColumn fx:id="vagaColum" prefWidth="166.0" text="Vaga" />
           <TableColumn fx:id="cpfColum" prefWidth="147.0" text="CPF do Ocupante" />
@@ -114,5 +118,30 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
+      <Label fx:id="labelTrintaMinutos" layoutX="963.0" layoutY="217.0" prefHeight="22.0" prefWidth="84.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelUmaHora" layoutX="963.0" layoutY="239.0" prefHeight="22.0" prefWidth="84.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelDemaisHoras" layoutX="963.0" layoutY="261.0" prefHeight="22.0" prefWidth="84.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTaxaPerNoite" layoutX="963.0" layoutY="303.0" prefHeight="22.0" prefWidth="84.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTAxaMensalista" layoutX="963.0" layoutY="325.0" prefHeight="22.0" prefWidth="84.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

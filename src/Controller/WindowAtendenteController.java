@@ -125,17 +125,17 @@ public class WindowAtendenteController {
         PrecosUseCase precosUseCase = new PrecosUseCase();
         Precos precos = precosUseCase.read();
         if(precos != null){
-            labelTrintaMinutos.setText(labelTrintaMinutos.getText()+" R$ "+precos.getPreco30min());
-            labelUmaHora.setText(labelUmaHora.getText()+" R$ "+precos.getPreco1hr());
-            labelDemaisHoras.setText(labelDemaisHoras.getText()+" R$ "+precos.getPrecoDemaisHoras());
-            labelTaxaPerNoite.setText(labelTaxaPerNoite.getText()+" R$ "+precos.getPrecoPerNoite());
-            labelTAxaMensalista.setText(labelTAxaMensalista.getText()+" R$ "+precos.getPrecoMensalista());
+            labelTrintaMinutos.setText("R$ "+precos.getPreco30min());
+            labelUmaHora.setText("R$ "+precos.getPreco1hr());
+            labelDemaisHoras.setText("R$ "+precos.getPrecoDemaisHoras());
+            labelTaxaPerNoite.setText("R$ "+precos.getPrecoPerNoite());
+            labelTAxaMensalista.setText("R$ "+precos.getPrecoMensalista());
         }   else{
-            labelTrintaMinutos.setText(labelTrintaMinutos.getText()+" Não definido");
-            labelUmaHora.setText(labelUmaHora.getText()+" Não definido");
-            labelDemaisHoras.setText(labelDemaisHoras.getText()+" Não definido");
-            labelTaxaPerNoite.setText(labelTaxaPerNoite.getText()+" Não definido");
-            labelTAxaMensalista.setText(labelTAxaMensalista.getText()+" Não definido");
+            labelTrintaMinutos.setText("Não definido");
+            labelUmaHora.setText("Não definido");
+            labelDemaisHoras.setText("Não definido");
+            labelTaxaPerNoite.setText("Não definido");
+            labelTAxaMensalista.setText("Não definido");
         }
 
     }
