@@ -54,10 +54,10 @@ public class MensalistaController {
         String vaga = tfVagaOcupada.getText();
         String empresa = tfEmpresaVincMensalista.getText();
         String telefone = tfTelefoneMensalista.getText();
+        MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
 
-        if(ValidaCPF.isCPF(cpf)){
-            if(!nome.equals("") && !vaga.equals("") && !telefone.equals("")){
-                MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
+        if(ValidaCPF.isCPF(cpf) && mensalistaUseCase.verificaCadastrado(cpf)){ //Valida CPF
+            if(!nome.equals("") && !vaga.equals("") && !telefone.equals("") && telefone.length()>=13){
                 if(mensalistaMensalista != null){
                     Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga), mensalistaMensalista.getId());
                     mensalistaUseCase.update(mensalista);
@@ -70,7 +70,7 @@ public class MensalistaController {
                 lblAviso.setText("Por favor, preencha todos os campos!");
             }
         }   else{
-            lblAviso.setText("Por favor, digite um CPF válido!");
+            lblAviso.setText("CPF Inválido ou Já Cadastrado!");
         }
 
     }

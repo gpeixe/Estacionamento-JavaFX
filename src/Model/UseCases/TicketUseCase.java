@@ -10,6 +10,8 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -280,13 +282,17 @@ public class TicketUseCase {
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
         //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketPagamentoCliente"+ticket.getId()+".pdf"));
+            String path = "Tickets/TicketPagamentoCliente"+ticket.getId()+".pdf";
+            PdfWriter.getInstance(doc, new FileOutputStream(path));
             doc.open();
             doc.add(new Paragraph(ticket.toString()));
             doc.close();
+            java.awt.Desktop.getDesktop().open(new File( path ));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -297,13 +303,17 @@ public class TicketUseCase {
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
         //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketPagamentoMensalista"+ticket.getId()+".pdf"));
+            String path = "Tickets/TicketPagamentoMensalista"+ticket.getId()+".pdf";
+            PdfWriter.getInstance(doc, new FileOutputStream(path));
             doc.open();
             doc.add(new Paragraph(ticket.toString()));
             doc.close();
+            java.awt.Desktop.getDesktop().open(new File( path ));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -314,13 +324,17 @@ public class TicketUseCase {
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
         //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketEntradaCliente"+ticket.getId()+".pdf"));
+            String path = "Tickets/TicketEntradaCliente"+ticket.getId()+".pdf";
+            PdfWriter.getInstance(doc, new FileOutputStream(path));
             doc.open();
             doc.add(new Paragraph(ticket.toStringEnter()));
             doc.close();
+            java.awt.Desktop.getDesktop().open(new File( path ));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -331,13 +345,17 @@ public class TicketUseCase {
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
         //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketEntradaMensalista"+ticket.getId()+".pdf"));
+            String path = "Tickets/TicketEntradaMensalista"+ticket.getId()+".pdf";
+            PdfWriter.getInstance(doc, new FileOutputStream(path));
             doc.open();
             doc.add(new Paragraph(ticket.toStringEnter()));
             doc.close();
+            java.awt.Desktop.getDesktop().open(new File( path ));
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -411,6 +429,39 @@ public class TicketUseCase {
             e.printStackTrace();
         }
         return tickets;
+    }
+
+    /*Retorna o número do próximo ticket*/
+    public int idProximoTicketCliente(){
+        PreparedStatement preparedStatement;
+        String sql = "SELECT max(id) as number FROM ticket_cliente";
+        int id = 0;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("number");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id+1;
+    }
+
+    public int idProximoTicketMensalista(){
+        PreparedStatement preparedStatement;
+        String sql = "SELECT max(id) as number FROM ticket_mensalista";
+        int id = 0;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("number");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id+1;
     }
 
 }
