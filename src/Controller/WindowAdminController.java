@@ -73,6 +73,11 @@ public class WindowAdminController {
         reloader();
     }
 
+    public void openTelaEntradaMensalista(ActionEvent actionEvent) {
+        WindowEntradaMensalista w = new WindowEntradaMensalista();
+        w.startModal();
+    }
+
     public void setVagasDisponiveis() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
         lblNumVagasDisponiveis.setText("Vagas Disponíveis: "+vagasUseCase.numeroVagasDisponiveis());

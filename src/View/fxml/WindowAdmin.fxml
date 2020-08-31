@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="496.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAdminController">
+<AnchorPane prefHeight="485.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WindowAdminController">
     <children>
         <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="46.0" prefWidth="625.0" style="-fx-background-color: #1D3557;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
             <children>
-                <Label accessibleHelp="GERENCIAMENTO" accessibleRoleDescription="GERENCIAMENTO" accessibleText="GERENCIAMENTO" layoutX="56.0" layoutY="4.0" prefHeight="38.0" prefWidth="446.0" text="Gerenciamento Estacionamento" textFill="WHITE">
+                <Label accessibleHelp="GERENCIAMENTO" accessibleRoleDescription="GERENCIAMENTO" accessibleText="GERENCIAMENTO" layoutX="97.0" layoutY="4.0" prefHeight="38.0" prefWidth="446.0" text="Gerenciamento Estacionamento" textFill="WHITE">
                     <font>
                         <Font name="Arial Black" size="25.0" />
                     </font>
                 </Label>
+              <JFXButton fx:id="btnDeslogar" accessibleHelp="DESLOGAR" accessibleRoleDescription="DESLOGAR" accessibleText="DESLOGAR" layoutX="559.0" layoutY="7.0" onAction="#deslogaAdmin" prefHeight="20.0" prefWidth="67.0" style="-fx-background-color: #E63946;" text="Sair" textFill="WHITE">
+                  <font>
+                      <Font name="Arial Black" size="14.0" />
+                  </font>
+              </JFXButton>
             </children>
         </Pane>
         <Label fx:id="lblNumVagas" accessibleHelp="VAGAS" accessibleRoleDescription="VAGAS" accessibleText="VAGAS" layoutX="14.0" layoutY="325.0" prefHeight="38.0" prefWidth="320.0" text="Número de vagas:" AnchorPane.leftAnchor="14.0">
@@ -27,37 +33,7 @@
                 <Font name="Arial Black" size="15.0" />
             </font>
         </Label>
-        <JFXButton fx:id="btnNovoTicket" accessibleHelp="NOVO TICKET" accessibleRoleDescription="NOVO TICKET" accessibleText="NOVO TICKET" layoutX="423.0" layoutY="80.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #1D3557;" text="Novo Ticket" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="btnDeslogar" accessibleHelp="DESLOGAR" accessibleRoleDescription="DESLOGAR" accessibleText="DESLOGAR" layoutX="334.0" layoutY="439.0" onAction="#deslogaAdmin" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #E63946;" text="Deslogar" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
         <PieChart fx:id="graphVagas" accessibleHelp="GRAFICO" accessibleRoleDescription="GRAFICO" accessibleText="GRAFICO" layoutX="14.0" layoutY="80.0" prefHeight="245.0" prefWidth="301.0" title="Vagas/Vagas Disponíveis" AnchorPane.leftAnchor="14.0" />
-        <JFXButton fx:id="btnMensalistas" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="334.0" layoutY="126.0" onAction="#openTelaCRUDMensalista" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #1D3557;" text="Mensalistas" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="btnRelatorios" accessibleHelp="RELATORIOS" accessibleRoleDescription="RELATORIOS" accessibleText="RELATORIOS" layoutX="334.0" layoutY="270.0" onAction="#openTelaRelatorios" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #457B9D;" text="Relatórios" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="btnPrecos" accessibleHelp="Preços" accessibleRoleDescription="Preços" accessibleText="Preços" layoutX="334.0" layoutY="317.0" onAction="#openTelaPrecos" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #457B9D;" text="Preços" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="btnFuncionarios" accessibleHelp="Preços" accessibleRoleDescription="Preços" accessibleText="Preços" layoutX="334.0" layoutY="221.0" onAction="#openTelaCRUDFuncionarios" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #457B9D;" text="Funcionários" textFill="WHITE" AnchorPane.rightAnchor="17.0">
-            <font>
-                <Font name="Arial Black" size="18.0" />
-            </font>
-        </JFXButton>
         <Label fx:id="lblNumMensalistas" accessibleHelp="NUMEROS MENSALISTAS" accessibleRoleDescription="NUMEROS MENSALISTAS" accessibleText="NUMEROS MENSALISTAS" layoutX="14.0" layoutY="401.0" prefHeight="38.0" prefWidth="320.0" text="Número de mensalistas:" AnchorPane.leftAnchor="14.0">
             <font>
                 <Font name="Arial Black" size="15.0" />
@@ -68,7 +44,37 @@
                 <Font name="Arial Black" size="15.0" />
             </font>
         </Label>
-        <JFXButton fx:id="btnTelaPagamento" accessibleHelp="REGISTRAR SAIDA" accessibleRoleDescription="REGISTRAR SAIDA" accessibleText="REGISTRAR SAIDA" layoutX="334.0" layoutY="173.0" onAction="#openTelaPagamento" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: #E63946;" text="Pagamento" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+        <JFXButton fx:id="btnNovoTicket" accessibleHelp="NOVO TICKET" accessibleRoleDescription="NOVO TICKET" accessibleText="NOVO TICKET" layoutX="375.0" layoutY="80.0" onAction="#openTelaTicket" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #1D3557;" text="Entrada Cliente" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+            <font>
+                <Font name="Arial Black" size="18.0" />
+            </font>
+        </JFXButton>
+      <JFXButton fx:id="btnEntradaMensalista" accessibleHelp="ENTRADA MENSALISTA" accessibleRoleDescription="ENTRADA MENSALISTA" accessibleText="ENTRADA MENSALISTA" layoutX="375.0" layoutY="125.0" onAction="#openTelaEntradaMensalista" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #1D3557;" text="Entrada Mensalista" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+        <JFXButton fx:id="btnTelaPagamento" accessibleHelp="REGISTRAR SAIDA" accessibleRoleDescription="REGISTRAR SAIDA" accessibleText="REGISTRAR SAIDA" layoutX="375.0" layoutY="171.0" onAction="#openTelaPagamento" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #E63946;" text="Ticket Saída" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+            <font>
+                <Font name="Arial Black" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnMensalistas" accessibleHelp="NOVO MENSALISTA" accessibleRoleDescription="NOVO MENSALISTA" accessibleText="NOVO MENSALISTA" layoutX="375.0" layoutY="286.0" onAction="#openTelaCRUDMensalista" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #457B9D;" text="Gerenciamento Mensalistas" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnFuncionarios" accessibleHelp="Preços" accessibleRoleDescription="Preços" accessibleText="Preços" layoutX="375.0" layoutY="335.0" onAction="#openTelaCRUDFuncionarios" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #457B9D;" text="Funcionários" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+            <font>
+                <Font name="Arial Black" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnRelatorios" accessibleHelp="RELATORIOS" accessibleRoleDescription="RELATORIOS" accessibleText="RELATORIOS" layoutX="375.0" layoutY="382.0" onAction="#openTelaRelatorios" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #457B9D;" text="Relatórios" textFill="WHITE" AnchorPane.rightAnchor="17.0">
+            <font>
+                <Font name="Arial Black" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnPrecos" accessibleHelp="Preços" accessibleRoleDescription="Preços" accessibleText="Preços" layoutX="375.0" layoutY="430.0" onAction="#openTelaPrecos" prefHeight="39.0" prefWidth="248.0" style="-fx-background-color: #457B9D;" text="Preços" textFill="WHITE" AnchorPane.rightAnchor="17.0">
             <font>
                 <Font name="Arial Black" size="18.0" />
             </font>

@@ -22,7 +22,7 @@ public class WindowAdmin {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             Pane pane = loader.load(getClass().getResource("/View/fxml/WindowAdmin.fxml").openStream());
-            Scene scene = new Scene(pane, 558, 496);
+            Scene scene = new Scene(pane, 640, 485);
             wa = loader.getController();
             wa.setAdm(adm);
             wa.setGraphVagas();
