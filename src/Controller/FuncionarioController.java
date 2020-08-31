@@ -45,7 +45,7 @@ public class FuncionarioController {
         String telefone = tfTelefoneFuncionario.getText();
         FuncionarioCRUDUseCase funcionarioCRUDUseCase = new FuncionarioCRUDUseCase();
 
-        if(ValidaCPF.isCPF(cpf) && funcionarioCRUDUseCase.verificaCadastrado(cpf)){ //Valida se o CPF é válido
+        if(ValidaCPF.isCPF(cpf)){ //Valida se o CPF é válido
             if(!nome.equals("") && !senha.equals("") && !endereco.equals("") && !telefone.equals("") && telefone.length()>=13){ //Valida se todos os campos foram preenchidos
                 if(funcionarioFuncionario!=null){
                     switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
@@ -59,25 +59,30 @@ public class FuncionarioController {
                             funcionarioCRUDUseCase.update(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN, funcionarioFuncionario.getId()));
                             break;
                     }
+                    ((Stage)tfEnderecoFuncionario.getScene().getWindow()).close();
                 }   else{
-                    switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
-                        case "Atendente":
-                            funcionarioCRUDUseCase.save(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE));
-                            break;
-                        case "Vigilante":
-                            funcionarioCRUDUseCase.save(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE));
-                            break;
-                        case "Administrador":
-                            funcionarioCRUDUseCase.save(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN));
-                            break;
+                    if(funcionarioCRUDUseCase.verificaCadastrado(cpf)){
+                        switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
+                            case "Atendente":
+                                funcionarioCRUDUseCase.save(new Atendente(cpf, nome, senha,telefone, endereco, Efuncao.ATENDENTE));
+                                break;
+                            case "Vigilante":
+                                funcionarioCRUDUseCase.save(new Vigilante(cpf, nome, senha,telefone, endereco, Efuncao.VIGILANTE));
+                                break;
+                            case "Administrador":
+                                funcionarioCRUDUseCase.save(new Administrador(cpf, nome, senha,telefone, endereco, Efuncao.ADMIN));
+                                break;
+                        }
+                        ((Stage)tfEnderecoFuncionario.getScene().getWindow()).close();
+                    }   else{
+                        lblAviso.setText("CPF já Cadastrado!");
                     }
                 }
-                ((Stage)tfEnderecoFuncionario.getScene().getWindow()).close();
             }   else{
                 lblAviso.setText("Por favor, preencha todos os campos!");
             }
         }   else{
-            lblAviso.setText("CPF Inválido ou Já Cadastrado!");
+            lblAviso.setText("CPF Inválido!");
         }
     }
 

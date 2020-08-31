@@ -53,21 +53,26 @@ public class MensalistaController {
         String telefone = tfTelefoneMensalista.getText();
         MensalistaCRUDUseCase mensalistaCRUDUseCase = new MensalistaCRUDUseCase();
 
-        if(ValidaCPF.isCPF(cpf) && mensalistaCRUDUseCase.verificaCadastrado(cpf)){ //Valida CPF
+        if(ValidaCPF.isCPF(cpf)){ //Valida CPF
             if(!nome.equals("") && !vaga.equals("") && !telefone.equals("") && telefone.length()>=13){
                 if(mensalistaMensalista != null){
                     Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga), mensalistaMensalista.getId());
                     mensalistaCRUDUseCase.update(mensalista);
+                    ((Stage)tfCPFMensalista.getScene().getWindow()).close();
                 }   else {
-                    Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga));
-                    mensalistaCRUDUseCase.save(mensalista);
+                    if(mensalistaCRUDUseCase.verificaCadastrado(cpf)){
+                        Mensalista mensalista = new Mensalista(cpf,nome,telefone,empresa,Integer.parseInt(vaga));
+                        mensalistaCRUDUseCase.save(mensalista);
+                        ((Stage)tfCPFMensalista.getScene().getWindow()).close();
+                    }   else{
+                        lblAviso.setText("CPF já Cadastrado!");
+                    }
                 }
-                ((Stage)tfCPFMensalista.getScene().getWindow()).close();
             }   else{
                 lblAviso.setText("Por favor, preencha todos os campos!");
             }
         }   else{
-            lblAviso.setText("CPF Inválido ou Já Cadastrado!");
+            lblAviso.setText("CPF Inválido");
         }
 
     }
