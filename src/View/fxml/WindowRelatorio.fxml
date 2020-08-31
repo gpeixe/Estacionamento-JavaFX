@@ -51,10 +51,10 @@
       </Label>
       <LineChart fx:id="graphPermHr" layoutX="557.0" layoutY="160.0" prefHeight="285.0" prefWidth="534.0" title="Permanência/Hora" AnchorPane.rightAnchor="0.0">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis fx:id="graphX" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis fx:id="graphY" side="LEFT" />
         </yAxis>
       </LineChart>
       <PieChart fx:id="graphVagas" layoutX="555.0" layoutY="442.0" prefHeight="323.0" prefWidth="534.0" title="Vagas/Vagas Disponíveis" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0" />

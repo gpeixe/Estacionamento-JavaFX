@@ -4,10 +4,7 @@ import Model.Entities.Funcionarios.Atendente;
 import Model.Entities.Funcionarios.Vigilante;
 import Model.Entities.Precos.Precos;
 import Model.Entities.Vagas.Vagas;
-import Model.UseCases.AlteraPrecosUseCase;
-import Model.UseCases.RegistroAtendenteUseCase;
-import Model.UseCases.RegistroVigilanteUseCase;
-import Model.UseCases.VagasUseCase;
+import Model.UseCases.*;
 import Utils.MaskFieldUtil;
 import View.loaders.*;
 import com.jfoenix.controls.JFXButton;
@@ -67,7 +64,7 @@ public class WindowAtendenteController {
     JFXTextField filterCpf;
 
     RegistroVigilanteUseCase registroVigilanteUseCase;
-    RegistroAtendenteUseCase registroAtendenteUseCase;
+    RegistroFuncionarioUseCase registroAtendenteUseCase;
 
     private ObservableList<Vagas> values;
 
@@ -167,7 +164,7 @@ public class WindowAtendenteController {
         values = FXCollections.observableArrayList();
         carrosEstacionadosTable.setItems(values);
         this.registroVigilanteUseCase = new RegistroVigilanteUseCase();
-        this.registroAtendenteUseCase = new RegistroAtendenteUseCase();
+        this.registroAtendenteUseCase = new RegistroFuncionarioUseCase();
         setCurrentVigilante(registroVigilanteUseCase.getCurrentVigilante());
         loadTableView();
     }

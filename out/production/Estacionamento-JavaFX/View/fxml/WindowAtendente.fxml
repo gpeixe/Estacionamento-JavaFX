@@ -109,7 +109,7 @@
           <TableColumn fx:id="cpfColum" prefWidth="147.0" text="CPF do Ocupante" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnTelaPagamento" accessibleHelp="REGISTRAR SAIDA" accessibleRoleDescription="REGISTRAR SAIDA" accessibleText="REGISTRAR SAIDA" layoutX="476.0" layoutY="136.0" onAction="#openTelaPagamento" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #E63946;" text="Pagamento" textFill="WHITE" AnchorPane.rightAnchor="303.0">
+      <JFXButton fx:id="btnTelaPagamento" accessibleHelp="REGISTRAR SAIDA" accessibleRoleDescription="REGISTRAR SAIDA" accessibleText="REGISTRAR SAIDA" layoutX="476.0" layoutY="136.0" onAction="#openTelaPagamento" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #E63946;" text="Ticket Saída" textFill="WHITE" AnchorPane.rightAnchor="303.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>

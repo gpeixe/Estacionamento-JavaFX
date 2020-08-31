@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 
-public abstract  class RegistroFuncionarioUseCase {
+public class RegistroFuncionarioUseCase {
     Connection connection;
 
     public RegistroFuncionarioUseCase(){
