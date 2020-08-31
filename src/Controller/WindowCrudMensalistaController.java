@@ -54,6 +54,8 @@ public class WindowCrudMensalistaController {
     public void removeMensalista(ActionEvent actionEvent) throws SQLException {
         MensalistaUseCase mensalistaUseCase = new MensalistaUseCase();
         mensalistaUseCase.delete(tableMensalista.getSelectionModel().getSelectedItem().getId());
+        VagasUseCase vagasUseCase = new VagasUseCase();
+        vagasUseCase.setVagaFree(tableMensalista.getSelectionModel().getSelectedItem().getCpf());
         loadTableView();
     }
     @FXML

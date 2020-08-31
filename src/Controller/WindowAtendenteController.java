@@ -155,6 +155,7 @@ public class WindowAtendenteController {
 
     public void setGraphVagas() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
+        graphVagas.getData().clear();
         graphVagas.getData().addAll(new PieChart.Data("Vagas Totais", vagasUseCase.numeroVagasTotais()),
                 new PieChart.Data("Vagas Disponiveis", vagasUseCase.numeroVagasDisponiveis()));
     }
@@ -211,6 +212,7 @@ public class WindowAtendenteController {
     public void reloader() throws SQLException {
         loadTableView();
         setVagasDisponiveis();
+        setGraphVagas();
     }
 
 

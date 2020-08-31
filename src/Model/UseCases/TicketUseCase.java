@@ -268,9 +268,9 @@ public class TicketUseCase {
         Document doc = new Document();
         FileChooser f = new FileChooser();
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
-        File file = f.showSaveDialog(new Stage());
+        //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketPagamentoCliente"+ticket.getId()+".pdf"));
             doc.open();
             doc.add(new Paragraph(ticket.toString()));
             doc.close();
@@ -285,9 +285,9 @@ public class TicketUseCase {
         Document doc = new Document();
         FileChooser f = new FileChooser();
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
-        File file = f.showSaveDialog(new Stage());
+        //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketPagamentoMensalista"+ticket.getId()+".pdf"));
             doc.open();
             doc.add(new Paragraph(ticket.toString()));
             doc.close();
@@ -302,9 +302,9 @@ public class TicketUseCase {
         Document doc = new Document();
         FileChooser f = new FileChooser();
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
-        File file = f.showSaveDialog(new Stage());
+        //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketEntradaCliente"+ticket.getId()+".pdf"));
             doc.open();
             doc.add(new Paragraph(ticket.toStringEnter()));
             doc.close();
@@ -319,9 +319,9 @@ public class TicketUseCase {
         Document doc = new Document();
         FileChooser f = new FileChooser();
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF","*.pdf"));
-        File file = f.showSaveDialog(new Stage());
+        //File file = f.showSaveDialog(new Stage());
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+            PdfWriter.getInstance(doc, new FileOutputStream("Tickets/TicketEntradaMensalista"+ticket.getId()+".pdf"));
             doc.open();
             doc.add(new Paragraph(ticket.toStringEnter()));
             doc.close();

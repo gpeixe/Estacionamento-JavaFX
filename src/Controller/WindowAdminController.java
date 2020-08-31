@@ -95,12 +95,14 @@ public class WindowAdminController {
 
     public void setGraphVagas() throws SQLException {
         VagasUseCase vagasUseCase = new VagasUseCase();
+        graphVagas.getData().clear();
         graphVagas.getData().addAll(new PieChart.Data("Vagas Totais", vagasUseCase.numeroVagasTotais()),
                 new PieChart.Data("Vagas Disponiveis", vagasUseCase.numeroVagasDisponiveis()));
     }
 
     public void reloader() throws SQLException {
         setVagasTotais();
+        setGraphVagas();
         setVagasDisponiveis();
         setLblNumFuncionarios();
         setLblNumMensalistas();
