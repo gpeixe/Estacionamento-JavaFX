@@ -23,6 +23,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class TicketUseCase {
     Connection connection;
@@ -113,12 +114,10 @@ public class TicketUseCase {
         Precos precos = alteraPrecosUseCase.read();
         TicketCliente ticketCliente = getOpenClienteTicketByCpf(cpf);
         ticketCliente.setHorarioSaida(new Date());
-        Long different = Math.abs(ticketCliente.getHorarioEntrada().getTime() - ticketCliente.getHorarioSaida().getTime());
+        Long different = Math.abs(ticketCliente.getHorarioSaida().getTime() - ticketCliente.getHorarioEntrada().getTime() );
         ticketCliente.setTempo(different);
-        Long secondsInMilli = (long)1000;
-        Long minutesInMilli = secondsInMilli * 60;
-        Long hoursInMilli = minutesInMilli * 60;
-        Long elapsedHours = (different / hoursInMilli)/360000;
+        double hoursInMilli = 3600000;
+        double elapsedHours = ((double)different / hoursInMilli);
 
         if(ticketCliente.isPernoite()){
             ticketCliente.setValorTotal(precos.getPrecoPerNoite());
@@ -128,9 +127,10 @@ public class TicketUseCase {
         } else if (elapsedHours <= 1.083){
             ticketCliente.setValorTotal(precos.getPreco1hr());
         } else {
+            elapsedHours = Math.ceil(elapsedHours);
             double calculoPreco = 0 + precos.getPreco1hr();
             elapsedHours = elapsedHours - 1;
-            calculoPreco = calculoPreco + (elapsedHours.doubleValue() * precos.getPrecoDemaisHoras());
+            calculoPreco = calculoPreco + (elapsedHours * precos.getPrecoDemaisHoras());
             ticketCliente.setValorTotal(calculoPreco);
         }
 

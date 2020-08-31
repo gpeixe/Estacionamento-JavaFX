@@ -23,7 +23,7 @@ public class TicketMensalista extends Ticket {
                 "   Placa: " + super.getPlaca() + '\n' +
                 "   Horario de Entrada: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format( super.getHorarioEntrada()) + '\n' +
                 "   Horario de Saida: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(super.getHorarioSaida()) + '\n' +
-                "   Descrição do Carro: " + super.getDescricaoCarro() + '\'' + '\n' +
+                "   Descrição do Carro: " + super.getDescricaoCarro() + '\n' +
                 "   Id do Vigilante: " + super.getIdVigilante() + '\n' +
                 "   Id do Mensalista: " + idMensalista ;
     }
