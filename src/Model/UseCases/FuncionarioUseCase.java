@@ -1,9 +1,6 @@
 package Model.UseCases;
 
-import Model.Entities.Funcionarios.Atendente;
-import Model.Entities.Funcionarios.Efuncao;
-import Model.Entities.Funcionarios.Funcionario;
-import Model.Entities.Funcionarios.Vigilante;
+import Model.Entities.Funcionarios.*;
 import Model.Entities.Mensalista.Mensalista;
 import Utils.SqlConnection;
 
@@ -34,6 +31,8 @@ public class FuncionarioUseCase {
                 preparedStatement.setString(3, "Atendente");
             }   else if(funcionario instanceof Vigilante){
                 preparedStatement.setString(3, "Vigilante");
+            }   else if(funcionario instanceof Administrador){
+                preparedStatement.setString(3, "Administrador");
             }
             preparedStatement.setString(4, funcionario.getTelefone());
             preparedStatement.setString(5, funcionario.getEndereco());
@@ -56,6 +55,8 @@ public class FuncionarioUseCase {
                 preparedStatement.setString(3, "Atendente");
             }   else if(funcionario instanceof Vigilante){
                 preparedStatement.setString(3, "Vigilante");
+            }   else if(funcionario instanceof Administrador){
+                preparedStatement.setString(3, "Administrador");
             }
             preparedStatement.setString(4, funcionario.getTelefone());
             preparedStatement.setString(5, funcionario.getEndereco());
@@ -83,12 +84,32 @@ public class FuncionarioUseCase {
                     return new Atendente(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.ATENDENTE,rs.getInt("id"));
                 }   else if(rs.getString("funcao").equals("Vigilante")){
                     return new Vigilante(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.VIGILANTE,rs.getInt("id"));
+                }   else if(rs.getString("funcao").equals("Administrador")){
+                    return new Administrador(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.ADMIN,rs.getInt("id"));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return funcionario;
+    }
+
+    public boolean verificaCadastrado(String cpf) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM funcionario WHERE cpf = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 
     public List<Funcionario> readAll() throws SQLException{
@@ -103,6 +124,8 @@ public class FuncionarioUseCase {
                     funcionarios.add(new Atendente(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.ATENDENTE,rs.getInt("id")));
                 }   else if(rs.getString("funcao").equals("Vigilante")){
                     funcionarios.add(new Vigilante(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.VIGILANTE,rs.getInt("id")));
+                }   else if(rs.getString("funcao").equals("Administrador")){
+                    funcionarios.add(new Administrador(rs.getString("cpf"),rs.getString("nome"),rs.getString("senha"),rs.getString("telefone"),rs.getString("endereco"),Efuncao.ADMIN,rs.getInt("id")));
                 }
             }
         } catch (SQLException e) {

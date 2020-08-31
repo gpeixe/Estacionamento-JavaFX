@@ -54,8 +54,11 @@ public class WindowEntradaMensalistaController {
                             taDescCarroMensalista.getText(),
                             registroVigilanteUseCase.getCurrentVigilante().getId(),
                             mensalista.getId());
+                    ticketMensalista.setId(ticketUseCase.idProximoTicketMensalista());
                     ticketUseCase.saveMensalistaTicket(ticketMensalista);
+                    /*Gera o Ticket*/
                     ticketUseCase.generateEnterTicketPdf(ticketMensalista);
+                    /*Fecha a Aba*/
                     ((Stage) btnGeraTicketMensalista.getScene().getWindow()).close();
                 } else {
                     lblAviso.setText("Por favor, preencha todos os campos!");

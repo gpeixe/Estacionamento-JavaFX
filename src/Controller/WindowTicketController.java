@@ -73,7 +73,7 @@ public class WindowTicketController {
 
     public void geraTicket(ActionEvent actionEvent) throws SQLException {
         if(ValidaCPF.isCPF(tfCpfCliente.getText())){
-            if(!tfVagaOcupada.getText().equals("") && !tfPlacaCliente.getText().equals("") && !tfContatoCliente.getText().equals("") && !taDescCarroCliente.getText().equals("")){
+            if(!tfVagaOcupada.getText().equals("") && !tfPlacaCliente.getText().equals("") && !tfContatoCliente.getText().equals("") && tfContatoCliente.getText().length() >= 13 && !taDescCarroCliente.getText().equals("")){
                 Vigilante vigilante = registroVigilanteUseCase.getCurrentVigilante();
                 if(vigilante!=null) {
                     TicketCliente ticketCliente = new TicketCliente(
@@ -89,10 +89,12 @@ public class WindowTicketController {
                         ticketCliente.setPernoite(false);
                     }
                     ticketCliente.setCpf(tfCpfCliente.getText());
+                    ticketCliente.setId(ticketUseCase.idProximoTicketCliente());
                     ticketUseCase.saveClientTicket(ticketCliente);
                     /*Salvando a vaga*/
                     VagasUseCase vagasUseCase = new VagasUseCase();
                     vagasUseCase.setVaga(tfCpfCliente.getText(), Integer.parseInt(tfVagaOcupada.getText()));
+                    /*Gera o Ticket*/
                     ticketUseCase.generateEnterTicketPdf(ticketCliente);
                     /*Fecha a aba*/
                     ((Stage) btnGerarTicket.getScene().getWindow()).close();

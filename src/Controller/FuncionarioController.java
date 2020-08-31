@@ -44,10 +44,10 @@ public class FuncionarioController {
         String senha = tfSenhaFuncionario.getText();
         String endereco = tfEnderecoFuncionario.getText();
         String telefone = tfTelefoneFuncionario.getText();
+        FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
 
-        if(ValidaCPF.isCPF(cpf)){ //Valida se o CPF é válido
-            if(!nome.equals("") && !senha.equals("") && !endereco.equals("") && !telefone.equals("")){ //Valida se todos os campos foram preenchidos
-                FuncionarioUseCase funcionarioUseCase = new FuncionarioUseCase();
+        if(ValidaCPF.isCPF(cpf) && funcionarioUseCase.verificaCadastrado(cpf)){ //Valida se o CPF é válido
+            if(!nome.equals("") && !senha.equals("") && !endereco.equals("") && !telefone.equals("") && telefone.length()>=13){ //Valida se todos os campos foram preenchidos
                 if(funcionarioFuncionario!=null){
                     switch (cbFuncFuncionario.getSelectionModel().getSelectedItem()) {
                         case "Atendente":
@@ -78,7 +78,7 @@ public class FuncionarioController {
                 lblAviso.setText("Por favor, preencha todos os campos!");
             }
         }   else{
-            lblAviso.setText("Por favor, digite um CPF válido!");
+            lblAviso.setText("CPF Inválido ou Já Cadastrado!");
         }
     }
 

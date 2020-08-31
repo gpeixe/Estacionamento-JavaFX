@@ -143,4 +143,22 @@ public class MensalistaUseCase {
         }
         return numMensalistas;
     }
+
+    public boolean verificaCadastrado(String cpf) throws SQLException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM mensalista WHERE cpf = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 }
