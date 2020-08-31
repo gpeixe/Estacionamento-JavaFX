@@ -49,7 +49,7 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </Label>
-      <LineChart fx:id="graphPermHr" layoutX="557.0" layoutY="160.0" prefHeight="285.0" prefWidth="534.0" title="Permanência/Hora" AnchorPane.rightAnchor="0.0">
+      <LineChart fx:id="graphPermHr" layoutX="557.0" layoutY="160.0" prefHeight="571.0" prefWidth="534.0" title="Permanência/Hora" AnchorPane.rightAnchor="0.0">
         <xAxis>
           <CategoryAxis fx:id="graphX" side="BOTTOM" />
         </xAxis>
@@ -57,8 +57,7 @@
           <NumberAxis fx:id="graphY" side="LEFT" />
         </yAxis>
       </LineChart>
-      <PieChart fx:id="graphVagas" layoutX="555.0" layoutY="442.0" prefHeight="323.0" prefWidth="534.0" title="Vagas/Vagas Disponíveis" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0" />
-      <JFXDatePicker fx:id="datePick" defaultColor="#1d3557" layoutX="906.0" layoutY="60.0"  prefHeight="37.0" prefWidth="171.0" AnchorPane.rightAnchor="14.0" />
+      <JFXDatePicker fx:id="datePick" defaultColor="#1d3557" layoutX="906.0" layoutY="60.0" prefHeight="37.0" prefWidth="171.0" AnchorPane.rightAnchor="14.0" />
       <JFXButton fx:id="btnBuscar" accessibleHelp="BUSCAR" accessibleRoleDescription="BUSCAR" accessibleText="BUSCAR" layoutX="917.0" layoutY="110.0" onAction="#searchOnDate" prefHeight="38.0" prefWidth="118.0" ripplerFill="BLACK" style="-fx-background-color: #1D3557;" text="Buscar" textFill="WHITE" AnchorPane.bottomAnchor="616.0">
          <font>
             <Font name="Arial Black" size="17.0" />

@@ -22,9 +22,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class WindowRelatorioController {
 
@@ -188,7 +192,10 @@ public class WindowRelatorioController {
         XYChart.Series serie = new XYChart.Series();
         serie.setName("Permanência/hora");
 
-        for (int i = 1; i <= 24 ; i++) {
+        if(getNumberOfEntries() == 0)
+            return;
+
+        for (int i = 0; i < 24 ; i++) {
             serie.getData().add(new XYChart.Data(this.getMediaPermaPorHora(i), i));
         }
 
@@ -197,30 +204,75 @@ public class WindowRelatorioController {
     }
 
     private String getMediaPermaPorHora(int hora){
+        List<Ticket> ticketList = new ArrayList<>();
+        ticketList.addAll(this.ticketClienteList);
+        ticketList.addAll(this.ticketMensalistaList);
+
         List<Ticket> rangeTicket = new ArrayList<>();
 
-        for (TicketCliente ticket:
-             ticketClienteList) {
+        int horaSup = hora + 1;
+        String superior =  datePick.getValue().toString() + " " +(horaSup) + ":00:00";
+        String inferior = datePick.getValue().toString() + " " + hora+ ":00:00";
 
-            DateFormat formatter = new SimpleDateFormat("HH");
-            int horaSaida = Integer.parseInt(formatter.format(ticket.getHorarioSaida()));
-            hora--;
-
-            if (horaSaida == hora ){
-                rangeTicket.add(ticket);
-            }
+        DateTimeFormatter formatterOne = DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm:ss");
+        DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime superiorDate;
+        LocalDateTime inferiorDate;
+        try {
+            superiorDate = LocalDateTime.parse(superior, formatterTwo);
+            inferiorDate = LocalDateTime.parse(inferior, formatterTwo);
+        } catch (Exception e){
+            superiorDate = LocalDateTime.parse(superior, formatterOne);
+            inferiorDate = LocalDateTime.parse(inferior, formatterOne);
         }
 
-        for (TicketMensalista ticket : ticketMensalistaList){
-            DateFormat formatter = new SimpleDateFormat("HH");
-            int horaSaida = Integer.parseInt(formatter.format(ticket.getHorarioSaida()));
-            hora--;
+        long count = 0;
 
-            if (horaSaida == hora ){
+        for (Ticket ticket:
+             ticketList) {
+
+            if(ticket.getHorarioSaida() == null)
+                continue;
+
+            LocalDateTime  ticketHoraEntrada = ticket.getHorarioEntrada().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            LocalDateTime  ticketHoraSaida = ticket.getHorarioSaida().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+
+            if(ticketHoraEntrada.isBefore(superiorDate) && ticketHoraSaida.isAfter(inferiorDate)){
                 rangeTicket.add(ticket);
-            }
-        }
+               long ticketTempo = ticket.getTempo();
+               long tempoHoras;
 
-        return getMediaPerma(rangeTicket);
+                tempoHoras = ticketTempo / (1000 * 60 * 60);
+
+                if(tempoHoras > 1)
+                    count = count + 3600000;
+                else{
+                    count = count + ticketTempo;
+                }
+
+            }
+
+            }
+        if(rangeTicket.size() == 0)
+            return "00:00:";
+
+
+        long media = count/rangeTicket.size();
+
+        long difference_In_Minutes
+                = (media
+                / (1000 * 60))
+                % 60;
+
+        long difference_In_Hours
+                = (media
+                / (1000 * 60 * 60))
+                % 24;
+
+
+
+
+        return difference_In_Hours + ":" + difference_In_Minutes;
     }
 }
